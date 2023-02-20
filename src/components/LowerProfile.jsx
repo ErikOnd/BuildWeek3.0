@@ -180,10 +180,7 @@ const LowerProfile = () => {
               </span>
             </Col>
           </Row>
-          <Row>
-            <Col className="box-h1">Education</Col>
-          </Row>
-          <Row className="flex-column">
+          <Row className="flex-column mt-2">
             <Col className="box-h2">
               <img
                 src="https://media.licdn.com/dms/image/C4D0BAQEFWO_s8a0FHQ/company-logo_100_100/0/1647618816994?e=1684972800&v=beta&t=TPNYWQvNS5llJxWVNsaOC9JuymAFPxR8tOSYYjqu8Q4"
@@ -205,10 +202,7 @@ const LowerProfile = () => {
               </span>
             </Col>
           </Row>
-          <Row>
-            <Col className="box-h1">Education</Col>
-          </Row>
-          <Row className="flex-column">
+          <Row className="flex-column mt-2">
             <Col className="box-h2">
               <img
                 src="https://media.licdn.com/dms/image/C4D0BAQEFWO_s8a0FHQ/company-logo_100_100/0/1647618816994?e=1684972800&v=beta&t=TPNYWQvNS5llJxWVNsaOC9JuymAFPxR8tOSYYjqu8Q4"
