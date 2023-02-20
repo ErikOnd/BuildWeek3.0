@@ -1,5 +1,7 @@
+import LowerProfile from "./LowerProfile";
+
 const ProfilePage = () => {
-  return <h1>Test</h1>;
+  return <LowerProfile></LowerProfile>;
 };
 
 export default ProfilePage;
