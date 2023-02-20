@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Container,Row,Col,Button,Modal,Form } from "react-bootstrap";
-import  "../Css/MainProfile.css"
+
 import { CameraFill,Pencil } from 'react-bootstrap-icons'
 import Edit from "./Edit";
 const MainProfile = () => {
