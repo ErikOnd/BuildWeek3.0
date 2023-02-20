@@ -4,9 +4,6 @@ const LowerProfile = () => {
   return (
     <Container>
       <Row>
-        <Col className="profil-holder lp box-style"></Col>
-      </Row>
-      <Row>
         <Col className="lp box-style">
           <Row>
             <Col className="box-h1">Analytics</Col>
@@ -31,7 +28,8 @@ const LowerProfile = () => {
               </p>
             </Col>
             <Col className="box-h2">
-              <i className="bi bi-search icon-style pr-1"></i>3 search appearances
+              <i className="bi bi-search icon-style pr-1"></i>3 search
+              appearances
               <p className="lp-description">
                 See how often you appear in search results.
               </p>
