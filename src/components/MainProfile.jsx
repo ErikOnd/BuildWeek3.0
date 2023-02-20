@@ -43,7 +43,7 @@ const MainProfile = () => {
 
   
       setUser(user=data)
-
+   console.log(user)
     }catch(err){
         console.log(err)
     }
