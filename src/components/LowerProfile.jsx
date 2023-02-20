@@ -13,25 +13,25 @@ const LowerProfile = () => {
           </Row>
           <Row>
             <Col className="mb-1">
-              <i class="bi bi-eye-fill icon-style eye-lp"></i>Private to you
+              <i className="bi bi-eye-fill icon-style eye-lp"></i>Private to you
             </Col>
           </Row>
           <Row className="flex-column flex-lg-row">
             <Col className="box-h2">
-              <i class="bi bi-people-fill icon-style"></i> 15 profile views
+              <i className="bi bi-people-fill icon-style"></i> 15 profile views
               <p className="lp-description">
                 Discover who's viewed your profile.
               </p>
             </Col>
             <Col className="box-h2">
-              <i class="bi bi-bar-chart-line-fill icon-style"></i> 178 post
+              <i className="bi bi-bar-chart-line-fill icon-style"></i> 178 post
               impressions{" "}
               <p className="lp-description">
                 Check out who's engaging with your posts.
               </p>
             </Col>
             <Col className="box-h2">
-              <i class="bi bi-search icon-style pr-1"></i>3 search appearances
+              <i className="bi bi-search icon-style pr-1"></i>3 search appearances
               <p className="lp-description">
                 See how often you appear in search results.
               </p>
@@ -78,7 +78,7 @@ const LowerProfile = () => {
           <Row className="d-flex">
             <Col className="box-h1 mb-3">About</Col>
             <Col className="box-h1 mb-3 d-flex justify-content-end">
-              <i class="bi bi-pen"></i>
+              <i className="bi bi-pen"></i>
             </Col>
           </Row>
           <Row>
@@ -132,8 +132,8 @@ const LowerProfile = () => {
           <Row>
             <Col className="box-h1">Experience</Col>
             <Col className="box-h1 mb-3 d-flex justify-content-end">
-              <i class="bi bi-plus-lg mr-4"></i>
-              <i class="bi bi-pen"></i>
+              <i className="bi bi-plus-lg mr-4"></i>
+              <i className="bi bi-pen"></i>
             </Col>
           </Row>
           <Row className="flex-column">
@@ -168,8 +168,8 @@ const LowerProfile = () => {
           <Row>
             <Col className="box-h1">Education</Col>
             <Col className="box-h1 mb-3 d-flex justify-content-end">
-              <i class="bi bi-plus-lg mr-4"></i>
-              <i class="bi bi-pen"></i>
+              <i className="bi bi-plus-lg mr-4"></i>
+              <i className="bi bi-pen"></i>
             </Col>
           </Row>
           <Row className="flex-column">
