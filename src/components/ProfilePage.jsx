@@ -1,5 +1,13 @@
+import FooterComponent from "./FooterComponent";
+import NavbarComponent from "./NavbarComponent";
+
 const ProfilePage = () => {
-  return <h1>Test</h1>;
+  return (
+    <>
+      <NavbarComponent />
+      <FooterComponent />
+    </>
+  );
 };
 
 export default ProfilePage;
