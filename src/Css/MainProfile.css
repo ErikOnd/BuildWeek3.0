@@ -1,0 +1,15 @@
+
+
+.upper{
+max-height: 200px;
+overflow: hidden;
+background-color: blue;
+position: relative;
+}
+
+.profile-pic{
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid white;
+   
+}
