@@ -43,6 +43,78 @@
   }
 }
 
+#Navbar img {
+  height: 35px;
+}
+
+#basic-navbar-nav {
+  font-size: smaller;
+}
+
+#premium {
+  color: #bb7309;
+  text-decoration: underline;
+}
+
+#search-bar {
+  width: 350px;
+}
+
+.dropdown-item {
+  color: grey;
+  font-size: smaller;
+}
+
+#dropdown-user p {
+  font-weight: bold;
+}
+
+#view-profile-button {
+  text-align: center;
+  color: rgb(36, 110, 230);
+  border: solid 1px rgb(36, 110, 230);
+  border-radius: 20px;
+}
+
+.dropdown-section {
+  font-weight: 500;
+}
+
+#basic-nav-dropdown {
+  color: grey;
+  font-size: small;
+  width: 50px;
+  background-color: transparent;
+  border: 0;
+  display: flex;
+  padding: 0px;
+  padding-top: 8px;
+  align-items: end;
+}
+
+#basic-nav-dropdown:hover {
+  color: rgb(42, 42, 42);
+}
+
+.modal-dialog {
+  position: absolute !important;
+  top: 10%;
+  right: 0;
+}
+
+#footer-container {
+  color: grey;
+  font-size: smaller;
+}
+
+#footer-options {
+  width: 620px;
+}
+
+#footer-options div p {
+  width: 150px;
+}
+
 .profil-holder {
   height: 500px;
   background-color: lightgray;
