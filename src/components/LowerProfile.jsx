@@ -74,9 +74,12 @@ const LowerProfile = () => {
       </Row>
 
       <Row>
-        <Col className="lp box-style">
-          <Row>
+        <Col className="lp box-style ">
+          <Row className="d-flex">
             <Col className="box-h1 mb-3">About</Col>
+            <Col className="box-h1 mb-3 d-flex justify-content-end">
+              <i class="bi bi-pen"></i>
+            </Col>
           </Row>
           <Row>
             <Col>
@@ -97,6 +100,9 @@ const LowerProfile = () => {
         <Col className="lp box-style">
           <Row>
             <Col className="box-h1">Activity</Col>
+            <Col className="box-h1 d-flex justify-content-end">
+              <span className="start-post">Start a post</span>
+            </Col>
           </Row>
           <Row>
             <Col className="mb-1 mb-2">
@@ -125,6 +131,10 @@ const LowerProfile = () => {
         <Col className="lp box-style">
           <Row>
             <Col className="box-h1">Experience</Col>
+            <Col className="box-h1 mb-3 d-flex justify-content-end">
+              <i class="bi bi-plus-lg mr-4"></i>
+              <i class="bi bi-pen"></i>
+            </Col>
           </Row>
           <Row className="flex-column">
             <Col className="box-h2">
@@ -157,6 +167,10 @@ const LowerProfile = () => {
         <Col className="lp box-style">
           <Row>
             <Col className="box-h1">Education</Col>
+            <Col className="box-h1 mb-3 d-flex justify-content-end">
+              <i class="bi bi-plus-lg mr-4"></i>
+              <i class="bi bi-pen"></i>
+            </Col>
           </Row>
           <Row className="flex-column">
             <Col className="box-h2">
