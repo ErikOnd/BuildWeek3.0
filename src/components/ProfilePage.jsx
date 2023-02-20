@@ -7,6 +7,7 @@ const ProfilePage = () => {
   return (
     <>
       <NavbarComponent />
+      <LowerProfile />
       <FooterComponent />
     </>
   );
