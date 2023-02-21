@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 const MainProfile = () => {
   const user = useSelector((state) => state.user.user);
-  console.log(user);
   let [open, setOpen] = useState(false);
   let [more, setMore] = useState(false);
   const [show, setShow] = useState(false);
