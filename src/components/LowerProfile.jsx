@@ -1,6 +1,75 @@
-import { Container, Row, Col, Badge } from "react-bootstrap";
+import { Container, Row, Col,Button, Badge,  Modal, Form} from "react-bootstrap";
+import React, { useState } from "react";
 
 const LowerProfile = () => {
+
+  const [show, setShow] = useState(false);
+  
+  const [disabledInput, setDisabledInput] = useState("");
+
+  const [day, setDay] = useState("01");
+  const [checked, setChecked] = useState(false);
+
+  const [experience, setExperience] = useState({
+    role: "",
+    company: "",
+    startDate: "",
+    endDate: "",
+    description: "",
+    area: "",
+    startYear: "",
+    endYear: "",
+    startMonth: "",
+    endMonth: "",
+  });
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const onChangeHandler = (value, fieldToSet) => {
+
+    setExperience({
+      ...experience,
+      [fieldToSet]: value,
+    });
+  };
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+
+    let randomDay = Math.floor(Math.random() * 28);
+    if (randomDay < 10) {
+      setDay(`0${randomDay}`);
+    } else {
+      setDay(randomDay);
+    }
+
+    let newExperience = {
+      role: experience.role,
+      company: experience.company,
+      startDate: `${experience.startYear}-${experience.startMonth}-${day}`,
+      endDate:
+        experience.endMonth !== "" && experience.endYear !== ""
+          ? `${experience.endYear}-${experience.endMonth}-${day}`
+          : null,
+      description: experience.description,
+      area: experience.area,
+    };
+
+    console.log("new experience", newExperience);
+
+    setExperience({
+      type: "",
+      startDate: "",
+      endDate: "",
+      description: "",
+      area: "",
+      startYear: "",
+      endYear: "",
+      startMonth: "",
+      endMonth: "",
+    });
+    handleClose();
+  };
+
   return (
     <Container>
       <Row>
@@ -130,7 +199,170 @@ const LowerProfile = () => {
           <Row>
             <Col className="box-h1">Experience</Col>
             <Col className="box-h1 mb-3 d-flex justify-content-end">
-              <i className="bi bi-plus-lg mr-4"></i>
+              <i className="bi bi-plus-lg mr-4" onClick={handleShow}></i>
+              <div
+        className="d-flex mb-1 add-position-experience-effect-on-hover"
+        onClick={handleShow}
+      >
+        <div className="mr-2">
+          
+        </div>
+      </div>
+
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Add career break</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form className="experiencesModal">
+            <Form.Group controlId="exampleForm.ControlInput1">
+              <Form.Label>Type*</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Ex. Retirement"
+                required
+                value={experience.type}
+                onChange={(e) => {
+                  onChangeHandler(e.target.value, "role");
+                }}
+              />
+            </Form.Group>
+            <Form.Group controlId="exampleForm.ControlInput1">
+              <Form.Label>Location*</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Ex. London, United Kingdom"
+                required
+                value={experience.area}
+                onChange={(e) => {
+                  onChangeHandler(e.target.value, "area");
+                }}
+              />
+            </Form.Group>
+            <Form.Group className="d-flex align-items-center">
+              <Form.Control
+                type="checkbox"
+                className="d-inline-block checkboxInput mr-2"
+                checked={checked}
+                onChange={(e) => {
+                  if (checked === true) {
+                    setDisabledInput(false);
+                  } else {
+                    onChangeHandler("", "endDate");
+                    onChangeHandler("", "endMonth");
+                    onChangeHandler("", "endYear");
+                    setDisabledInput(true);
+                  }
+                  setChecked(e.target.checked);
+                }}
+              />
+              <Form.Label className="mb-0">
+                I am currently on this career break.
+              </Form.Label>
+            </Form.Group>
+            <Form.Group className="d-flex flex-column">
+              <Form.Label>Start date</Form.Label>
+
+              <div className="d-flex flex-row justify-content-between">
+                <Form.Control
+                  as="select"
+                  className="monthSelectInput"
+                  required
+                  value={experience.startMonth}
+                  onChange={(e) =>
+                    onChangeHandler(e.target.value, "startMonth")
+                  }
+                >
+                  <option>Month</option>
+                  <option>January</option>
+                  <option>February</option>
+                  <option>March</option>
+                  <option>April</option>
+                  <option>May</option>
+                  <option>June</option>
+                  <option>July</option>
+                  <option>August</option>
+                  <option>September</option>
+                  <option>October</option>
+                  <option>November</option>
+                  <option>December</option>
+                </Form.Control>
+
+                <Form.Control
+                  type="number"
+                  min={1900}
+                  max={2023}
+                  placeholder="Year"
+                  className="yearSelectInput"
+                  value={experience.startYear}
+                  onChange={(e) => onChangeHandler(e.target.value, "startYear")}
+                ></Form.Control>
+              </div>
+            </Form.Group>
+            <Form.Group className="d-flex flex-column ">
+              <Form.Label>End date</Form.Label>
+              <div className="d-flex flex-row justify-content-between">
+                <Form.Control
+                  as="select"
+                  disabled={disabledInput}
+                  className="monthSelectInput"
+                  value={experience.endMonth}
+                  onChange={(e) => {
+                    onChangeHandler(e.target.value, "endMonth");
+                  }}
+                >
+                  <option>Month</option>
+                  <option>January</option>
+                  <option>February</option>
+                  <option>March</option>
+                  <option>April</option>
+                  <option>May</option>
+                  <option>June</option>
+                  <option>July</option>
+                  <option>August</option>
+                  <option>September</option>
+                  <option>October</option>
+                  <option>November</option>
+                  <option>December</option>
+                </Form.Control>
+                <Form.Control
+                  type="number"
+                  min={1900}
+                  max={2023}
+                  placeholder="Year"
+                  className="yearSelectInput"
+                  disabled={disabledInput}
+                  value={experience.endYear}
+                  onChange={(e) => onChangeHandler(e.target.value, "endYear")}
+                ></Form.Control>
+              </div>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                value={experience.description}
+                onChange={(e) => onChangeHandler(e.target.value, "description")}
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="primary"
+            className="saveButtonExperiencesModal"
+            onClick={onSubmitHandler}
+          >
+            Save
+          </Button>
+        </Modal.Footer>
+      </Modal>
               <i className="bi bi-pen"></i>
             </Col>
           </Row>
