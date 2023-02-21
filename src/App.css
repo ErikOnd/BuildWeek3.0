@@ -229,55 +229,53 @@
   color: rgb(12, 87, 162);
 }
 
-.main{
+.main {
   width: 800px;
- border: 1px solid black;
- border-radius: 15px;
+  border: 1px solid black;
+  border-radius: 15px;
 }
-.upper{
-  margin-top:112px;
-max-height: 800px;
-overflow: hidden;
-max-width: 600px;
-position: relative;
-padding: 24px;
-
+.upper {
+  margin-top: 112px;
+  max-height: 800px;
+  overflow: hidden;
+  max-width: 600px;
+  position: relative;
+  padding: 24px;
 }
-.upper h2{
+.upper h2 {
   margin: 0;
 }
-.profile-pic{
+.profile-pic {
   height: 152px;
   width: 152px;
   border-radius: 50%;
   border: 3px solid white;
- 
 }
 
-.suggestions{
+.suggestions {
   width: 100%;
   /* height: 76.5px; */
   overflow: hidden;
   padding-left: 24px;
   padding-right: 24px;
-
 }
-.suggestion,.first-suggestion{
+.suggestion,
+.first-suggestion {
   min-width: 355px;
   border-radius: 10px;
- height: 76.5px;
-
+  height: 76.5px;
 }
-.suggestion p,.first-suggestion p{
+.suggestion p,
+.first-suggestion p {
   margin: 0px;
 }
-.suggestion{
+.suggestion {
   border: 1px solid black;
 }
-.first-suggestion{
+.first-suggestion {
   background-color: rgb(227, 223, 216);
 }
-.button{
+.button {
   /* height: 20px; */
   padding-top: 5px;
   padding-bottom: 5px;
@@ -286,57 +284,91 @@ padding: 24px;
   border: 1px rgb(15, 79, 181) solid;
   border-radius: 20px;
 }
-.first{
+.first {
   color: white;
   background-color: rgb(15, 79, 181);
 }
-.second{
+.second {
   color: rgb(15, 79, 181);
   background-color: white;
   margin-left: 0.5em;
 }
-.third{
+.third {
   border: 1px grey solid;
   color: grey;
   background-color: white;
   margin-left: 0.5em;
-
 }
-.side{
+.side {
   height: 40px;
-margin-top: 100%;
+  margin-top: 100%;
 }
-.side-text{
+.side-text {
   margin-top: 103%;
 }
-.camera{
+.camera {
   border: 1px solid white;
-  padding:8px;
+  padding: 8px;
   border-radius: 50%;
   background-color: white;
   margin-left: auto;
   display: inline;
 }
-.pencil{
+.pencil {
   display: inline;
   margin-top: 80%;
   margin-right: 1em;
 }
-.open{
-  width:240px;
+.open {
+  width: 240px;
   border: 1px solid black;
   border-radius: 10px;
 }
 
-.more{
-  width:240px;
+.more {
+  width: 240px;
   border: 1px solid black;
   border-radius: 10px;
   margin-left: 13.8em;
 }
-.hover p{
+.hover p {
   margin: 0;
 }
-.hover:hover{
+.hover:hover {
   background-color: grey;
+}
+
+.message-box {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  border: 1px solid rgb(224 223 220);
+  background-color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+}
+
+.message-img {
+  height: 33px;
+  border-radius: 30px;
+  margin: 7px;
+  position: relative;
+}
+
+.message-online {
+  position: absolute;
+  margin: 2px;
+  background-color: rgb(4 118 66);
+  border: 5px solid rgb(4 118 66);
+  bottom: 7px;
+  left: 29px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px white;
+}
+
+.message-text {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-right: 65px;
 }

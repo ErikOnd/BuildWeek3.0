@@ -3,6 +3,7 @@ import NavbarComponent from "./NavbarComponent";
 
 import LowerProfile from "./LowerProfile";
 import MainProfile from "./MainProfile";
+import MessagingComponent from "./MessagingComponent";
 
 const ProfilePage = () => {
   return (
@@ -11,6 +12,7 @@ const ProfilePage = () => {
       <MainProfile />
       <LowerProfile />
       <FooterComponent />
+      <MessagingComponent />
     </>
   );
 };
