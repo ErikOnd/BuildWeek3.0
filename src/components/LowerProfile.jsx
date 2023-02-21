@@ -1,6 +1,18 @@
+import { useEffect } from "react";
 import { Container, Row, Col, Badge } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllExperienceAsync } from "../Redux/actions";
 
 const LowerProfile = () => {
+  const experience = useSelector((state) => state.experience.list);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllExperienceAsync());
+  }, []);
+
+  console.log("123", experience);
+
   return (
     <Container>
       <Row>
@@ -134,30 +146,35 @@ const LowerProfile = () => {
               <i className="bi bi-pen"></i>
             </Col>
           </Row>
-          <Row className="flex-column">
-            <Col className="box-h2">
-              <img
-                src="https://www.freepnglogos.com/uploads/company-logo-png/company-logo-transparent-png-19.png"
-                alt="company logo"
-                className="experience-logo"
-              />{" "}
-              Software Engineer
-              <span className="experience-p-strong">
-                Test Company AG • Full-time
-              </span>
-              <span className="experience-p">
-                Jul 2021 - Oct 2022 · 1 yr 4 mos
-              </span>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <span className="experience-p-strong mt-3">
-                <b>Skills:</b> TypeScript · Redux.js · React.js · Web
-                Development · Bootstrap · JavaScript
-              </span>
-            </Col>
-          </Row>
+          {experience.map((e) => {
+            return (
+              <div className="experience-holder" key={e._id}>
+                <Row className="flex-column">
+                  <Col className="box-h2">
+                    <img
+                      src="https://www.freepnglogos.com/uploads/company-logo-png/company-logo-transparent-png-19.png"
+                      alt="company logo"
+                      className="experience-logo"
+                    />
+                    {e.role}
+
+                    <span className="experience-p-strong">{e.company}</span>
+                    <span className="experience-p">
+                      Jul 2021 - Oct 2022 · 1 yr 4 mos
+                    </span>
+                  </Col>
+                </Row>
+                <Row className="creator-mode">
+                  <Col>
+                    <span className="experience-p-strong mt-3 mb-2">
+                      <b>Skills:</b> TypeScript · Redux.js · React.js · Web
+                      Development · Bootstrap · JavaScript
+                    </span>
+                  </Col>
+                </Row>
+              </div>
+            );
+          })}
         </Col>
       </Row>
 
@@ -171,50 +188,6 @@ const LowerProfile = () => {
             </Col>
           </Row>
           <Row className="flex-column">
-            <Col className="box-h2">
-              <img
-                src="https://media.licdn.com/dms/image/C4D0BAQEFWO_s8a0FHQ/company-logo_100_100/0/1647618816994?e=1684972800&v=beta&t=TPNYWQvNS5llJxWVNsaOC9JuymAFPxR8tOSYYjqu8Q4"
-                alt="company logo"
-                className="education-logo"
-              />{" "}
-              Epicode Global
-              <span className="experience-p-strong">
-                Full Stack Development, Computer Software Engineering
-              </span>
-              <span className="experience-p">Nov 2022 - June 2023</span>
-            </Col>
-          </Row>
-          <Row className="border-bottom">
-            <Col>
-              <span className="experience-p-strong mt-3 mb-2">
-                <b>Skills:</b> TypeScript · Redux.js · React.js · Web
-                Development · Bootstrap · JavaScript
-              </span>
-            </Col>
-          </Row>
-          <Row className="flex-column mt-2">
-            <Col className="box-h2">
-              <img
-                src="https://media.licdn.com/dms/image/C4D0BAQEFWO_s8a0FHQ/company-logo_100_100/0/1647618816994?e=1684972800&v=beta&t=TPNYWQvNS5llJxWVNsaOC9JuymAFPxR8tOSYYjqu8Q4"
-                alt="company logo"
-                className="education-logo"
-              />{" "}
-              Epicode Global
-              <span className="experience-p-strong">
-                Full Stack Development, Computer Software Engineering
-              </span>
-              <span className="experience-p">Nov 2022 - June 2023</span>
-            </Col>
-          </Row>
-          <Row className="border-bottom">
-            <Col>
-              <span className="experience-p-strong mt-3 mb-2">
-                <b>Skills:</b> TypeScript · Redux.js · React.js · Web
-                Development · Bootstrap · JavaScript
-              </span>
-            </Col>
-          </Row>
-          <Row className="flex-column mt-2">
             <Col className="box-h2">
               <img
                 src="https://media.licdn.com/dms/image/C4D0BAQEFWO_s8a0FHQ/company-logo_100_100/0/1647618816994?e=1684972800&v=beta&t=TPNYWQvNS5llJxWVNsaOC9JuymAFPxR8tOSYYjqu8Q4"

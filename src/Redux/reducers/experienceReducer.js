@@ -2,7 +2,6 @@ import {
   GET_ALL_EXPERIENCE,
   GET_SINGLE_EXPERIENCE,
   POST_EXPERIENCE,
-  PUT_EXPERIENCE,
   DELETE_EXPERIENCE,
 } from "../actions";
 
@@ -12,8 +11,10 @@ const initialState = {
 };
 
 const experienceReducer = (state = initialState, action) => {
+  console.log(action.type);
   switch (action.type) {
     case GET_ALL_EXPERIENCE:
+      console.log("experienceReducer");
       return {
         ...state,
         list: action.payload,

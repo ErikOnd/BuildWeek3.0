@@ -3,7 +3,7 @@ export const UPDATE_USER = "UPDATE_USER";
 export const GET_ALL_EXPERIENCE = "GET_ALL_EXPERIENCE";
 export const GET_SINGLE_EXPERIENCE = "GET_SINGLE_EXPERIENCE";
 export const POST_EXPERIENCE = "POST_EXPERIENCE";
-export const PUT_EXPERIENCE = "PUT_EXPERIENCE";
+//export const PUT_EXPERIENCE = "PUT_EXPERIENCE";
 export const DELETE_EXPERIENCE = "DELETE_EXPERIENCE";
 
 export const fetchDataAsync = () => {
