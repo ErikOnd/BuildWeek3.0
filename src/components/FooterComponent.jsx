@@ -2,7 +2,7 @@ import { Dropdown, DropdownButton, Container, Row, Col } from "react-bootstrap";
 
 const FooterComponent = () => {
   return (
-    <Container className="d-flex flex-column" id="footer-container">
+    <Container className="d-flex flex-column mt-5" id="footer-container">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 84 21"
@@ -20,59 +20,32 @@ const FooterComponent = () => {
           </g>
         </g>
       </svg>
-      <Row className="d-flex">
-        <Container className="mx-0">
-          <Row id="footer-options">
-            <Col>
-              <p>About</p>
-            </Col>
-            <Col>
-              <p>Accessibility</p>
-            </Col>
-            <Col>
-              <p>Talent Solutions</p>
-            </Col>
-            <Col>
-              <p>Comunity Guidelines</p>
-            </Col>
-            <Col>
-              <p>Careers</p>
-            </Col>
-            <Col>
-              <p></p>
-            </Col>
-            <Col>
-              <p>Marketing Solutions</p>Privacy & Terms
-            </Col>
-            <Col>
-              <p>Ad Choices</p>
-            </Col>
-            <Col>
-              <p>Advertising</p>
-            </Col>
-            <Col>
-              <p>Sales Solutions</p>
-            </Col>
-            <Col>
-              <p>Mobile</p>
-            </Col>
-            <Col>
-              <p>Small Business</p>
-            </Col>
-            <Col>
-              <p>Safety Center</p>
-            </Col>
-          </Row>
-        </Container>
-        <div>
-          <div>
+      <div className="d-flex">
+        <div className="mx-0">
+          <div id="footer-options" className="d-flex flex-wrap">
+            <p>About</p>
+            <p>Accessibility</p>
+            <p>Talent Solutions</p>
+            <p>Comunity Guidelines</p>
+            <p>Careers</p>
+            <p>Marketing Solutions</p>Privacy & Terms
+            <p>Ad Choices</p>
+            <p>Advertising</p>
+            <p>Sales Solutions</p>
+            <p>Mobile</p>
+            <p>Small Business</p>
+            <p>Safety Center</p>
+          </div>
+        </div>
+        <div className="d-flex">
+          <div className="">
             <div className="d-flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 data-supported-dps="24x24"
                 fill="currentColor"
-                className="mercado-match"
+                className="m-1"
                 width="24"
                 height="24"
                 focusable="false"
@@ -90,7 +63,7 @@ const FooterComponent = () => {
                 viewBox="0 0 24 24"
                 data-supported-dps="24x24"
                 fill="currentColor"
-                className="mercado-match"
+                className="m-1"
                 width="24"
                 height="24"
                 focusable="false"
@@ -118,7 +91,8 @@ const FooterComponent = () => {
             </div>
           </div>
         </div>
-      </Row>
+      </div>
+      <span>LinkedIn Corporation C 2023</span>
     </Container>
   );
 };
