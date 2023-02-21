@@ -17,6 +17,17 @@ const LowerProfile = () => {
   const experienceData = useSelector((state) => state.experience.list);
   const dispatch = useDispatch();
 
+  const [experienceInfo, setExperienceInfo] = useState({
+    role: "",
+    company: "",
+    startDate: "",
+    endDate: "",
+    description: "",
+    area: "",
+  });
+
+  console.log(experienceInfo);
+
   useEffect(() => {
     dispatch(getAllExperienceAsync());
   }, []);
@@ -545,6 +556,10 @@ const LowerProfile = () => {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label> Title*</Form.Label>
             <Form.Control
+              value={experienceInfo.role}
+              onChange={(i) =>
+                setExperienceInfo({ ...experienceInfo, role: i.target.value })
+              }
               type="text"
               required
               placeholder="Ex:Retail Sales Manager"
@@ -566,7 +581,18 @@ const LowerProfile = () => {
             <br />
             <br />
             <Form.Label>Company Name*</Form.Label>
-            <Form.Control type="text" required placeholder="Ex:Microsoft" />
+            <Form.Control
+              type="text"
+              required
+              placeholder="Ex:Microsoft"
+              value={experienceInfo.company}
+              onChange={(i) =>
+                setExperienceInfo({
+                  ...experienceInfo,
+                  company: i.target.value,
+                })
+              }
+            />
             <br />
             <Form.Label>Location</Form.Label>
             <Form.Control type="text" placeholder="Ex:London United Kingdom" />
@@ -697,7 +723,17 @@ const LowerProfile = () => {
                   <option>December</option>
                   <option>March</option>
                 </Form.Control>
-                <Form.Control as={"select"} required>
+                <Form.Control
+                  as={"select"}
+                  value={experienceInfo.role}
+                  onChange={(i) =>
+                    setExperienceInfo({
+                      ...experienceInfo,
+                      role: i.target.value,
+                    })
+                  }
+                  required
+                >
                   <option>Year</option>
                   {years.map((y) => {
                     return (
