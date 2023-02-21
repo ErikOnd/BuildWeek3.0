@@ -1,4 +1,4 @@
-import { Dropdown, DropdownButton, Container, Row, Col } from "react-bootstrap";
+import { Dropdown, DropdownButton, Container } from "react-bootstrap";
 
 const FooterComponent = () => {
   return (

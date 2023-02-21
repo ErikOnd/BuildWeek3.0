@@ -59,8 +59,8 @@ const ModalComponent = () => {
                     y2="20.22"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop offset="0" stop-color="#33aada"></stop>
-                    <stop offset="1" stop-color="#0091ca"></stop>
+                    <stop offset="0" stopColor="#33aada"></stop>
+                    <stop offset="1" stopColor="#0091ca"></stop>
                   </linearGradient>
                   <linearGradient
                     id="app-learning-@1-b"
@@ -70,8 +70,8 @@ const ModalComponent = () => {
                     y2="24.33"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop offset="0" stop-color="#665ed0"></stop>
-                    <stop offset="1" stop-color="#0073b1"></stop>
+                    <stop offset="0" stopColor="#665ed0"></stop>
+                    <stop offset="1" stopColor="#0073b1"></stop>
                   </linearGradient>
                 </defs>
                 <path
@@ -115,8 +115,8 @@ const ModalComponent = () => {
                     y2="19.5"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop offset="0" stop-color="#665ed0"></stop>
-                    <stop offset="1" stop-color="#0073b1"></stop>
+                    <stop offset="0" stopColor="#665ed0"></stop>
+                    <stop offset="1" stopColor="#0073b1"></stop>
                   </linearGradient>
                 </defs>
                 <path
@@ -149,15 +149,15 @@ const ModalComponent = () => {
                     y2="26.36"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop offset="0" stop-color="#665ed0"></stop>
-                    <stop offset="1" stop-color="#0073b1"></stop>
+                    <stop offset="0" stopColor="#665ed0"></stop>
+                    <stop offset="1" stopColor="#0073b1"></stop>
                   </linearGradient>
                 </defs>
                 <path
                   fill="none"
                   stroke="#caedff"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
+                  strokeMiterlimit="10"
+                  strokeWidth="2"
                   d="M20 8.67l-4 6.66M20 8.67l4 6.66"
                 ></path>
                 <rect
@@ -193,8 +193,8 @@ const ModalComponent = () => {
                     y2="25.84"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop offset="0" stop-color="#665ed0"></stop>
-                    <stop offset="1" stop-color="#0073b1"></stop>
+                    <stop offset="0" stopColor="#665ed0"></stop>
+                    <stop offset="1" stopColor="#0073b1"></stop>
                   </linearGradient>
                 </defs>
                 <g fill="url(#app-ads-@1-a)">
@@ -237,8 +237,8 @@ const ModalComponent = () => {
                     y2="19.17"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop offset="0" stop-color="#665ed0"></stop>
-                    <stop offset="1" stop-color="#0073b1"></stop>
+                    <stop offset="0" stopColor="#665ed0"></stop>
+                    <stop offset="1" stopColor="#0073b1"></stop>
                   </linearGradient>
                 </defs>
                 <circle
@@ -278,8 +278,8 @@ const ModalComponent = () => {
                     y2="25.05"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop offset="0" stop-color="#665ed0"></stop>
-                    <stop offset="1" stop-color="#0073b1"></stop>
+                    <stop offset="0" stopColor="#665ed0"></stop>
+                    <stop offset="1" stopColor="#0073b1"></stop>
                   </linearGradient>
                   <clipPath id="app-groups-@1-a">
                     <path
@@ -294,7 +294,7 @@ const ModalComponent = () => {
                 ></path>
                 <circle cx="29" cy="16" r="3" fill="#0091ca"></circle>
                 <circle cx="11" cy="16" r="3" fill="#0091ca"></circle>
-                <g clip-path="url(#app-groups-@1-a)">
+                <g clipPath="url(#app-groups-@1-a)">
                   <path
                     d="M20 18a4 4 0 114-4 4 4 0 01-4 4zm3 2h-6v16h6V20z"
                     fill="url(#app-groups-@1-b)"
