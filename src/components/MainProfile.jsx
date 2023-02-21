@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useInterval } from "react";
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { fetchDataAsync } from "../Redux/actions";
-import { CameraFill, Pencil } from "react-bootstrap-icons";
+import { CameraFill, Key, Pencil } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
-
+import { MDBCheckbox } from 'mdb-react-ui-kit'
 const MainProfile = () => {
   const user = useSelector((state) => state.user.user);
   let [open, setOpen] = useState(false);
@@ -49,6 +49,8 @@ const MainProfile = () => {
   };
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
+
+
 
   const dispatch = useDispatch();
 
