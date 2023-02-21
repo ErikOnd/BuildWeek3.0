@@ -46,55 +46,12 @@
 body {
   background-color: #f3f2ef !important ;
 }
-.side-component-border {
-  border-radius: 10px;
-  margin-bottom: 10px;
+
+#main-profile-content {
+  margin-top: 100px;
 }
 
-.view {
-  border-radius: 10px;
-  min-width: 40px;
-  min-height: 40px;
-  object-fit: cover;
-  overflow: hidden;
-  font-size: 15px;
-  text-align: center;
-}
 
-.people {
-  border-radius: 10px;
-  min-width: 40px;
-  min-height: 40px;
-  object-fit: cover;
-  overflow: hidden;
-  font-size: 15px;
-  text-align: center;
-}
-
-.side-component-border {
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.view {
-  border-radius: 10px;
-  min-width: 40px;
-  min-height: 40px;
-  object-fit: cover;
-  overflow: hidden;
-  font-size: 15px;
-  text-align: center;
-}
-
-.people {
-  border-radius: 10px;
-  min-width: 40px;
-  min-height: 40px;
-  object-fit: cover;
-  overflow: hidden;
-  font-size: 15px;
-  text-align: center;
-}
 
 #Navbar img {
   height: 35px;
@@ -104,13 +61,80 @@ body {
   font-size: smaller;
 }
 
+#Navbar {
+  padding-right: 180px;
+  padding-left: 180px;
+}
+
+#hidden-navbar {
+  display: none;
+  padding-right: 180px;
+  padding-left: 180px;
+  border-top: 1px solid rgb(194, 194, 194);
+  background: #eee;
+  box-shadow: 0 8px 8px -4px rgb(120, 120, 120);
+}
+
+#hidden-navbar-user p {
+  color: black;
+  font-size: 13px;
+}
+
+#hidden-navbar-user span {
+  font-size: 13px;
+}
+
+#more-button {
+  color: rgb(90, 90, 90);
+  border: 1px solid rgb(90, 90, 90);
+  border-radius: 20px;
+}
+
+#more-button:hover {
+  cursor: pointer;
+  background-color: #e4e4e4;
+  border: 2px solid rgb(90, 90, 90);
+}
+
+#addprofile-button {
+  color: rgb(73, 73, 252);
+  font-weight: 500;
+  border: 1px solid rgb(73, 73, 252);
+  border-radius: 20px;
+}
+
+#addprofile-button:hover {
+  cursor: pointer;
+  background-color: rgb(220, 230, 255);
+  border: 2px solid rgb(73, 73, 252);
+}
+
+#opento-button {
+  color: white;
+  background-color: rgb(73, 73, 252);
+  border: 1px solid;
+  border-radius: 20px;
+}
+
+#opento-button:hover {
+  cursor: pointer;
+  color: rgb(206, 219, 255);
+  border: 1px solid rgb(19, 19, 253);
+  background-color: rgb(19, 19, 253);
+}
+
 #premium {
   color: #bb7309;
   text-decoration: underline;
 }
 
 #search-bar {
-  width: 350px;
+  width: 400px;
+}
+
+#search-bar:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 .dropdown-item {
@@ -145,14 +169,76 @@ body {
   align-items: end;
 }
 
+#work-button {
+  color: grey;
+  font-size: small;
+  width: 50px;
+  background-color: transparent;
+  border: 0;
+  padding: 0px;
+  padding-top: 8px;
+  align-items: end;
+}
+
+#work-button:hover {
+  color: #282c34;
+}
+
 #basic-nav-dropdown:hover {
   color: rgb(42, 42, 42);
 }
 
-.modal-dialog {
+.right-dialog-modal {
   position: absolute !important;
+  width: 400px !important;
   top: 10%;
   right: 0;
+}
+
+#right-modal-body div:hover {
+  cursor: pointer;
+}
+
+#right-modal-body svg:hover {
+  cursor: pointer;
+  box-shadow: 0px 4px 5px 1px #616160;
+}
+
+#right-modal-body div div {
+  width: 70px;
+}
+
+#right-modal-body p {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+#right-modal-body div span {
+  color: grey;
+  text-align: center;
+  font-size: 12px;
+}
+
+#right-modal-footer {
+  height: 460px;
+}
+
+#right-modal-footer p {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+#right-modal-footer span {
+  font-size: 12px;
+}
+
+#right-modal-footer div div p {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+#right-modal-footer:hover div {
+  cursor: pointer;
 }
 
 #footer-container {
@@ -161,11 +247,28 @@ body {
 }
 
 #footer-options {
-  width: 620px;
+  width: 500px;
 }
 
-#footer-options div p {
+#footer-options p {
+  font-size: 12px;
   width: 150px;
+  margin-bottom: 10px;
+}
+
+#footer-options p:hover {
+  cursor: pointer;
+}
+
+#language-button {
+  color: grey;
+  background-color: transparent;
+  border-color: grey;
+  width: 350px;
+}
+
+.footer-add {
+  color: #616160;
 }
 
 .profil-holder {
@@ -289,8 +392,8 @@ body {
   border-radius: 15px;
   background-color: white;
   position: relative;
+  overflow: hidden;
 }
-
 
 .profile-pic {
   height: 152px;
@@ -369,6 +472,11 @@ body {
   bottom: 4em;
   right: 0;
 }
+
+.pencil:hover {
+  cursor: pointer;
+}
+
 .open {
   width: 240px;
   border: 1px solid black;
@@ -450,26 +558,72 @@ body {
   border-bottom: 1px solid grey;
 }
 
-
-
-
-
-
-
-
-
-.positionModal{
-  min-width:60vw ;
-
-  
+.pointer:hover {
+  cursor: pointer;
 }
-.modal-height{
-min-height: 50vh;
+
+#handle{
+  background-color: inherit;
+  border: none;
 }
-.notify{
-  padding: 20px;
-  background-color: rgb(234, 240, 245);
+
+
+.card-spacing {
+  padding: 1rem 1.5rem;
 }
-.texarea-text{
-  margin-left: 90%;
+
+.profiles-container {
+  flex-shrink: 0;
 }
+
+.sidebar-card {
+  background-color: white;
+  color: black;
+  border: 1px solid #d9d9d8;
+  border-radius: 10px;
+  cursor: pointer;
+  width:400px;
+  margin-top: 100px;
+}
+
+.sidebar-card h2 {
+  font-size: 19px;
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+
+.sidebar-card button.btn-outline-secondary {
+  display: flex;
+  align-items: center;
+  border-radius: 40px;
+  border: 1px solid black;
+  padding: 3px 16px;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 600;
+}
+
+.sidebar-card .username {
+  color: rgba(0, 0, 0, 0.9) !important;
+  line-height: 1;
+}
+
+.sidebar-card .profession {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.sidebar-card .toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 10px 1px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 0.8rem;
+}
+

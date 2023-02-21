@@ -4,14 +4,21 @@ import LowerProfile from "./LowerProfile";
 import MainProfile from "./MainProfile";
 import MessagingComponent from "./MessagingComponent";
 import RightBar from "./RightBar";
+import { Row, Col } from "react-bootstrap";
 
 const ProfilePage = () => {
   return (
     <>
-      <NavbarComponent />
+    <NavbarComponent />
+    <Row>
+      <Col >
       <MainProfile />
-      <RightBar />
       <LowerProfile />
+      </Col>
+      <Col  >
+      <RightBar/>
+      </Col>
+      </Row>
       <FooterComponent />
       <MessagingComponent />
     </>
