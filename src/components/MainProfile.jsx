@@ -8,12 +8,57 @@ const MainProfile = () => {
   const user = useSelector((state) => state.user.user);
   let [open, setOpen] = useState(false);
   let [more, setMore] = useState(false);
+ let [name,setName]=useState(user.name)
+let [surname,setSurname]=useState(user.surname)
+let [title,setTitle]=useState(user.title)
+let[id,setId]=useState(user._id)
+ let [core,setCore]=useState(true)
+ let [recommended,setRecommended]=useState(false)
+ let [additional,setAdditional]=useState(false)
+
+
+const setting3=()=>{
+  if (recommended === true || additional===true) {
+    return setCore(false);
+  }
+  if (core === true) {
+    return setCore(false);
+  } else if (core === false) {
+    return setCore(true);
+  }
+}
+const setting4=()=>{
+ if(core===true || additional===true){
+  setRecommended(false)
+ }
+ if (recommended === true) {
+  return setRecommended(false);
+} else if (recommended === false) {
+  return setRecommended(true);
+}
+   
+}
+
+const setting5=()=>{
+  if(core===true || recommended===true){
+    setAdditional(false)
+   }
+   if (additional === true) {
+    return setAdditional(false);
+  } else if (additional === false) {
+    return setAdditional(true);
+  }
+}
   const [show, setShow] = useState(false);
+  const [show2, setShow2] = useState(false);
 
   const dispatch = useDispatch();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => setShow2(true);
+
   function setting() {
     if (more === true) {
       return setOpen(false);
@@ -24,11 +69,44 @@ const MainProfile = () => {
       return setOpen(true);
     }
   }
+
   function setting2() {
+    if (open === true) {
+      return setMore(false);
+    }
     if (more === true) {
       return setMore(false);
     } else {
       return setMore(true);
+    }
+  }
+
+  let item={name,surname,title}
+  const updateUser=async(body)=>{
+   
+  
+    try{
+     
+   let res=await fetch(`https://striveschool-api.herokuapp.com/api/profile/`,{
+    method:"PUT",
+    body:JSON.stringify(body),
+    headers:{
+      "Accept":"application/json",
+      "Content-Type":"application/json",
+      Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
+    }
+   
+   })
+   if(res.ok){
+    console.log(item)
+      let newUser=await res.json()
+      console.log(newUser)
+      dispatch(fetchDataAsync())
+  }
+    
+    }catch(err){
+      console.log(err)
     }
   }
 
@@ -51,9 +129,9 @@ const MainProfile = () => {
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>First Name*</Form.Label>
-                <Form.Control type="text" value={user.name} />
+                <Form.Control type="text" value={name}  onChange={(e)=>setName(e.target.value)}/>
                 <Form.Label>Last Name*</Form.Label>
-                <Form.Control type="text" value={user.surname} />
+                <Form.Control type="text" value={surname} onChange={(e)=>setSurname(e.target.value)}/>
                 <Form.Label>Additional Name</Form.Label>
                 <Form.Control type="text" />
                 <Form.Text className="text-muted">Name pronunciation</Form.Text>
@@ -75,29 +153,126 @@ const MainProfile = () => {
                   </h4>
                 </Form.Text>
                 <Form.Label>*Headline</Form.Label>
-                <Form.Control type="text" value={user.title} />
+                <Form.Control type="text" value={title} onChange={(e)=>setTitle(e.target.value)}/>
               </Form.Group>
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Save Changes
+         
+             <Button variant="primary" type="submit" onClick={()=>updateUser(item)}> 
+              Save 
             </Button>
           </Modal.Footer>
         </Modal>
       ) : (
         ""
       )}
+{show2? 
+<Modal show={show2} onHide={handleClose2}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add to profile</Modal.Title>
+        </Modal.Header>
+        
+        <Modal.Header onClick={()=>setting3()}>
+          <Modal.Title >Core</Modal.Title>
+        </Modal.Header>
+        {core ?
+        <>
+        <Modal.Body>
+        Start with the basics. Filling out these sections will help you be discovered by recruiters and people you may know
+        </Modal.Body>
+        <Modal.Body>
+          <div className="modal-text">
+       <b > Add about</b> <br />
+       </div>
+       <div className="modal-text">
+       <b> Add education</b> <br />
+       </div>
+        <div className="modal-text">
+       <b> Add Position</b> <br />
+        </div>
+        <div className="modal-text">
+        <b>  Add Career Break</b> <br />
+        </div>
+        <div className="modal-text">
+        <b> Add Skills br</b>
+        </div>
+        </Modal.Body>
+        </>
+:""}
+        <Modal.Header onClick={()=>setting4()}>
+        <Modal.Title>Recommended</Modal.Title>
+        </Modal.Header>
+       {recommended? <Modal.Body>
+        Completing these sections will increase your credibility and give you access to more opportunities
+        <div className="modal-text">
+      <b> Add featured </b> <br />
+        </div>
+        <div className="modal-text">
+<b> Add licenses & certifications </b> <br />
+</div>
+<div className="modal-text">
+<b> Add courses </b> <br />
+</div>
+<div className="modal-text">
+<b>Add recommendations </b>  <br />
+</div>
+        </Modal.Body>
+:""}
+        <Modal.Header onClick={()=>setting5()}>
+        <Modal.Title>Additional</Modal.Title>
+        </Modal.Header>
+        {additional ?
+        <Modal.Body>
+        Add even more personality to your profile. These sections will help you grow your network and build more relationships.
+
+        <br />
+        <div className="modal-text">
+       <b> Add volunteer experience </b><br />
+        </div>
+        <div className="modal-text">
+<b> Add publications </b><br />
+</div>
+<div className="modal-text">
+<b>Add patents </b><br />
+</div>
+<div className="modal-text">
+<b>Add projects </b><br />
+</div>
+<div className="modal-text">
+<b>Add honors & awards </b><br />
+</div>
+<div className="modal-text">
+<b>Add test scores </b><br />
+</div>
+<div className="modal-text">
+<b>Add languages </b><br />
+</div>
+<div className="modal-text">
+<b>Add organizations </b><br />
+</div>
+<div className="modal-text">
+<b>Add causes </b><br />
+</div>
+<div className="modal-text">
+<b>Add contact info </b> <br />
+</div> 
+        </Modal.Body>
+:""}
+        <Modal.Footer>
+        
+        </Modal.Footer>
+      </Modal>:""}
       {user && (
-        <Row className="main">
-          <Col sm={8}>
-            <div className="upper">
-              <img className="profile-pic" src={user.image} alt="Profile-Pic" />
-              {/* {Camera} */}
-              <h2>
+        <Container className="main" style={{width:"780px", marginLeft:"-1em"}}>
+        <Row className="upper">
+        <img className="profile-pic2" src={user.image} alt="" />
+           <CameraFill className="camera mt-3" size={40} color="blue" />
+        </Row>
+        <Row className="lower">
+          <Col sm={8} >
+            
+            <h2>
                 {user.name} {user.surname}
               </h2>
               <h6>{user.title}</h6>
@@ -109,10 +284,9 @@ const MainProfile = () => {
                 onClick={() => {
                   setting();
                 }}
-              >
-                <b>Open to</b>
+              >     <b>Open to</b>
               </button>
-              <button className="button second">
+              <button className="button second" onClick={handleShow2}>
                 <b>Add Profile</b>
               </button>
               <button
@@ -123,29 +297,6 @@ const MainProfile = () => {
               >
                 <b>More</b>
               </button>
-              {open ? (
-                <div className="open">
-                  <div className="hover">
-                    <b>Finding a new job</b>
-                    <p>Show recruiters and others that you,re open to work</p>
-                  </div>
-                  <div className="hover">
-                    <b>Hiring</b>
-                    <p>
-                      Share that you're hiring and attract qualified candidates
-                    </p>
-                  </div>
-                  <div className="hover">
-                    <b>Providin Services</b>
-                    <p>
-                      Showcase services you offer so you and your business can
-                      be found in search
-                    </p>
-                  </div>
-                </div>
-              ) : (
-                ""
-              )}
               {more ? (
                 <div className="more">
                   <div className="hover">
@@ -172,14 +323,41 @@ const MainProfile = () => {
               ) : (
                 ""
               )}
-            </div>
+               {open ? (
+                <div className="open">
+                  <div className="hover">
+                    <b>Finding a new job</b>
+                    <p>Show recruiters and others that you,re open to work</p>
+                  </div>
+                  <div className="hover">
+                    <b>Hiring</b>
+                    <p>
+                      Share that you're hiring and attract qualified candidates
+                    </p>
+                  </div>
+                  <div className="hover">
+                    <b>Providin Services</b>
+                    <p>
+                      Showcase services you offer so you and your business can
+                      be found in search
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
+
+
+               
+                  
+           
           </Col>
           <Col sm={4} className="d-flex">
-            <img className="side " src={user.image} alt="Profile-Pic" />
+            <img className="side " src="https://media.licdn.com/dms/image/C4D0BAQEFWO_s8a0FHQ/company-logo_100_100/0/1647618816994?e=1684972800&v=beta&t=TPNYWQvNS5llJxWVNsaOC9JuymAFPxR8tOSYYjqu8Q4" alt="Profile-Pic" />
             <p className="side-text">
               <b>Epicode</b>
             </p>
-            <CameraFill className="camera mt-3" size={40} color="blue" />
+           
             <Pencil
               onClick={() => handleShow()}
               className="pencil"
@@ -187,30 +365,12 @@ const MainProfile = () => {
               color="grey"
             />
           </Col>
-
-          <div className="suggestions d-flex">
-            <div className="first-suggestion mx-3 my-5">
-              <p>Open to work</p>
-              <p>Full-Stack Dev Roles</p>
-              <a href="">See all details</a>
-            </div>
-            <div className="suggestion mx-3 my-5">
-              <p>
-                <b>Share that you're hiring</b> and attract qualified candidates
-              </p>
-              <a href="">Get Started</a>
-            </div>
-            <div className="suggestion mx-3 my-5">
-              <p>
-                <b>Showcase services</b> you offer so you and your business can
-                be found in search
-              </p>
-              <a href="">Get Started</a>
-            </div>
-          </div>
         </Row>
-      )}
-    </Container>
+        </Container>
+
+       )}
+        </Container>
+
   );
 };
 

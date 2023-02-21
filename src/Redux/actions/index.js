@@ -1,5 +1,5 @@
 export const GET_USER = "GET_USER";
-
+export const UPDATE_USER="UPDATE_USER"
 export const fetchDataAsync = () => {
   return async (dispatch, getState) => {
     try {
@@ -27,3 +27,23 @@ export const fetchDataAsync = () => {
     }
   };
 };
+
+export const updateDataAsync=()=>{
+  return async (body,dispatch)=>{
+  try{
+     
+    let res=await fetch(`https://striveschool-api.herokuapp.com/api/profile/`,{
+     method:"PUT",
+     body:JSON.stringify(body),
+     headers:{
+       "Accept":"application/json",
+       "Content-Type":"application/json",
+       Authorization:
+       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
+     }
+    
+    })}catch(err){
+      console.log(err)
+    }
+  }
+}
