@@ -13,10 +13,10 @@ export default function RightBar() {
       </div>
 
       <div className=" border side-component-border bg-white">
-        <h6 class="view">People also viewed</h6>
+        <h6 className="view">People also viewed</h6>
       </div>
       <div className="border side-component-border bg-white">
-        <h6 class="people">People you may know</h6>
+        <h6 className="people">People you may know</h6>
       </div>
     </Col>
   );

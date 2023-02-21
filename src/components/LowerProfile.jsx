@@ -77,7 +77,7 @@ const LowerProfile = () => {
             </Col>
           </Row>
           <Row className="align-items-center justify-content-center bottom-row">
-            <span className="lp-bottom-text">Show all 5 resources</span>
+            <span className="lp-bottom-text pointer">Show all 5 resources</span>
             <i className="bi bi-arrow-right ml-2 arrow-bottom"></i>
           </Row>
         </Col>
@@ -111,7 +111,7 @@ const LowerProfile = () => {
           <Row>
             <Col className="box-h1">Activity</Col>
             <Col className="box-h1 d-flex justify-content-end">
-              <span className="start-post">Start a post</span>
+              <span className="start-post pointer">Start a post</span>
             </Col>
           </Row>
           <Row>
@@ -131,7 +131,7 @@ const LowerProfile = () => {
             </Col>
           </Row>
           <Row className="align-items-center justify-content-center">
-            <span className="lp-bottom-text">Show all activity</span>
+            <span className="lp-bottom-text pointer">Show all activity</span>
             <i className="bi bi-arrow-right ml-2 arrow-bottom"></i>
           </Row>
         </Col>
@@ -142,8 +142,8 @@ const LowerProfile = () => {
           <Row>
             <Col className="box-h1">Experience</Col>
             <Col className="box-h1 mb-3 d-flex justify-content-end">
-              <i className="bi bi-plus-lg mr-4"></i>
-              <i className="bi bi-pen"></i>
+              <i className="bi bi-plus-lg mr-4 pointer"></i>
+              <i className="bi bi-pen pointer"></i>
             </Col>
           </Row>
           {experience.map((e) => {
@@ -183,8 +183,8 @@ const LowerProfile = () => {
           <Row>
             <Col className="box-h1">Education</Col>
             <Col className="box-h1 mb-3 d-flex justify-content-end">
-              <i className="bi bi-plus-lg mr-4"></i>
-              <i className="bi bi-pen"></i>
+              <i className="bi bi-plus-lg mr-4 pointer"></i>
+              <i className="bi bi-pen pointer"></i>
             </Col>
           </Row>
           <Row className="flex-column">
