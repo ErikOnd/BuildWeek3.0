@@ -5,14 +5,14 @@ import { getAllExperienceAsync } from "../Redux/actions";
 import React, { useState } from "react";
 
 const LowerProfile = () => {
-  const experience = useSelector((state) => state.experience.list);
+  const experienceData = useSelector((state) => state.experience.list);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllExperienceAsync());
   }, []);
 
-  console.log("123", experience);
+  
 
 
   const [show, setShow] = useState(false);
@@ -378,7 +378,7 @@ const LowerProfile = () => {
               <i className="bi bi-pen"></i>
             </Col>
           </Row>
-          {experience.map((e) => {
+          {experienceData.map((e) => {
             return (
               <div className="experience-holder" key={e._id}>
                 <Row className="flex-column">
