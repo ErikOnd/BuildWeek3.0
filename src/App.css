@@ -115,7 +115,7 @@ body {
 }
 
 #hidden-navbar {
-  /* display: none; */
+  display: none;
   padding-right: 180px;
   padding-left: 180px;
   border-top: 1px solid rgb(194, 194, 194);
