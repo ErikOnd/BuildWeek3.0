@@ -10,7 +10,7 @@ const ProfilePage = () => {
     <>
       <NavbarComponent />
       <MainProfile />
-      <RightBar />
+      {/* <RightBar /> */}
       <LowerProfile />
       <FooterComponent />
       <MessagingComponent />
