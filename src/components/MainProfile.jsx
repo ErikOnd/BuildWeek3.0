@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useInterval } from "react";
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { fetchDataAsync } from "../Redux/actions";
-import { CameraFill, Pencil } from "react-bootstrap-icons";
+import { CameraFill, Key, Pencil } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
-
+import { MDBCheckbox } from 'mdb-react-ui-kit'
 const MainProfile = () => {
   const user = useSelector((state) => state.user.user);
   console.log(user);
@@ -16,6 +16,10 @@ let[id,setId]=useState(user._id)
  let [core,setCore]=useState(true)
  let [recommended,setRecommended]=useState(false)
  let [additional,setAdditional]=useState(false)
+
+
+
+
 
 
 const setting3=()=>{
@@ -52,6 +56,8 @@ const setting5=()=>{
 }
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
+
+
 
   const dispatch = useDispatch();
 
@@ -370,6 +376,8 @@ const setting5=()=>{
         </Container>
 
        )}
+      
+       
         </Container>
 
   );

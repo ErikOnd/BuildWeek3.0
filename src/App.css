@@ -290,14 +290,7 @@ body {
   background-color: white;
   position: relative;
 }
-.upper {
-  margin-top: 112px;
-  max-height: 800px;
-  overflow: hidden;
-  max-width: 600px;
-  position: relative;
-  padding: 24px;
-}
+
 
 .profile-pic {
   height: 152px;
@@ -331,16 +324,16 @@ body {
 }
 .button {
   /* height: 20px; */
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 13px;
-  padding-right: 13px;
-  border: 1px rgb(15, 79, 181) solid;
-  border-radius: 20px;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  padding-left: 13px !important;
+  padding-right: 13px !important;
+  border: 1px rgb(15, 79, 181) solid !important;
+  border-radius: 20px !important;
 }
 .first {
-  color: white;
-  background-color: rgb(15, 79, 181);
+  color: white !important;
+  background-color: rgb(15, 79, 181) !important;
 }
 .second {
   color: rgb(15, 79, 181);
@@ -455,4 +448,28 @@ body {
   padding-top: 1em;
   color: grey;
   border-bottom: 1px solid grey;
+}
+
+
+
+
+
+
+
+
+
+.positionModal{
+  min-width:60vw ;
+
+  
+}
+.modal-height{
+min-height: 50vh;
+}
+.notify{
+  padding: 20px;
+  background-color: rgb(234, 240, 245);
+}
+.texarea-text{
+  margin-left: 90%;
 }
