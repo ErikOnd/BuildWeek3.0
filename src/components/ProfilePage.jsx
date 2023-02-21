@@ -2,6 +2,7 @@ import FooterComponent from "./FooterComponent";
 import NavbarComponent from "./NavbarComponent";
 import LowerProfile from "./LowerProfile";
 import MainProfile from "./MainProfile";
+import MessagingComponent from "./MessagingComponent";
 import RightBar from "./RightBar";
 
 const ProfilePage = () => {
@@ -12,6 +13,15 @@ const ProfilePage = () => {
       <RightBar />
       <LowerProfile />
       <FooterComponent />
+    </>
+  );
+  return (
+    <>
+      <NavbarComponent />
+      <MainProfile />
+      <LowerProfile />
+      <FooterComponent />
+      <MessagingComponent />
     </>
   );
 };
