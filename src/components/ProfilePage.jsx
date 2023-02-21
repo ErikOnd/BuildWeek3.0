@@ -13,14 +13,6 @@ const ProfilePage = () => {
       <RightBar />
       <LowerProfile />
       <FooterComponent />
-    </>
-  );
-  return (
-    <>
-      <NavbarComponent />
-      <MainProfile />
-      <LowerProfile />
-      <FooterComponent />
       <MessagingComponent />
     </>
   );
