@@ -4,23 +4,27 @@ import LowerProfile from "./LowerProfile";
 import MainProfile from "./MainProfile";
 import MessagingComponent from "./MessagingComponent";
 import RightBar from "./RightBar";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 
 const ProfilePage = () => {
   return (
     <>
-    <NavbarComponent />
-    <Row>
-      <Col >
-      <MainProfile />
-      <LowerProfile />
-      </Col>
-      <Col  >
-      <RightBar/>
-      </Col>
-      </Row>
-      <FooterComponent />
-      <MessagingComponent />
+      <Container fluid>
+        <NavbarComponent />
+        <Row>
+          <Col className="d-flex justify-content-center">
+            <div>
+              <MainProfile />
+              <LowerProfile />
+            </div>
+            <div>
+              <RightBar />
+            </div>
+          </Col>
+        </Row>
+        <FooterComponent />
+        <MessagingComponent />
+      </Container>
     </>
   );
 };
