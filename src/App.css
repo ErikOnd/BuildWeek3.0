@@ -51,55 +51,7 @@ body {
   margin-top: 100px;
 }
 
-.side-component-border {
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
 
-.view {
-  border-radius: 10px;
-  min-width: 40px;
-  min-height: 40px;
-  object-fit: cover;
-  overflow: hidden;
-  font-size: 15px;
-  text-align: center;
-}
-
-.people {
-  border-radius: 10px;
-  min-width: 40px;
-  min-height: 40px;
-  object-fit: cover;
-  overflow: hidden;
-  font-size: 15px;
-  text-align: center;
-}
-
-.side-component-border {
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.view {
-  border-radius: 10px;
-  min-width: 40px;
-  min-height: 40px;
-  object-fit: cover;
-  overflow: hidden;
-  font-size: 15px;
-  text-align: center;
-}
-
-.people {
-  border-radius: 10px;
-  min-width: 40px;
-  min-height: 40px;
-  object-fit: cover;
-  overflow: hidden;
-  font-size: 15px;
-  text-align: center;
-}
 
 #Navbar img {
   height: 35px;
@@ -609,3 +561,67 @@ body {
 .pointer:hover {
   cursor: pointer;
 }
+
+#handle{
+  background-color: inherit;
+  border: none;
+}
+
+
+.card-spacing {
+  padding: 1rem 1.5rem;
+}
+
+.profiles-container {
+  flex-shrink: 0;
+}
+
+.sidebar-card {
+  background-color: white;
+  color: black;
+  border: 1px solid #d9d9d8;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.sidebar-card h2 {
+  font-size: 19px;
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+
+.sidebar-card button.btn-outline-secondary {
+  display: flex;
+  align-items: center;
+  border-radius: 40px;
+  border: 1px solid black;
+  padding: 3px 16px;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 600;
+}
+
+.sidebar-card .username {
+  color: rgba(0, 0, 0, 0.9) !important;
+  line-height: 1;
+}
+
+.sidebar-card .profession {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.sidebar-card .toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 10px 1px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 0.8rem;
+}
+
