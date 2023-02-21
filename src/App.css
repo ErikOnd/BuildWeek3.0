@@ -43,6 +43,74 @@
   }
 }
 
+body{
+  background-color:#F3F2EF !important ;
+}
+.side-component-border {
+  border-radius: 10px;
+  margin-bottom: 10px;
+  
+}
+
+.view{
+  border-radius: 10px;
+  min-width: 40px;
+  min-height: 40px;
+  object-fit: cover;
+  overflow: hidden;
+  font-size: 15px;
+  text-align: center;
+}
+
+.people{
+  border-radius: 10px;
+  min-width: 40px;
+  min-height: 40px;
+  object-fit: cover;
+  overflow: hidden;
+  font-size: 15px;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+.side-component-border {
+  border-radius: 10px;
+  margin-bottom: 10px;
+  
+}
+
+.view{
+  border-radius: 10px;
+  min-width: 40px;
+  min-height: 40px;
+  object-fit: cover;
+  overflow: hidden;
+  font-size: 15px;
+  text-align: center;
+}
+
+.people{
+  border-radius: 10px;
+  min-width: 40px;
+  min-height: 40px;
+  object-fit: cover;
+  overflow: hidden;
+  font-size: 15px;
+  text-align: center;
+}
+
+
+
+
+
+
+
 #Navbar img {
   height: 35px;
 }
@@ -229,6 +297,14 @@
   color: rgb(12, 87, 162);
 }
 
+.main{
+  margin-top: 2em;
+width: 780px;
+ border: 0.5px solid grey;
+ border-radius: 15px;
+ background-color: white;
+position: relative;
+
 .main {
   width: 800px;
   border: 1px solid black;
@@ -242,6 +318,9 @@
   position: relative;
   padding: 24px;
 }
+
+
+.profile-pic{
 .upper h2 {
   margin: 0;
 }
@@ -301,10 +380,10 @@
 }
 .side {
   height: 40px;
-  margin-top: 100%;
+    
 }
 .side-text {
-  margin-top: 103%;
+  margin-top: 0.5em;
 }
 .camera {
   border: 1px solid white;
@@ -313,11 +392,16 @@
   background-color: white;
   margin-left: auto;
   display: inline;
+  margin-right: 2em;
 }
-.pencil {
-  display: inline;
-  margin-top: 80%;
-  margin-right: 1em;
+.pencil{
+margin-left: auto;
+position: absolute;
+top: 0;
+left: 0;
+bottom: 4em;
+right: 0;
+
 }
 .open {
   width: 240px;
@@ -371,4 +455,33 @@
   font-weight: 700;
   font-size: 0.95rem;
   margin-right: 65px;
+}
+
+
+.profile-pic2{
+  height: 152px;
+  /* width: 152px; */
+  border-radius: 50%;
+  border: 3px solid white;
+  position: absolute;
+  top: 3em;
+  bottom: 0;
+  left: 1em;
+  right: 0;
+}
+.upper{
+  height: 145px;
+  background-image: url(../src/Css/pics/linkedin.webp);
+  object-fit: contain;
+}
+
+.lower{
+  margin-top: 4em;
+  margin-bottom: 3em;
+  
+}
+.modal-text{
+  padding-top: 1em;
+  color: grey;
+  border-bottom: 1px solid grey ;
 }
