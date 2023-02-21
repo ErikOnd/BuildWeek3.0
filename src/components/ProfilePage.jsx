@@ -4,15 +4,11 @@ import NavbarComponent from "./NavbarComponent";
 import LowerProfile from "./LowerProfile";
 import MainProfile from "./MainProfile";
 
+import { Col } from "react-bootstrap";
+import RightBar from "./RightBar";
+
 const ProfilePage = () => {
-  return (
-    <>
-      <NavbarComponent />
-      <MainProfile />
-      <LowerProfile />
-      <FooterComponent />
-    </>
-  );
+
 };
 
 export default ProfilePage;
