@@ -1,3 +1,4 @@
+import FooterComponent from "./FooterComponent";
 import LowerProfile from "./LowerProfile";
 import MainProfile from "./MainProfile";
 import RightBar from "./RightBar";
@@ -18,6 +19,7 @@ const ProfilePage = () => {
             </div>
           </Col>
         </Row>
+        <FooterComponent />
       </Container>
     </>
   );
