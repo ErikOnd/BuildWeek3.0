@@ -788,3 +788,26 @@ body {
   width: 500px;
   background-color: white;
 }
+#sm-1, #sm-2{
+  cursor: pointer;
+}
+#sm-1:hover, #sm-2:hover{
+  background-color:#EBEBEB ;
+}
+
+.bi{
+  cursor: pointer;
+}
+.bi:hover{
+  background-color:#EBEBEB;
+  border-radius: 20px;
+}
+
+#dlt-btn{
+  background-color: #FFFFFF;
+  border:none;
+  color:#8b7d7d;
+}
+#dlt-btn:hover{
+  background-color:#EBEBEB
+}

@@ -11,6 +11,8 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { getAllExperienceAsync, postExperienceAsync } from "../Redux/actions";
 import React, { useState } from "react";
+import { BsFillCalendarFill } from "react-icons/bs";
+import { BsFillBriefcaseFill } from "react-icons/bs";
 
 import { MDBCheckbox } from "mdb-react-ui-kit";
 const LowerProfile = () => {
@@ -69,6 +71,15 @@ const LowerProfile = () => {
     });
   };
 
+  const [smShow, setSmShow] = useState(false);
+
+useEffect(()=>{
+ addStart()
+},[startYear,startMonth])
+useEffect(()=>{
+  addEnd()
+ },[endYear,endMonth])
+console.log(experienceInfo.startDate)
   useEffect(() => {
     addStart();
   }, [startYear, startMonth]);
@@ -116,6 +127,7 @@ const LowerProfile = () => {
   // ---------------------
 
   const [show, setShow] = useState(false);
+  const [show2, setShow2] = useState(false);
 
   const [disabledInput, setDisabledInput] = useState("");
 
@@ -135,7 +147,9 @@ const LowerProfile = () => {
     endMonth: "",
   });
   const handleClose = () => setShow(false);
+  const handleClose2 = () => setShow2(false);
   const handleShow = () => setShow(true);
+  const handleShow2 = () => setShow2(true);
 
   const onChangeHandler = (value, fieldToSet) => {
     setExperience({
@@ -310,14 +324,23 @@ const LowerProfile = () => {
           <Row>
             <Col className="box-h1">Experience</Col>
             <Col className="box-h1 mb-3 d-flex justify-content-end">
-              <i className="bi bi-plus-lg mr-4" onClick={handleShow}></i>
+              <i className="bi bi-plus-lg mr-4" onClick={() => setSmShow(true)}></i>
               <div
                 className="d-flex mb-1 add-position-experience-effect-on-hover"
-                onClick={handleShow}
               >
                 <div className="mr-2"></div>
               </div>
-
+              <Modal
+                size="sm"
+                  show={smShow}
+                  onHide={() => setSmShow(false)}
+                   aria-labelledby="example-modal-sizes-title-sm">  
+                  <Modal.Body id="sm-1"   onClick={() => {
+                  handleShow3();
+                }} ><BsFillBriefcaseFill/>  Add position</Modal.Body>
+                
+                  <Modal.Body id="sm-2"  onClick={handleShow} ><BsFillCalendarFill/>  Add career break</Modal.Body>
+                </Modal>
               <Modal
                 show={show}
                 onHide={handleClose}
@@ -335,10 +358,10 @@ const LowerProfile = () => {
                         type="text"
                         placeholder="Ex. Retirement"
                         required
-                        value={experience.type}
-                        onChange={(e) => {
-                          onChangeHandler(e.target.value, "role");
-                        }}
+                          value={experienceInfo.role}
+                             onChange={(i) =>
+                                setExperienceInfo({ ...experienceInfo, role: i.target.value })
+                        }
                       />
                     </Form.Group>
                     <Form.Group controlId="exampleForm.ControlInput1">
@@ -347,10 +370,13 @@ const LowerProfile = () => {
                         type="text"
                         placeholder="Ex. London, United Kingdom"
                         required
-                        value={experience.area}
-                        onChange={(e) => {
-                          onChangeHandler(e.target.value, "area");
-                        }}
+                        value={experienceInfo.area}
+                        onChange={(i) =>
+                          setExperienceInfo({
+                            ...experienceInfo,
+                            area: i.target.value,
+                          })
+                        }
                       />
                     </Form.Group>
                     <Form.Group className="d-flex align-items-center">
@@ -382,10 +408,10 @@ const LowerProfile = () => {
                           as="select"
                           className="monthSelectInput"
                           required
-                          value={experience.startMonth}
-                          onChange={(e) =>
-                            onChangeHandler(e.target.value, "startMonth")
-                          }
+                          value={startMonth}
+                          onChange={(i) => {
+                            setStartMonth(() => startMonth=i.target.value);
+                          }}
                         >
                           <option>Month</option>
                           <option>January</option>
@@ -408,9 +434,9 @@ const LowerProfile = () => {
                           max={2023}
                           placeholder="Year"
                           className="yearSelectInput"
-                          value={experience.startYear}
-                          onChange={(e) =>
-                            onChangeHandler(e.target.value, "startYear")
+                          value={startYear}
+                           onChange={(i) =>
+                          setStartYear(()=>i.target.value)
                           }
                         ></Form.Control>
                       </div>
@@ -422,10 +448,10 @@ const LowerProfile = () => {
                           as="select"
                           disabled={disabledInput}
                           className="monthSelectInput"
-                          value={experience.endMonth}
-                          onChange={(e) => {
-                            onChangeHandler(e.target.value, "endMonth");
-                          }}
+                          value={endMonth}
+                          onChange={(i) =>
+                           setEndMonth(()=>endMonth=i.target.value)
+                          }
                         >
                           <option>Month</option>
                           <option>January</option>
@@ -448,10 +474,10 @@ const LowerProfile = () => {
                           placeholder="Year"
                           className="yearSelectInput"
                           disabled={disabledInput}
-                          value={experience.endYear}
-                          onChange={(e) =>
-                            onChangeHandler(e.target.value, "endYear")
-                          }
+                          value={endYear}
+                          onChange={(i) => {
+                          setEndYear(() =>endYear=i.target.value);
+                          }}
                         ></Form.Control>
                       </div>
                     </Form.Group>
@@ -460,10 +486,15 @@ const LowerProfile = () => {
                       <Form.Control
                         as="textarea"
                         rows={3}
-                        value={experience.description}
-                        onChange={(e) =>
-                          onChangeHandler(e.target.value, "description")
+                        value={experienceInfo.description}
+                        onChange={(i) =>
+                          setExperienceInfo({
+                            ...experienceInfo,
+                            description: i.target.value,
+                          })
                         }
+                        onKeyDown={(i)=>setCount(i.target.value.length)}
+                        
                       />
                     </Form.Group>
                   </Form>
@@ -472,18 +503,14 @@ const LowerProfile = () => {
                   <Button
                     variant="primary"
                     className="saveButtonExperiencesModal"
-                    onClick={onSubmitHandler}
+                    onClick={postExperienceAsync(experienceInfo)}
                   >
                     Save
                   </Button>
                 </Modal.Footer>
               </Modal>
-              <i
-                onClick={() => {
-                  handleShow3();
-                }}
-                className="bi bi-pen"
-              ></i>
+              <i className="bi bi-pen"
+              onClick={handleShow2}></i>
             </Col>
           </Row>
           {experienceData.map((e) => {
@@ -864,7 +891,7 @@ const LowerProfile = () => {
             <br />
             <br />
             <Form.Label>Profile Headline</Form.Label>
-            <Form.Control type="text" />
+            <Form.Control type="text" value={title} />
             Appears below your name at the top of the profile
             <br />
             <br />
@@ -898,14 +925,239 @@ const LowerProfile = () => {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            className="first button"
-            onClick={postExperienceAsync(experienceInfo)}
-          >
+          <Button className="first button" onClick={postExperienceAsync(experienceInfo)}>
             Save
           </Button>
         </Modal.Footer>
       </Modal>
+      
+            <Modal
+                show={show2}
+                onHide={handleClose2}
+                backdrop="static"
+                keyboard={false}
+              >
+                
+                <Modal.Header closeButton>
+                  <Modal.Title>Edit Experience</Modal.Title>
+                </Modal.Header>
+                <Modal.Body><div className="notify">
+            Notify network Turn on to notify your network of key profile changes
+            (such as new job) and work anniversaries. Updates can take up to 2
+            hours. Learn more about sharing profile changes.
+            <Form>
+              <Form.Check
+                type="switch"
+                id="custom-switch"
+                onClick={() => ons()}
+              />
+            </Form>
+            {on ? (
+              <div>
+                {" "}
+                <p>On</p>
+              </div>
+            ) : (
+              <div>
+                {" "}
+                <p>Off</p>
+              </div>
+            )}
+          </div>
+                  <Form className="experiencesModal">
+                    <Form.Group controlId="exampleForm.ControlInput1">
+                      <Form.Label>Title*</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder=""
+                        required
+                        
+                      /> 
+                      <br />
+                      <Form.Group controlId="exampleForm.ControlInput1">
+                      <Form.Label>Employment type</Form.Label>
+                        <Form.Control as={"select"} required>
+                          <option>Please Select</option>
+                            <option>Full-Time</option>
+                              <option>Part-Time</option>
+                              <option>Self-Employed</option>
+                              <option>Freelance</option>
+                              <option>Contract</option>
+                              <option>Internship</option>
+                              <option>Apprenticeship</option>
+                              <option>Temporary</option>
+                              </Form.Control></Form.Group>
+                    </Form.Group>
+
+                    <Form.Label>Company Name*</Form.Label>
+                    <Form.Control
+                      type="text"
+                      required
+                      placeholder=""
+                      
+                        />
+                        <br />
+                    <Form.Group controlId="exampleForm.ControlInput1">
+                      <Form.Label>Location*</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder=""
+                        required
+                      />
+                      
+                    </Form.Group>
+                    <Form.Label>Location type</Form.Label>
+                    <Form.Control as={"select"} required>
+                      <option>Please Select</option>
+                      <option>On-Site</option>
+                      <option>Hybrid</option>
+                      <option>Remote</option>
+                    </Form.Control>
+                    <br />
+                    <Form.Group className="d-flex align-items-left">
+                      <Form.Control
+                        type="checkbox"
+                        className="d-inline-block checkboxInput mr-2"
+                        checked={checked}
+                        onChange={(e) => {
+                          if (checked === true) {
+                            setDisabledInput(false);
+                          } else {
+                            onChangeHandler("", "endDate");
+                            onChangeHandler("", "endMonth");
+                            onChangeHandler("", "endYear");
+                            setDisabledInput(true);
+                          }
+                          setChecked(e.target.checked);
+                        }}
+                      />
+                      <Form.Label className="mb-0">
+                        I am currently working on this role.
+                      </Form.Label>
+                    </Form.Group>
+                    <Form.Group className="d-flex flex-column">
+                      <Form.Label>Start date</Form.Label>
+
+                      <div className="d-flex flex-row justify-content-between">
+                        <Form.Control
+                          as="select"
+                          className="monthSelectInput"
+                          required
+                         
+                        >
+                          <option>Month</option>
+                          <option>January</option>
+                          <option>February</option>
+                          <option>March</option>
+                          <option>April</option>
+                          <option>May</option>
+                          <option>June</option>
+                          <option>July</option>
+                          <option>August</option>
+                          <option>September</option>
+                          <option>October</option>
+                          <option>November</option>
+                          <option>December</option>
+                        </Form.Control>
+
+                        <Form.Control
+                          type="number"
+                          min={1900}
+                          max={2023}
+                          placeholder="Year"
+                          className="yearSelectInput"
+                          
+                        ></Form.Control>
+                      </div>
+                    </Form.Group>
+                    <Form.Group className="d-flex flex-column ">
+                      <Form.Label>End date</Form.Label>
+                      <div className="d-flex flex-row justify-content-between">
+                        <Form.Control
+                          as="select"
+                          disabled={disabledInput}
+                          className="monthSelectInput"
+                          
+                        >
+                          <option>Month</option>
+                          <option>January</option>
+                          <option>February</option>
+                          <option>March</option>
+                          <option>April</option>
+                          <option>May</option>
+                          <option>June</option>
+                          <option>July</option>
+                          <option>August</option>
+                          <option>September</option>
+                          <option>October</option>
+                          <option>November</option>
+                          <option>December</option>
+                        </Form.Control>
+                        <Form.Control
+                          type="number"
+                          min={1900}
+                          max={2023}
+                          placeholder="Year"
+                          className="yearSelectInput"
+                          disabled={disabledInput}
+                        
+                        ></Form.Control>
+                      </div>
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label>Description</Form.Label>
+                      <Form.Control
+                        as="textarea"
+                        rows={3}
+                        onKeyDown={(i)=>setCount(i.target.value.length)}
+                      />
+                      <br />
+                      <Form.Label>Profile Headline</Form.Label>
+            <Form.Control type="text" value={title} />
+            Appears below your name at the top of the profile
+            <br />
+            <br />
+            <h3>Skills</h3>
+            We recommend adding your top 5 used in this role. They’ll also
+            appear in your Skills section.
+            <br />
+            {skill ? (
+              <button onClick={() => setSkill(true)} className="button second">
+                Add Skill
+              </button>
+            ) : (
+              <Form.Control type="text" />
+            )}
+            <h3>Media</h3>
+            Add or link to external documents, photos, sites, videos, and
+            presentations. Learn more about{" "}
+            <a href=""> media file types supported</a>
+            <br /> <br />
+            <button className="button" onClick={() => setmed()}>
+              Add Media
+            </button>
+            {media ? (
+              <div>
+                <p>Add a link</p>
+                <p>Upload media</p>
+              </div>
+            ) : (
+              ""
+            )}
+                    </Form.Group>
+                  </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button id="dlt-btn">Delete Experience</Button>
+                  <Button
+                    variant="primary"
+                    className="saveButtonExperiencesModal"
+                    onClick={postExperienceAsync(experienceInfo)}
+                  >
+                    Save
+                  </Button>
+                </Modal.Footer>
+              </Modal>
     </Container>
   );
 };
