@@ -30,7 +30,7 @@ console.log(count)
     
     return (
         <>
-        <Container className="post-section">
+        <Container className="post-section ">
         <Row className="d-flex upper-post-section">
         <img className="home-profile-pic mx-2 my-2" src={user.image} alt="profile-pic"/>
         <input onClick={handleShow} className="post-input mx-2 my-2" type="text" placeholder="Start a post"/>
@@ -39,7 +39,7 @@ console.log(count)
          <Col className="post-section-option mx-2" onClick={()=>handleShow2()}><Reddit size={20} className="mr-2"/>Photo</Col>
          <Col className="post-section-option mx-2" onClick={()=>handleShow3()}><Reddit size={20} className="mr-2"/>Video</Col>
          <Col className="post-section-option mx-2"><Reddit size={20} className="mr-2"/>Event</Col>
-         <Col className="post-section-option mx-2"><Reddit size={20} className="mr-2"/>Write Article</Col>
+         <Col className="post-section-option mx-2"><Reddit size={25} className="mr-2"/>Write Article</Col>
         </Row>
 
         <Modal show={show} onHide={handleClose}>
@@ -132,7 +132,7 @@ Post
     <br />
     <Container className="post-section-sort">
 
-    <div className="line"></div>
+    <div className="line mt-0"></div>
     
     <small onClick={()=>sorting()}>Sort By: <b> Top</b> <ArrowDown/></small>
     {sort? <div className="top-recent">

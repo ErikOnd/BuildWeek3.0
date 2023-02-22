@@ -664,7 +664,8 @@ body {
   background-color: white;
   padding: 0 !important;
   width: 300px !important ;
-  border-radius: 20px;
+  border-radius: 10px;
+  
 }
 .home-rigthbar-container button {
   background-color: transparent;
@@ -676,7 +677,9 @@ body {
 }
 .side-news {
   padding-left: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
+  cursor: pointer;
+  height: 44px;
 }
 .side-news p {
   margin: 0;
@@ -690,14 +693,20 @@ body {
 }
 .home-rightbar-footer {
   width: 300px !important ;
+  position: sticky;
+  top:70px;
 }
 .home-rightbar-footer small {
   font-size: 13px;
   margin: 0.6em;
   cursor: pointer;
+
+
 }
+
 .rightbar-link {
   color: grey;
+  font-size: 12px;
   text-decoration: none;
 }
 /* .arrowDown{
@@ -709,7 +718,10 @@ body {
   width: 580px !important;
   height: 116px;
 }
+.reddit-icon{
+  margin-left:auto;
 
+}
 .home-profile-pic {
   height: 48px;
   border-radius: 50%;
@@ -727,6 +739,10 @@ body {
 }
 .post-section-option {
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center
+
 }
 .post-section-option:hover {
   background-color: rgb(230, 230, 230);
@@ -750,9 +766,10 @@ body {
 }
 .line {
   display: inline-block;
-  width: 80%;
+  width: 83%;
   height: 1px;
   background-color: black;
+
 }
 .top-recent {
   background-color: white;
