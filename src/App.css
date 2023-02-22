@@ -619,10 +619,47 @@ body {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 0.8rem;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
 
-.feed-container {
-  margin-top: 80px;
+.feed-container.container {
+  margin-top: 100px;
+  padding: 0px;
+}
+
+.feed-left-sidebar {
+  background-color: white;
+  width: 228px;
+  border-radius: 7px;
+  border: 1px solid rgb(224 223 220);
+  position: relative;
+  font-size: 0.75rem;
+}
+
+.left-sidebar-header-img {
+  width: 226px;
+  object-fit: cover;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.feed-left-side-profile {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px white;
+  height: 60px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 25px;
+}
+
+.blue-bold {
+  color: rgb(10 102 194);
+  font-weight: 800;
+}
+
+.plus-left-sidebar {
+  font-size: 1.5rem;
 }
