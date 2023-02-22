@@ -11,11 +11,12 @@ const MainProfile = () => {
   let [name, setName] = useState(user.name);
   let [surname, setSurname] = useState(user.surname);
   let [title, setTitle] = useState(user.title);
+  let [img,setImg]=useState(user.image)
   let [id, setId] = useState(user._id);
   let [core, setCore] = useState(true);
   let [recommended, setRecommended] = useState(false);
   let [additional, setAdditional] = useState(false);
-
+console.log(user)
   const setting3 = () => {
     if (recommended === true || additional === true) {
       return setCore(false);
@@ -81,8 +82,13 @@ const MainProfile = () => {
     }
   }
 
-  let item = { name, surname, title };
+  const handleImage=(e)=>{
+    console.log(e.target.files[0].name)
+    setImg(e.target.files[0].name)
+  }
+  let item = { name, surname, title,img };
   const updateUser = async (body) => {
+
     try {
       let res = await fetch(
         `https://striveschool-api.herokuapp.com/api/profile/`,
@@ -98,7 +104,9 @@ const MainProfile = () => {
         }
       );
       if (res.ok) {
-        console.log(item);
+        const formData=new FormData()
+    formData.append('image',img)
+        
         let newUser = await res.json();
         console.log(newUser);
         dispatch(fetchDataAsync());
@@ -107,7 +115,7 @@ const MainProfile = () => {
       console.log(err);
     }
   };
-
+  console.log(item)
   useEffect(() => {
     dispatch(fetchDataAsync());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -161,6 +169,12 @@ const MainProfile = () => {
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
+                />
+                 <Form.Label>Picture Url</Form.Label>
+                <Form.Control
+                  type="file"
+                 
+                  onChange={handleImage}
                 />
               </Form.Group>
             </Form>

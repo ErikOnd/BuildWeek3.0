@@ -9,7 +9,7 @@ import {
   Form,
 } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllExperienceAsync } from "../Redux/actions";
+import { getAllExperienceAsync, postExperienceAsync } from "../Redux/actions";
 import React, { useState } from "react";
 
 import { MDBCheckbox } from "mdb-react-ui-kit";
@@ -25,8 +25,21 @@ const LowerProfile = () => {
     description: "",
     area: "",
   });
+console.log(experienceInfo)
+const addStart=()=>{
+  setExperienceInfo({
+    ...experienceInfo,
+    startDate:startYear+" "+startMonth
+  }) 
+}
 
-  console.log(experienceInfo);
+
+const addEnd=()=>{
+  setExperienceInfo({
+    ...experienceInfo,
+    endDate:endYear+" "+endMonth
+  })
+}
 
   useEffect(() => {
     dispatch(getAllExperienceAsync());
@@ -37,7 +50,7 @@ const LowerProfile = () => {
   const handleShow3 = () => setShow3(true);
 
   // --------------------
-
+  const date = new Date()
   const user = useSelector((state) => state.user.user);
   let [name, setName] = useState(user.name);
   let [surname, setSurname] = useState(user.surname);
@@ -48,6 +61,21 @@ const LowerProfile = () => {
   let [media, setMedia] = useState(false);
   let [on, setOn] = useState(false);
   const [count, setCount] = useState(0);
+  let [quit,setQuit]=useState(false)
+  let[startMonth,setStartMonth]=useState("")
+  let[endMonth,setEndMonth]=useState("")
+  let [startYear,setStartYear]=useState("")
+  let [endYear,setEndYear]=useState("")
+
+console.log(startYear)
+console.log(startMonth)
+useEffect(()=>{
+ addStart()
+},[startYear,startMonth])
+useEffect(()=>{
+  addEnd()
+ },[endYear,endMonth])
+console.log(experienceInfo.startDate)
   const arrayRange = (start, stop, step) =>
     Array.from(
       { length: (stop - start) / step + 1 },
@@ -74,11 +102,18 @@ const LowerProfile = () => {
   const work = () => {
     if (working === true) {
       setWorking(false);
+      setExperienceInfo({...experienceInfo,endDate:"present"})
+
     } else {
       setWorking(true);
     }
   };
-
+  const quitting=()=>{
+    if(quit===false){
+      setQuit(true)
+      setExperienceInfo({...experienceInfo,endDate:date})
+    }
+  }
   // ---------------------
 
   const [show, setShow] = useState(false);
@@ -595,7 +630,14 @@ const LowerProfile = () => {
             />
             <br />
             <Form.Label>Location</Form.Label>
-            <Form.Control type="text" placeholder="Ex:London United Kingdom" />
+            <Form.Control type="text" placeholder="Ex:London United Kingdom"
+           value={experienceInfo.area}
+           onChange={(i) =>
+             setExperienceInfo({
+               ...experienceInfo,
+               area: i.target.value,
+             })
+           }/>
             <br />
             <Form.Label>Location type</Form.Label>
             <Form.Control as={"select"} required>
@@ -618,47 +660,63 @@ const LowerProfile = () => {
                 />
                 <br />
                 <Form.Label>Start Date*</Form.Label>
-                <Form.Control as={"select"} required>
+                <Form.Control as={"select"} required
+                
+                value={startMonth}
+                onChange={(i) =>
+                  setStartMonth(()=>i.target.value)
+                }
+                >
                   <option>Month</option>
-                  <option>January</option>
-                  <option>Febraury</option>
-                  <option>April</option>
-                  <option>May</option>
-                  <option>June</option>
-                  <option>July</option>
-                  <option>August</option>
-                  <option>Septembet</option>
-                  <option>October</option>
-                  <option>November</option>
-                  <option>December</option>
-                  <option>March</option>
+                  <option value="Jan" >January</option>
+                  <option value="Feb">Febraury</option>
+                  <option value="Mar">March</option>
+                  <option value="Apr">April</option>
+                  <option value="May">May</option>
+                  <option value="Jun">June</option>
+                  <option value="Jul">July</option>
+                  <option value="Aug">August</option>
+                  <option value="Sep">Septembet</option>
+                  <option value="Oct">October</option>
+                  <option value="Nov">November</option>
+                  <option value="Dec">December</option>
+                  
                 </Form.Control>
-                <Form.Control as={"select"} required>
+                <Form.Control as={"select"} required
+                
+                onChange={(i)=>{
+                  setStartYear(()=>i.target.value)
+                }}>
                   <option>Year</option>
                   {years.map((y) => {
                     return (
                       <>
-                        <option key={y}>{y}</option>
+                        <option  key={y}>{y}</option>
                       </>
                     );
                   })}
                 </Form.Control>
                 <br />
                 <Form.Label>End Date*</Form.Label>
-                <Form.Control as={"select"} disabled>
+                <Form.Control as={"select"} disabled
+                     value={endMonth}
+                     onChange={(i) =>
+                      setEndMonth(()=>endMonth=i.target.value)
+                     }
+                    >
                   <option>Month</option>
-                  <option>January</option>
-                  <option>Febraury</option>
-                  <option>April</option>
-                  <option>May</option>
-                  <option>June</option>
-                  <option>July</option>
-                  <option>August</option>
-                  <option>Septembet</option>
-                  <option>October</option>
-                  <option>November</option>
-                  <option>December</option>
-                  <option>March</option>
+                  <option value="Jan" >January</option>
+                  <option value="Feb">Febraury</option>
+                  <option value="Mar">March</option>
+                  <option value="Apr">April</option>
+                  <option value="May">May</option>
+                  <option value="Jun">June</option>
+                  <option value="Jul">July</option>
+                  <option value="Aug">August</option>
+                  <option value="Sep">Septembet</option>
+                  <option value="Oct">October</option>
+                  <option value="Nov">November</option>
+                  <option value="Dec">December</option>
                 </Form.Control>
                 <Form.Control as={"select"} disabled>
                   <option>Year</option>
@@ -676,6 +734,7 @@ const LowerProfile = () => {
                   value=""
                   id="flexCheckChecked"
                   label="End current position as of now"
+                  onClick={()=>{quitting()}}
                 />
                 <Form.Label>Industry*</Form.Label>
                 <Form.Control type="text" required placeholder="Ex:Retail" />
@@ -684,18 +743,7 @@ const LowerProfile = () => {
                 <p>
                   Learn more about <a href="">industry options</a>
                 </p>
-                <Form.Label>Description</Form.Label>
-                <br />
-                <br />
-                <textarea
-                  name="description"
-                  id="description"
-                  cols="85"
-                  rows="3"
-                  onChange={(e) => setCount(e.target.value.length)}
-                ></textarea>
-                <p className="texarea-text"> {count}/2000 </p> <br />
-                <br />
+               
               </>
             ) : (
               <>
@@ -708,30 +756,31 @@ const LowerProfile = () => {
                 />
                 <br />
                 <Form.Label>Start Date*</Form.Label>
-                <Form.Control as={"select"} required>
+                <Form.Control as={"select"} required
+                value={startMonth}
+                  onChange={(i) =>
+                    setStartMonth(()=>i.target.value)
+                  }>
                   <option>Month</option>
-                  <option>January</option>
-                  <option>Febraury</option>
-                  <option>April</option>
-                  <option>May</option>
-                  <option>June</option>
-                  <option>July</option>
-                  <option>August</option>
-                  <option>Septembet</option>
-                  <option>October</option>
-                  <option>November</option>
-                  <option>December</option>
-                  <option>March</option>
+                  <option value="Jan" >January</option>
+                  <option value="Feb">Febraury</option>
+                  <option value="Mar">March</option>
+                  <option value="Apr">April</option>
+                  <option value="May">May</option>
+                  <option value="Jun">June</option>
+                  <option value="Jul">July</option>
+                  <option value="Aug">August</option>
+                  <option value="Sep">Septembet</option>
+                  <option value="Oct">October</option>
+                  <option value="Nov">November</option>
+                  <option value="Dec">December</option>
                 </Form.Control>
                 <Form.Control
                   as={"select"}
-                  value={experienceInfo.role}
-                  onChange={(i) =>
-                    setExperienceInfo({
-                      ...experienceInfo,
-                      role: i.target.value,
-                    })
-                  }
+                  value={startYear}
+                  onChange={(i)=>{
+                    setStartYear(()=>i.target.value)
+                  }}
                   required
                 >
                   <option>Year</option>
@@ -743,24 +792,33 @@ const LowerProfile = () => {
                     );
                   })}
                 </Form.Control>
+               
                 <br />
                 <Form.Label>End Date*</Form.Label>
-                <Form.Control as={"select"} required>
+                <Form.Control as={"select"} required
+                 value={endMonth}
+                 onChange={(i) =>
+                  setEndMonth(()=>endMonth=i.target.value)
+                 }>
                   <option>Month</option>
-                  <option>January</option>
-                  <option>Febraury</option>
-                  <option>April</option>
-                  <option>May</option>
-                  <option>June</option>
-                  <option>July</option>
-                  <option>August</option>
-                  <option>Septembet</option>
-                  <option>October</option>
-                  <option>November</option>
-                  <option>December</option>
-                  <option>March</option>
+                  <option value="Jan" >January</option>
+                  <option value="Feb">Febraury</option>
+                  <option value="Mar">March</option>
+                  <option value="Apr">April</option>
+                  <option value="May">May</option>
+                  <option value="Jun">June</option>
+                  <option value="Jul">July</option>
+                  <option value="Aug">August</option>
+                  <option value="Sep">Septembet</option>
+                  <option value="Oct">October</option>
+                  <option value="Nov">November</option>
+                  <option value="Dec">December</option>
                 </Form.Control>
-                <Form.Control as={"select"} required>
+                <Form.Control as={"select"} required
+                value={endYear}
+                onChange={(i)=>
+                setEndYear(()=>endYear=i.target.value)}
+                >
                   {years.map((y) => {
                     return (
                       <>
@@ -770,7 +828,10 @@ const LowerProfile = () => {
                   })}
                 </Form.Control>
                 <br />
-                <Form.Label>Description</Form.Label> <br />
+               
+              </>
+            )}
+             <Form.Label>Description</Form.Label> <br />
                 <br />
                 <textarea
                   name="description"
@@ -778,13 +839,18 @@ const LowerProfile = () => {
                   cols="85"
                   rows="3"
                   maxLength={2000}
-                  onChange={(e) => setCount(e.target.value.length)}
+                  value={experienceInfo.description}
+                  onChange={(i) =>
+                    setExperienceInfo({
+                      ...experienceInfo,
+                      description: i.target.value,
+                    })
+                  }
+                 
                 ></textarea>
-                <p className="texarea-text"> {count}/2000 </p>
+                <p className="texarea-text"> 0/2000 </p>
                 <br />
                 <br />
-              </>
-            )}
             <Form.Label>Profile Headline</Form.Label>
             <Form.Control type="text" value={title} />
             Appears below your name at the top of the profile
@@ -820,7 +886,7 @@ const LowerProfile = () => {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button className="first button" onClick={handleClose3}>
+          <Button className="first button" onClick={postExperienceAsync(experienceInfo)}>
             Save
           </Button>
         </Modal.Footer>
