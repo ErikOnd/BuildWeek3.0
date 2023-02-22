@@ -660,138 +660,126 @@ body {
   font-weight: 800;
 }
 
-
-
-.home-rigthbar-container{
+.home-rigthbar-container {
   background-color: white;
   padding: 0 !important;
   width: 300px !important ;
   border-radius: 20px;
 }
-.home-rigthbar-container button{
+.home-rigthbar-container button {
   background-color: transparent;
   border: transparent;
   border-radius: 10px;
-
 }
-.home-rigthbar-container button:hover{
-  background-color: rgb(230,230,230);
+.home-rigthbar-container button:hover {
+  background-color: rgb(230, 230, 230);
 }
-.side-news{
+.side-news {
   padding-left: 1em;
   margin-bottom: 1em;
 }
-.side-news p{
-  margin:0;
+.side-news p {
+  margin: 0;
 }
-.side-news small{
+.side-news small {
   color: grey;
   padding-left: 1em;
 }
-.side-news:hover{
- background-color: rgb(230,230,230);
+.side-news:hover {
+  background-color: rgb(230, 230, 230);
 }
-.home-rightbar-footer{
+.home-rightbar-footer {
   width: 300px !important ;
 }
-.home-rightbar-footer small{
+.home-rightbar-footer small {
   font-size: 13px;
   margin: 0.6em;
   cursor: pointer;
 }
-.rightbar-link{
+.rightbar-link {
   color: grey;
   text-decoration: none;
 }
 /* .arrowDown{
   margin-left: 9em;
 } */
-.post-section{
-background-color: white;
-border-radius: 10px;
-width: 580px !important;
-height: 116px;
+.post-section {
+  background-color: white;
+  border-radius: 10px;
+  width: 580px !important;
+  height: 116px;
 }
 
-.home-profile-pic{
+.home-profile-pic {
   height: 48px;
   border-radius: 50%;
-
 }
-.post-input{
+.post-input {
   border-radius: 20px;
   border: 1px solid black;
   height: 26px;
-  width:80%;
+  width: 80%;
   padding: 22px;
-
-
 }
-.post-input:hover{
-  background-color: rgb(230,230,230);
+.post-input:hover {
+  background-color: rgb(230, 230, 230);
   cursor: pointer;
 }
-.post-section-option{
+.post-section-option {
   border-radius: 10px;
- 
 }
-.post-section-option:hover{
-background-color: rgb(230,230,230);
+.post-section-option:hover {
+  background-color: rgb(230, 230, 230);
 }
-.anyone{
+.anyone {
   background-color: transparent;
   border: transparent;
   border-radius: 20px;
 }
-.anyone:hover{
-  background-color: rgb(230,230,230);
+.anyone:hover {
+  background-color: rgb(230, 230, 230);
 }
-.end-of-modal{
+.end-of-modal {
   margin-left: 35%;
-
 }
-.post-modal-icons-containe{
- justify-content: center;
+.post-modal-icons-containe {
+  justify-content: center;
 }
-.post-section-sort{
-
+.post-section-sort {
   width: 580px !important;
-
 }
-.line{
+.line {
   display: inline-block;
   width: 80%;
   height: 1px;
   background-color: black;
 }
-.top-recent{
+.top-recent {
   background-color: white;
   border-radius: 20px;
   margin-left: auto;
   width: 100px;
   overflow: hidden;
 }
-.top-recent p{ 
+.top-recent p {
   margin-left: 1em;
   width: 100%;
-
 }
-.top-recent p:hover{ 
- background-color: rgb(230,230,230);
+.top-recent p:hover {
+  background-color: rgb(230, 230, 230);
 }
-.picture-video{
+.picture-video {
   height: 200px;
   text-align: center;
-
 }
 @media only screen and (max-width: 902px) {
-  .feed-right-bar-container{
+  .feed-right-bar-container {
     display: none;
   }
- 
 }
 .feed-container {
   margin-top: 100px;
+}
 .plus-left-sidebar {
   font-size: 1.5rem;
 }
