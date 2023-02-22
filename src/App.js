@@ -10,6 +10,7 @@ function App() {
     <BrowserRouter>
       <NavbarComponent />
       <Routes>
+        {/* <Route element={<"feed"} path="/" /> */}
         <Route element={<ProfilePage />} path="/profile" />
       </Routes>
       <FooterComponent />
