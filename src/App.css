@@ -802,29 +802,30 @@ body {
 }
 
 .post-main {
-  width: 500px;
   background-color: white;
 }
-#sm-1, #sm-2{
+#sm-1,
+#sm-2 {
   cursor: pointer;
 }
-#sm-1:hover, #sm-2:hover{
-  background-color:#EBEBEB ;
+#sm-1:hover,
+#sm-2:hover {
+  background-color: #ebebeb;
 }
 
-.bi{
+.bi {
   cursor: pointer;
 }
-.bi:hover{
-  background-color:#EBEBEB;
+.bi:hover {
+  background-color: #ebebeb;
   border-radius: 20px;
 }
 
-#dlt-btn{
-  background-color: #FFFFFF;
-  border:none;
-  color:#8b7d7d;
+#dlt-btn {
+  background-color: #ffffff;
+  border: none;
+  color: #8b7d7d;
 }
-#dlt-btn:hover{
-  background-color:#EBEBEB
+#dlt-btn:hover {
+  background-color: #ebebeb;
 }
