@@ -871,7 +871,7 @@ console.log(experienceInfo.startDate)
                 <br />
                 <br />
             <Form.Label>Profile Headline</Form.Label>
-            <Form.Control type="text" value={title} />
+            <Form.Control type="text" />
             Appears below your name at the top of the profile
             <br />
             <br />

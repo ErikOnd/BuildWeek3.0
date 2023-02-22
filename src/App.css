@@ -622,3 +622,26 @@ body {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 0.8rem;
 }
+
+
+
+.home-rigthbar-container{
+  background-color: white;
+  padding: 0 !important;
+  width: 300px !important ;
+}
+.side-news{
+  padding-left: 1em;
+  margin-bottom: 1em;
+}
+.side-news p{
+  margin:0;
+}
+.side-news:hover{
+ background-color: grey;
+}
+@media only screen and (max-width: 902px) {
+  .home-rigthbar-container{
+    display: none;
+  }
+}
