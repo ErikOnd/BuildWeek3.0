@@ -10,7 +10,6 @@ const ProfilePage = () => {
   return (
     <>
       <Container fluid>
-        <NavbarComponent />
         <Row>
           <Col className="d-flex justify-content-center">
             <div>
@@ -22,8 +21,6 @@ const ProfilePage = () => {
             </div>
           </Col>
         </Row>
-        <FooterComponent />
-        <MessagingComponent />
       </Container>
     </>
   );
