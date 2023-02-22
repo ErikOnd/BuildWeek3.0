@@ -2,6 +2,7 @@ import FeedLeftSideBar from "./FeedLeftSideBar";
 import HomeRightBar from "./HomeRightBar";
 import PostSection from "./PostSection";
 import { Container, Row, Col } from "react-bootstrap";
+import FeedPostComponent from "./FeedPostComponent";
 const FeedComponent = () => {
   return (
     <Container className="feed-container">
@@ -12,6 +13,7 @@ const FeedComponent = () => {
           </Col>
           <div className="mx-5 ">
             <PostSection />
+            <FeedPostComponent />
           </div>
           <div className="feed-right-bar-container">
             <HomeRightBar />
