@@ -19,6 +19,11 @@ const PostModalComponent = () => {
 
   const dispatch = useDispatch();
 
+  const closeAndDispatch = () => {
+    dispatch(putPost(inputValue));
+    handleClose();
+  };
+
   return (
     <>
       <Button
@@ -38,7 +43,7 @@ const PostModalComponent = () => {
           <Form
             onSubmit={(e) => {
               e.preventDefault();
-              dispatch(putPost(inputValue));
+              closeAndDispatch();
             }}
           >
             <Form.Group>
@@ -59,7 +64,9 @@ const PostModalComponent = () => {
         <Modal.Footer>
           <Button
             variant="primary"
-            onClick={() => dispatch(putPost(inputValue))}
+            onClick={() => {
+              closeAndDispatch();
+            }}
           >
             Post
           </Button>

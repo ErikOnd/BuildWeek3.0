@@ -9,7 +9,7 @@ const FeedPostComponent = () => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.posts);
   const [ordered, setOrdered] = useState(null);
-  console.log(ordered);
+  //   console.log(ordered);
 
   useEffect(() => {
     dispatch(fetchPostsAsync());
@@ -25,13 +25,13 @@ const FeedPostComponent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  //   useEffect(() => {
-  //     console.log(ordered);
-  //   }, [ordered]);
+  useEffect(() => {
+    dispatch(fetchPostsAsync());
+  }, []);
 
   return (
     <>
-      {/* <PostModalComponent /> */}
+      <PostModalComponent />
 
       {ordered === null
         ? "Loading"

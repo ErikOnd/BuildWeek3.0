@@ -272,7 +272,10 @@ export const putPost = (e) => {
         }
       );
       if (res.ok) {
-        fetchPostsAsync();
+        dispatch({
+          type: POST_POSTS,
+          payload: e,
+        });
       } else {
         console.log("error posting");
       }
