@@ -26,6 +26,33 @@ const LowerProfile = () => {
     area: "",
   });
 
+  let [startMonth, setStartMonth] = useState("");
+  let [endMonth, setEndMonth] = useState("");
+  let [startYear, setStartYear] = useState("");
+  let [endYear, setEndYear] = useState("");
+
+  const addStart = () => {
+    setExperienceInfo({
+      ...experienceInfo,
+      startDate: startYear + " " + startMonth,
+    });
+  };
+
+  const addEnd = () => {
+    setExperienceInfo({
+      ...experienceInfo,
+      endDate: endYear + " " + endMonth,
+    });
+  };
+
+  useEffect(() => {
+    addEnd();
+  }, [endYear, endMonth]);
+
+  useEffect(() => {
+    addStart();
+  }, [startYear, startMonth]);
+
   console.log(experienceInfo);
 
   useEffect(() => {
@@ -595,7 +622,17 @@ const LowerProfile = () => {
             />
             <br />
             <Form.Label>Location</Form.Label>
-            <Form.Control type="text" placeholder="Ex:London United Kingdom" />
+            <Form.Control
+              type="text"
+              placeholder="Ex:London United Kingdom"
+              value={experienceInfo.area}
+              onChange={(i) =>
+                setExperienceInfo({
+                  ...experienceInfo,
+                  area: i.target.value,
+                })
+              }
+            />
             <br />
             <Form.Label>Location type</Form.Label>
             <Form.Control as={"select"} required>
@@ -618,7 +655,14 @@ const LowerProfile = () => {
                 />
                 <br />
                 <Form.Label>Start Date*</Form.Label>
-                <Form.Control as={"select"} required>
+                <Form.Control
+                  as={"select"}
+                  required
+                  value={experienceInfo.startDate}
+                  onChange={(i) => {
+                    setStartMonth(() => i.target.value);
+                  }}
+                >
                   <option>Month</option>
                   <option>January</option>
                   <option>Febraury</option>
@@ -633,7 +677,14 @@ const LowerProfile = () => {
                   <option>December</option>
                   <option>March</option>
                 </Form.Control>
-                <Form.Control as={"select"} required>
+                <Form.Control
+                  as={"select"}
+                  required
+                  value={experienceInfo.startDate}
+                  onChange={(i) => {
+                    setStartYear(() => i.target.value);
+                  }}
+                >
                   <option>Year</option>
                   {years.map((y) => {
                     return (
@@ -708,7 +759,17 @@ const LowerProfile = () => {
                 />
                 <br />
                 <Form.Label>Start Date*</Form.Label>
-                <Form.Control as={"select"} required>
+                <Form.Control
+                  as={"select"}
+                  value={experienceInfo.startDate}
+                  onChange={(i) =>
+                    setExperienceInfo({
+                      ...experienceInfo,
+                      startDate: i.target.value,
+                    })
+                  }
+                  required
+                >
                   <option>Month</option>
                   <option>January</option>
                   <option>Febraury</option>
@@ -725,11 +786,11 @@ const LowerProfile = () => {
                 </Form.Control>
                 <Form.Control
                   as={"select"}
-                  value={experienceInfo.role}
+                  value={experienceInfo.startDate}
                   onChange={(i) =>
                     setExperienceInfo({
                       ...experienceInfo,
-                      role: i.target.value,
+                      startDate: i.target.value,
                     })
                   }
                   required
@@ -745,7 +806,14 @@ const LowerProfile = () => {
                 </Form.Control>
                 <br />
                 <Form.Label>End Date*</Form.Label>
-                <Form.Control as={"select"} required>
+                <Form.Control
+                  as={"select"}
+                  value={experienceInfo.endDate}
+                  onChange={(i) => {
+                    setEndMonth(() => i.target.value);
+                  }}
+                  required
+                >
                   <option>Month</option>
                   <option>January</option>
                   <option>Febraury</option>
@@ -760,7 +828,14 @@ const LowerProfile = () => {
                   <option>December</option>
                   <option>March</option>
                 </Form.Control>
-                <Form.Control as={"select"} required>
+                <Form.Control
+                  as={"select"}
+                  value={experienceInfo.endDate}
+                  onChange={(i) => {
+                    setEndYear(() => i.target.value);
+                  }}
+                  required
+                >
                   {years.map((y) => {
                     return (
                       <>
@@ -778,7 +853,13 @@ const LowerProfile = () => {
                   cols="85"
                   rows="3"
                   maxLength={2000}
-                  onChange={(e) => setCount(e.target.value.length)}
+                  value={experienceInfo.description}
+                  onChange={(i) =>
+                    setExperienceInfo({
+                      ...experienceInfo,
+                      description: i.target.value,
+                    })
+                  }
                 ></textarea>
                 <p className="texarea-text"> {count}/2000 </p>
                 <br />
