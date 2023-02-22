@@ -4,6 +4,7 @@ import MainProfile from "./MainProfile";
 import RightBar from "./RightBar";
 import { Row, Col, Container } from "react-bootstrap";
 
+
 const ProfilePage = () => {
   return (
     <>
@@ -21,6 +22,7 @@ const ProfilePage = () => {
         </Row>
         <FooterComponent />
       </Container>
+   
     </>
   );
 };
