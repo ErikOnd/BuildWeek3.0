@@ -5,8 +5,8 @@ import {
   FormControl,
   Dropdown,
   DropdownButton,
-  Container,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import ModalComponent from "./ModalComponent";
 
 const NavbarComponent = () => {
@@ -161,33 +161,35 @@ const NavbarComponent = () => {
               id="basic-nav-dropdown"
               menuAlign="right"
             >
-              <Dropdown.Item href="#action/3.1" className="px-2">
-                <div>
-                  <div className="d-flex align-items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="42"
-                      height="42"
-                      fill="currentColor"
-                      className="bi bi-person-circle"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                      <path
-                        fillRule="evenodd"
-                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-                      />
-                    </svg>
+              <Link to={"/profile"}>
+                <Dropdown.Item href="#action/3.1" className="px-2">
+                  <div>
+                    <div className="d-flex align-items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="42"
+                        height="42"
+                        fill="currentColor"
+                        className="bi bi-person-circle"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        <path
+                          fillRule="evenodd"
+                          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+                        />
+                      </svg>
 
-                    <div className="pl-2 my-2 mx-0" id="dropdown-user">
-                      <p className="mb-0">Name Surname</p>
-                      <span>Current job example</span>
+                      <div className="pl-2 my-2 mx-0" id="dropdown-user">
+                        <p className="mb-0">Name Surname</p>
+                        <span>Current job example</span>
+                      </div>
                     </div>
+                    <div id="view-profile-button">View Profile</div>
                   </div>
-                  <div id="view-profile-button">View Profile</div>
-                </div>
-                <Dropdown.Divider />
-              </Dropdown.Item>
+                  <Dropdown.Divider />
+                </Dropdown.Item>
+              </Link>
               <p className="ml-2 mb-0 dropdown-section">Account</p>
               <Dropdown.Item href="#action/3.2">
                 Try Premium for free
