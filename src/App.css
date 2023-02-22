@@ -386,7 +386,7 @@ body {
 .main {
   margin-top: 2em;
   width: 780px;
-  border: 0.5px solid grey;
+  border: 1px solid rgb(224 223 220);
   border-radius: 15px;
   background-color: white;
   position: relative;
@@ -644,4 +644,7 @@ body {
   .home-rigthbar-container{
     display: none;
   }
+}
+.feed-container {
+  margin-top: 80px;
 }
