@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPostsAsync } from "../Redux/actions";
 import SinglePostComponent from "./SinglePostComponent";
 import { Modal, Button } from "react-bootstrap";
-import PostModalComponent from "./PostModalComponent";
 
 const FeedPostComponent = () => {
   const dispatch = useDispatch();
@@ -31,13 +30,15 @@ const FeedPostComponent = () => {
 
   return (
     <>
-      <PostModalComponent />
-
-      {ordered === null
-        ? "Loading"
-        : ordered.map((e) => {
+      {ordered === null ? (
+        "Loading"
+      ) : (
+        <div className="mt-3 mr-4">
+          {ordered.map((e) => {
             return <SinglePostComponent data={e} key={e._id} />;
           })}
+        </div>
+      )}
     </>
   );
 };
