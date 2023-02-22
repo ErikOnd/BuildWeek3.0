@@ -783,3 +783,7 @@ body {
 .plus-left-sidebar {
   font-size: 1.5rem;
 }
+
+.post-main {
+  width: 500px;
+}
