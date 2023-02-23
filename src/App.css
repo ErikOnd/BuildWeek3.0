@@ -576,7 +576,7 @@ body {
   border: 1px solid #d9d9d8;
   border-radius: 10px;
   cursor: pointer;
-  width: 350px;
+  width: 280px;
   margin-top: 52px;
 }
 
@@ -699,6 +699,17 @@ body {
   cursor: pointer;
 
 
+}
+.mr-2, .mx-2{
+  cursor: pointer;
+}
+.ml-1, .bi-hand-thumbs-up, .bi-arrow-repeat{
+  color:#4c4c4c ;
+}
+
+.pointer:hover{
+  background-color:#EBEBEB ;
+  border-radius: 10px;
 }
 
 .rightbar-link {
@@ -825,4 +836,41 @@ body {
 }
 #dlt-btn:hover {
   background-color: #ebebeb;
+}
+
+.mercado-match{
+  color: #8b7d7d;
+}
+#post-dropdown{
+  background-color: inherit;
+  border: none;
+}
+.album{
+  color:#378FE9 ;
+}
+.video{
+ color: #5F9B41;
+}
+.event{
+  color:#C37D16;
+}
+.article{
+  color:#E16745;
+}
+.job{
+  font-size: small;
+}
+.created{
+  font-size: x-small;
+  color:#8b7d7d ;
+}
+.otheruser{
+  font-size: large;
+}
+
+.bi-person-circle{
+  color: #3c858c;
+}
+.home:hover, .network:hover, .jobs:hover, .message:hover, .notifications:hover {
+  color: #574c4c;
 }

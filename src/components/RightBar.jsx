@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
 import { Col, Container, Row, Button } from "react-bootstrap";
+import { useEffect } from "react";
+import {useSelector, useDispatch } from "react-redux";
+import {fetchUsersDataAsync  } from "../Redux/actions";
 
-export default function RightBar() {
+
+
+const RightBar = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchUsersDataAsync ());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const users = useSelector((state) => state.user.user);
+  let [name, setName] = useState(users.name);
+  let [surname, setSurname] = useState(users.surname);
+  let [title, setTitle] = useState(users.title);
+
+
+
   return (
     <div className="main-sidebar">
   <Container className="my-5">
@@ -49,9 +67,9 @@ export default function RightBar() {
           <div className="d-flex">
             <div>
               <h2 className="user" >
-                Name 
+              {users.name} {users.surname}
               </h2>
-              <p className="profession">Employment</p>
+              <p className="profession"> {users.title}</p>
               <Button variant="outline-secondary">
                 <svg
                   className="mr-1"
@@ -74,9 +92,9 @@ export default function RightBar() {
             
             <div>
               <h2 className="user" >
-                Name 
+              {users.name} {users.surname}
               </h2>
-              <p className="profession">Employment</p>
+              <p className="profession"> {users.title}</p>
               <Button variant="outline-secondary">
                 <svg
                   className="mr-1"
@@ -99,9 +117,9 @@ export default function RightBar() {
            
             <div>
               <h2 className="user" >
-                Name
+              {users.name} {users.surname}
               </h2>
-              <p className="profession">Employment</p>
+              <p className="profession">{users.title}</p>
               <Button variant="outline-secondary">
                 <svg
                   className="mr-1"
@@ -244,4 +262,4 @@ export default function RightBar() {
 </div>
 );
 };
-   
+export default RightBar;

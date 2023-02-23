@@ -3,10 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Reddit, ArrowDown, Clock } from "react-bootstrap-icons";
 import { putPost } from "../Redux/actions";
 import { useState } from "react";
-import { BiPhotoAlbum } from "react-icons/bi";
+import { BiPhotoAlbum, BiDotsHorizontalRounded } from "react-icons/bi";
 import {RxVideo} from "react-icons/rx";
-import {MdOutlineEventAvailable} from "react-icons/md";
-import {GrArticle} from "react-icons/gr";
+import {MdOutlineEventAvailable, MdOutlineArticle} from "react-icons/md";
+import {GrEmoji} from "react-icons/gr";
+import {BsImage} from  "react-icons/bs";
+import {HiDocumentText} from "react-icons/hi"
+import {FaRegCommentDots} from "react-icons/fa"
+
+
 
 
 const PostSection = () => {
@@ -66,22 +71,22 @@ const closeAndDispatch = () => {
             className="post-section-option mx-2"
             onClick={() => handleShow2()}
           >
-            <BiPhotoAlbum size={20} className="mr-2" />
+            <BiPhotoAlbum size={20} className="mr-2 album" />
             Photo
           </Col>
           <Col
             className="post-section-option mx-2"
             onClick={() => handleShow3()}
           >
-            <RxVideo size={20} className="mr-2" />
+            <RxVideo size={20} className="mr-2 video" />
             Video
           </Col>
           <Col className="post-section-option mx-2">
-            <MdOutlineEventAvailable size={20} className="mr-2" />
+            <MdOutlineEventAvailable size={20} className="mr-2 event" />
             Event
           </Col>
           <Col className="post-section-option mx-2">
-            <GrArticle size={20} className="mr-2" />
+            <MdOutlineArticle size={20} className="mr-2 article" />
             Write Article
           </Col>
         </Row>
@@ -113,22 +118,23 @@ const closeAndDispatch = () => {
               }
               // onChange={(i) => setCount(i.target.value.length)}
             ></textarea>
-            <Reddit size={20} className="mr-2" />
+            <GrEmoji size={20} className="mr-2" />
             Add Hashtag
           </Modal.Body>
           <Modal.Footer>
             <Container>
               <Row>
                 <Col sm={4} className="post-modal-icons-container">
-                  <Reddit size={20} className="mr-2 my-2" />
-                  <Reddit size={20} className="mr-2 my-2" />
-                  <Reddit size={20} className="mr-2 my-2" />
-                  <Reddit size={20} className="mr-2 my-2" />
+                  <BsImage size={20} className="mr-2 my-2 icon" />
+                  <RxVideo size={20} className="mr-2 my-2 icon" />
+                  <HiDocumentText size={20} className="mr-2 my-2 icon" />
+                  <BiDotsHorizontalRounded size={20} className="mr-2 my-2 icon" />
                 </Col>
                 <Col className="d-flex">
                   <button className="anyone">
                     {" "}
-                    <Reddit />
+                    <FaRegCommentDots />
+                  
                     Anyone
                   </button>
                   <div className="end-of-modal ">

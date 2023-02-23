@@ -1,4 +1,5 @@
 export const GET_USER = "GET_USER";
+export const GET_ALL_USERS = "GET_ALL_USERS";
 export const UPDATE_USER = "UPDATE_USER";
 export const GET_ALL_EXPERIENCE = "GET_ALL_EXPERIENCE";
 export const GET_SINGLE_EXPERIENCE = "GET_SINGLE_EXPERIENCE";
@@ -326,6 +327,34 @@ export const editPost = (e) => {
         fetchPostsAsync();
       } else {
         console.log("error put");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+
+export const fetchUsersDataAsync = () => {
+  return async (dispatch, getState) => {
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/",
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmRkODgzODFmYzAwMTNmZmZhY2UiLCJpYXQiOjE2NzcxNjE1NjAsImV4cCI6MTY3ODM3MTE2MH0.fAmFttFOD-EuZLdMX1wMyGaxtc-aJrXXB5Wp4fJ9Xfg",
+          },
+        }
+      );
+      if (response.ok) {
+        let users = await response.json();
+        dispatch({
+          type: GET_ALL_USERS,
+          payload: users,
+        });
+      } else {
+        console.log("Error");
       }
     } catch (error) {
       console.log(error);
