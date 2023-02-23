@@ -143,6 +143,7 @@ const LowerProfile = () => {
     handleClose2();
     handleClose();
     dispatch(putExperienceAsync(experienceInfo, currentExperience));
+    uploadPicture()
   };
 
   const editAndClose = () => {
@@ -224,7 +225,36 @@ const LowerProfile = () => {
   /*        useEffect(() => {
     console.log("Clicked ID:", currentExperience); 
   }, [currentExperience]); */
+  let [image,setImg]=useState("")
+  const handleImage = (e) => {
+    console.log(e.target.files[0].name);
+    setImg(e.target.files[0])
+ 
+  };
+ 
+  const uploadPicture = async () => {
+    let Url =
+   `https://striveschool-api.herokuapp.com/api/profile/${user._id}/experiences/${currentExperience}/picture`
+    const formData = new FormData();
+    formData.append("experience", image);
+    try {
+      const res = await fetch(Url, {
+        method: "POST",
+        body: formData,
 
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
+        },
+      });
+      console.log(image);
+      if (res.ok) {
+        console.log("succes");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return (
     <Container>
       <Row>
@@ -553,12 +583,12 @@ const LowerProfile = () => {
           </Row>
           {experienceData.map((e) => {
             return (
-              <div className="experience-holder" key={e._id}>
+              <div className="experience-holder" key={e._id} >
                 <Row className="flex-column">
                   <Col className="box-h2">
                     <img
-                      src="https://www.freepnglogos.com/uploads/company-logo-png/company-logo-transparent-png-19.png"
-                      alt="company logo"
+                      src={e.image}
+                      // alt="company logo"
                       className="experience-logo "
                     />
                     <span>{e.role}</span>
@@ -1224,7 +1254,17 @@ const LowerProfile = () => {
               {media ? (
                 <div>
                   <p>Add a link</p>
-                  <p>Upload media</p>
+                  
+                  <div className="image-upload">
+                 <label htmlFor="file-input">
+                 <p>Upload media</p>
+                 </label>
+
+                <input id="file-input"   
+                   type="file"
+                   accept="image/*"
+                   onChange={handleImage}/>
+                   </div>
                 </div>
               ) : (
                 ""
