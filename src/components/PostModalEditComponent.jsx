@@ -1,7 +1,7 @@
 import { Modal, Button, Form, Dropdown } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { editPost, putPost } from "../Redux/actions";
+import { editPost, REFRESH } from "../Redux/actions";
 import { useSelector } from "react-redux";
 
 const PostModalEditComponent = ({ data }) => {
@@ -9,15 +9,23 @@ const PostModalEditComponent = ({ data }) => {
 
   const [show, setShow] = useState(false);
   const [inputValue, setInputValue] = useState({
-    text: data,
-    username: user.username,
-    __v: 0,
+    text: data.text,
   });
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const dispatch = useDispatch();
+
+  const closeAndDispatch = (e) => {
+    dispatch(editPost(inputValue, data._id));
+    handleClose();
+    dispatch({
+      type: REFRESH,
+      payload: e,
+    });
+    // navigate("/");
+  };
 
   return (
     <>
@@ -46,7 +54,7 @@ const PostModalEditComponent = ({ data }) => {
           <Form
             onSubmit={(e) => {
               e.preventDefault();
-              dispatch(editPost(inputValue));
+              closeAndDispatch();
             }}
           >
             <Form.Group>
@@ -65,10 +73,7 @@ const PostModalEditComponent = ({ data }) => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            variant="primary"
-            // onClick={() => dispatch(putPost(inputValue))}
-          >
+          <Button variant="primary" onClick={() => closeAndDispatch("test")}>
             Post
           </Button>
         </Modal.Footer>
