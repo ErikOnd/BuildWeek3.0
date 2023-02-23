@@ -3,6 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Reddit, ArrowDown, Clock } from "react-bootstrap-icons";
 import { putPost } from "../Redux/actions";
 import { useState } from "react";
+import { BiPhotoAlbum } from "react-icons/bi";
+import {RxVideo} from "react-icons/rx";
+import {MdOutlineEventAvailable} from "react-icons/md";
+import {GrArticle} from "react-icons/gr";
+
 
 const PostSection = () => {
   const user = useSelector((state) => state.user.user);
@@ -61,22 +66,22 @@ const closeAndDispatch = () => {
             className="post-section-option mx-2"
             onClick={() => handleShow2()}
           >
-            <Reddit size={20} className="mr-2" />
+            <BiPhotoAlbum size={20} className="mr-2" />
             Photo
           </Col>
           <Col
             className="post-section-option mx-2"
             onClick={() => handleShow3()}
           >
-            <Reddit size={20} className="mr-2" />
+            <RxVideo size={20} className="mr-2" />
             Video
           </Col>
           <Col className="post-section-option mx-2">
-            <Reddit size={20} className="mr-2" />
+            <MdOutlineEventAvailable size={20} className="mr-2" />
             Event
           </Col>
           <Col className="post-section-option mx-2">
-            <Reddit size={20} className="mr-2" />
+            <GrArticle size={20} className="mr-2" />
             Write Article
           </Col>
         </Row>
