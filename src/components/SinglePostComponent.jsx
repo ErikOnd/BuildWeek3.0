@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addLiked, deletePost } from "../Redux/actions";
 import PostModalEditComponent from "./PostModalEditComponent";
 
-
 const SinglePostComponent = ({ data }) => {
   // console.log(data);
 
@@ -184,7 +183,7 @@ const SinglePostComponent = ({ data }) => {
         <p className="ml-3">{data.text}</p>
         <div>
           <div className="d-flex mx-4 justify-content-between">
-            {like.filter((e) => e === data) !== data ? (
+            {/*       {like.filter((e) => e === data) !== data ? (
               <div className="d-flex pointer p-1 unliked-comment">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -218,7 +217,7 @@ const SinglePostComponent = ({ data }) => {
                 </svg>
                 <span className="ml-1">Like</span>
               </div>
-            )}
+            )} */}
 
             <div className="d-flex pointer p-1">
               <svg
@@ -282,7 +281,6 @@ const SinglePostComponent = ({ data }) => {
         Delete
       </Button> */}
     </div>
-    
   );
 };
 
