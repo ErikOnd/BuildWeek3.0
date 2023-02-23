@@ -477,8 +477,6 @@ body {
   width: 240px;
   border: 1px solid black;
   border-radius: 10px;
-
-
 }
 
 .more {
@@ -701,26 +699,32 @@ body {
   cursor: pointer;
 }
 
-.mr-2, .mx-2{
+.mr-2,
+.mx-2 {
   cursor: pointer;
 }
-.ml-1, .bi-hand-thumbs-up, .bi-arrow-repeat{
-  color:#4c4c4c ;
+.ml-1,
+.bi-hand-thumbs-up,
+.bi-arrow-repeat {
+  color: #4c4c4c;
 }
 
-.pointer:hover{
-  background-color:#EBEBEB ;
+.pointer:hover {
+  background-color: #ebebeb;
   border-radius: 10px;
 }
-.mr-2, .mx-2{
+.mr-2,
+.mx-2 {
   cursor: pointer;
 }
-.ml-1, .bi-hand-thumbs-up, .bi-arrow-repeat{
-  color:#4c4c4c ;
+.ml-1,
+.bi-hand-thumbs-up,
+.bi-arrow-repeat {
+  color: #4c4c4c;
 }
 
-.pointer:hover{
-  background-color:#EBEBEB ;
+.pointer:hover {
+  background-color: #ebebeb;
   border-radius: 10px;
 }
 
@@ -810,7 +814,7 @@ body {
   height: 200px;
   display: flex;
   justify-content: center;
-  align-items: center
+  align-items: center;
 }
 @media only screen and (max-width: 902px) {
   .feed-right-bar-container {
@@ -827,8 +831,7 @@ body {
 .post-main {
   background-color: white;
 }
-#sm-1,
-#sm-2 {
+
 #sm-1,
 #sm-2 {
   cursor: pointer;
@@ -940,39 +943,55 @@ body {
   border-radius: 20px;
 }
 
-.mercado-match{
+.mercado-match {
   color: #8b7d7d;
 }
-#post-dropdown{
+#post-dropdown {
   background-color: inherit;
   border: none;
 }
-.album{
-  color:#378FE9 ;
+.album {
+  color: #378fe9;
 }
-.video{
- color: #5F9B41;
+.video {
+  color: #5f9b41;
 }
-.event{
-  color:#C37D16;
+.event {
+  color: #c37d16;
 }
-.article{
-  color:#E16745;
+.article {
+  color: #e16745;
 }
-.job{
+.job {
   font-size: small;
 }
-.created{
+.created {
   font-size: x-small;
-  color:#8b7d7d ;
+  color: #8b7d7d;
 }
-.otheruser{
+.otheruser {
   font-size: large;
 }
 
-.bi-person-circle{
+.bi-person-circle {
   color: #3c858c;
 }
-.home:hover, .network:hover, .jobs:hover, .message:hover, .notifications:hover {
+.home:hover,
+.network:hover,
+.jobs:hover,
+.message:hover,
+.notifications:hover {
   color: #574c4c;
+}
+
+.home-nav a:hover {
+  text-decoration: none !important;
+}
+
+.home-nav:active {
+  text-decoration: none !important;
+}
+
+.home-nav:focus {
+  text-decoration: none !important;
 }
