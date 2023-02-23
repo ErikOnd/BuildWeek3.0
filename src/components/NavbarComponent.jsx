@@ -5,19 +5,37 @@ import {
   FormControl,
   Dropdown,
   DropdownButton,
+  Container
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ModalComponent from "./ModalComponent";
+import { useEffect } from "react";
+import {useSelector, useDispatch } from "react-redux";
+import {fetchDataAsync  } from "../Redux/actions";
+import React, { useState } from "react";
+
 
 const NavbarComponent = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchDataAsync ());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+ const user = useSelector((state) => state.user.user);
+  let [name, setName] = useState(user.name);
+  let [surname, setSurname] = useState(user.surname);
+  let [title, setTitle] = useState(user.title);
   return (
     <div className="fixed-top pl-0">
+      
       <Navbar
         bg="light"
         expand="lg"
         id="Navbar"
         className="d-flex justify-content-center"
       >
+        <Container>
         <div className="d-flex">
           <Navbar.Brand href="#home">
             <img
@@ -56,7 +74,7 @@ const NavbarComponent = () => {
                 viewBox="0 0 24 24"
                 data-supported-dps="24x24"
                 fill="currentColor"
-                className="mercado-match"
+                className="mercado-match home"
                 width="24"
                 height="24"
                 focusable="false"
@@ -74,7 +92,7 @@ const NavbarComponent = () => {
                 viewBox="0 0 24 24"
                 data-supported-dps="24x24"
                 fill="currentColor"
-                className="mercado-match"
+                className="mercado-match network"
                 width="24"
                 height="24"
                 focusable="false"
@@ -92,7 +110,7 @@ const NavbarComponent = () => {
                 viewBox="0 0 24 24"
                 data-supported-dps="24x24"
                 fill="currentColor"
-                className="mercado-match"
+                className="mercado-match jobs"
                 width="24"
                 height="24"
                 focusable="false"
@@ -110,7 +128,7 @@ const NavbarComponent = () => {
                 viewBox="0 0 24 24"
                 data-supported-dps="24x24"
                 fill="currentColor"
-                className="mercado-match"
+                className="mercado-match message"
                 width="24"
                 height="24"
                 focusable="false"
@@ -128,7 +146,7 @@ const NavbarComponent = () => {
                 viewBox="0 0 24 24"
                 data-supported-dps="24x24"
                 fill="currentColor"
-                className="mercado-match"
+                className="mercado-match notifications"
                 width="24"
                 height="24"
                 focusable="false"
@@ -181,8 +199,10 @@ const NavbarComponent = () => {
                       </svg>
 
                       <div className="pl-2 my-2 mx-0" id="dropdown-user">
-                        <p className="mb-0">Name Surname</p>
-                        <span>Current job example</span>
+                        <p className="mb-0"> {user.name} {user.surname} </p>
+                        <span>
+                          {user.title}
+                        </span>
                       </div>
                     </div>
                     <div id="view-profile-button">View Profile</div>
@@ -219,6 +239,7 @@ const NavbarComponent = () => {
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
+        </Container>
       </Navbar>
       <Navbar bg="light" expand="lg" id="hidden-navbar" className="">
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -263,6 +284,7 @@ const NavbarComponent = () => {
           </Form>
         </Navbar.Collapse>
       </Navbar>
+      
     </div>
   );
 };

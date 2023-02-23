@@ -734,6 +734,7 @@ const LowerProfile = () => {
                 />
                 <br />
                 <Form.Label>Start Date*</Form.Label>
+                <div className="d-flex flex-row justify-content-between">
                 <Form.Control
                   as={"select"}
                   required
@@ -756,6 +757,7 @@ const LowerProfile = () => {
                   <option value="Nov">November</option>
                   <option value="Dec">December</option>
                 </Form.Control>
+                
                 <Form.Control
                   as={"select"}
                   required
@@ -773,8 +775,10 @@ const LowerProfile = () => {
                     );
                   })}
                 </Form.Control>
+                </div>
                 <br />
                 <Form.Label>End Date*</Form.Label>
+                <div className="d-flex flex-row justify-content-between">
                 <Form.Control
                   as={"select"}
                   disabled
@@ -797,6 +801,7 @@ const LowerProfile = () => {
                   <option value="Nov">November</option>
                   <option value="Dec">December</option>
                 </Form.Control>
+            
                 <Form.Control as={"select"} disabled>
                   <option>Year</option>
                   {years.map((y) => {
@@ -807,6 +812,7 @@ const LowerProfile = () => {
                     );
                   })}
                 </Form.Control>
+                </div>
                 <br />
                 <MDBCheckbox
                   name="flexCheck"
@@ -836,6 +842,7 @@ const LowerProfile = () => {
                 />
                 <br />
                 <Form.Label>Start Date*</Form.Label>
+                <div className="d-flex flex-row justify-content-between">
                 <Form.Control
                   as={"select"}
                   value={startMonth}
@@ -856,6 +863,7 @@ const LowerProfile = () => {
                   <option value="Nov">November</option>
                   <option value="Dec">December</option>
                 </Form.Control>
+                
                 <Form.Control
                   as={"select"}
                   value={startYear}
@@ -871,9 +879,10 @@ const LowerProfile = () => {
                     );
                   })}
                 </Form.Control>
-
+                </div>
                 <br />
                 <Form.Label>End Date*</Form.Label>
+                <div className="d-flex flex-row justify-content-between">
                 <Form.Control
                   as={"select"}
                   value={endMonth}
@@ -912,6 +921,7 @@ const LowerProfile = () => {
                     );
                   })}
                 </Form.Control>
+                </div>
                 <br />
               </>
             )}

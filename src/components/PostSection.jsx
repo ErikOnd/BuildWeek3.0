@@ -1,7 +1,16 @@
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Reddit, ArrowDown, Clock } from "react-bootstrap-icons";
+import { putPost } from "../Redux/actions";
 import { useState } from "react";
+import { BiPhotoAlbum, BiDotsHorizontalRounded } from "react-icons/bi";
+import { RxVideo } from "react-icons/rx";
+import { MdOutlineEventAvailable, MdOutlineArticle } from "react-icons/md";
+import { GrEmoji } from "react-icons/gr";
+import { BsImage } from "react-icons/bs";
+import { HiDocumentText } from "react-icons/hi";
+import { FaRegCommentDots } from "react-icons/fa";
+import { BsChevronDown } from "react-icons/bs";
 
 const PostSection = () => {
   const user = useSelector((state) => state.user.user);
@@ -17,8 +26,16 @@ const PostSection = () => {
 
   const handleClose3 = () => setShow3(false);
   const handleShow3 = () => setShow3(true);
-  const [count, setCount] = useState(0);
   const [sort, setSort] = useState(false);
+
+  const [inputValue, setInputValue] = useState({
+    text: "",
+    username: user.username,
+    __v: 0,
+  });
+
+  // const navigate = useNavigate();
+  const dispatch = useDispatch();
   const sorting = () => {
     if (sort === false) {
       setSort(true);
@@ -27,9 +44,14 @@ const PostSection = () => {
     }
   };
 
+  const closeAndDispatch = () => {
+    dispatch(putPost(inputValue));
+    handleClose();
+  };
+
   return (
     <>
-      <Container className="post-section">
+      <Container className="post-section ">
         <Row className="d-flex upper-post-section">
           <img
             className="home-profile-pic mx-2 my-2"
@@ -48,22 +70,22 @@ const PostSection = () => {
             className="post-section-option mx-2"
             onClick={() => handleShow2()}
           >
-            <Reddit size={20} className="mr-2" />
+            <BiPhotoAlbum size={20} className="mr-2 album" />
             Photo
           </Col>
           <Col
             className="post-section-option mx-2"
             onClick={() => handleShow3()}
           >
-            <Reddit size={20} className="mr-2" />
+            <RxVideo size={20} className="mr-2 video" />
             Video
           </Col>
           <Col className="post-section-option mx-2">
-            <Reddit size={20} className="mr-2" />
+            <MdOutlineEventAvailable size={20} className="mr-2 event" />
             Event
           </Col>
           <Col className="post-section-option mx-2">
-            <Reddit size={20} className="mr-2" />
+            <MdOutlineArticle size={20} className="mr-2 article" />
             Write Article
           </Col>
         </Row>
@@ -81,47 +103,52 @@ const PostSection = () => {
             <Form.Label>
               {user.name} {user.surname}
             </Form.Label>
-            <Form.Control as="select" size="sm">
-              <option>
-                Anyone <ArrowDown />
-              </option>
-            </Form.Control>
             <textarea
               name=""
               id=""
               style={{ width: "100%", height: "200px", border: "transparent" }}
               placeholder="What do you want to talk about"
-              onChange={(i) => setCount(i.target.value.length)}
+              value={inputValue.text}
+              onChange={(e) =>
+                setInputValue({
+                  ...inputValue,
+                  text: e.target.value,
+                })
+              }
+              // onChange={(i) => setCount(i.target.value.length)}
             ></textarea>
-            <Reddit size={20} className="mr-2" />
+            <GrEmoji size={20} className="mr-2" />
             Add Hashtag
           </Modal.Body>
           <Modal.Footer>
             <Container>
               <Row>
                 <Col sm={4} className="post-modal-icons-container">
-                  <Reddit size={20} className="mr-2 my-2" />
-                  <Reddit size={20} className="mr-2 my-2" />
-                  <Reddit size={20} className="mr-2 my-2" />
-                  <Reddit size={20} className="mr-2 my-2" />
+                  <BsImage size={20} className="mr-2 my-2 icon" />
+                  <RxVideo size={20} className="mr-2 my-2 icon" />
+                  <HiDocumentText size={20} className="mr-2 my-2 icon" />
+                  <BiDotsHorizontalRounded
+                    size={20}
+                    className="mr-2 my-2 icon"
+                  />
                 </Col>
                 <Col className="d-flex">
                   <button className="anyone">
                     {" "}
-                    <Reddit />
+                    <FaRegCommentDots />
                     Anyone
                   </button>
                   <div className="end-of-modal ">
                     <Clock size={20} className="mr-2" />
-                    {!count == 0 ? (
-                      <Button variant="primary" onClick={handleClose}>
-                        Post
-                      </Button>
-                    ) : (
-                      <Button variant="primary" onClick={handleClose} disabled>
-                        Post
-                      </Button>
-                    )}
+
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        closeAndDispatch();
+                      }}
+                    >
+                      Post
+                    </Button>
                   </div>
                 </Col>
               </Row>
@@ -174,7 +201,7 @@ const PostSection = () => {
         <div className="line"></div>
 
         <small onClick={() => sorting()}>
-          Sort By: <b> Top</b> <ArrowDown />
+          Sort By: <b> Top</b> <BsChevronDown />
         </small>
         {sort ? (
           <div className="top-recent">
