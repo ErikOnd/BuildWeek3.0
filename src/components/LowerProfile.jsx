@@ -32,10 +32,7 @@ const LowerProfile = () => {
     area: "",
   });
 
-  console.log(experienceInfo);
-
   useEffect(() => {
-    console.log("update");
     dispatch(getAllExperienceAsync());
   }, [updatExperience]);
 
@@ -135,7 +132,6 @@ const LowerProfile = () => {
     handleClose2();
   };
   const saveAndClose = () => {
-    console.log("testPost");
     handleClose3();
     handleClose2();
     handleClose();
@@ -143,11 +139,9 @@ const LowerProfile = () => {
   };
 
   const updateAndClose = () => {
-    console.log("testPut");
     handleClose3();
     handleClose2();
     handleClose();
-    console.log(experienceInfo);
     dispatch(putExperienceAsync(experienceInfo, currentExperience));
   };
 
