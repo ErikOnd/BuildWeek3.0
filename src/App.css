@@ -59,8 +59,6 @@ body {
   font-size: smaller;
 }
 
-
-
 #hidden-navbar {
   display: none;
   padding-right: 180px;
@@ -662,7 +660,6 @@ body {
   padding: 0 !important;
   width: 300px !important ;
   border-radius: 10px;
-  
 }
 .home-rigthbar-container button {
   background-color: transparent;
@@ -691,14 +688,12 @@ body {
 .home-rightbar-footer {
   width: 300px !important ;
   position: sticky;
-  top:70px;
+  top: 70px;
 }
 .home-rightbar-footer small {
   font-size: 13px;
   margin: 0.6em;
   cursor: pointer;
-
-
 }
 
 .rightbar-link {
@@ -715,9 +710,8 @@ body {
   width: 580px !important;
   height: 116px;
 }
-.reddit-icon{
-  margin-left:auto;
-
+.reddit-icon {
+  margin-left: auto;
 }
 .home-profile-pic {
   height: 48px;
@@ -738,8 +732,7 @@ body {
   border-radius: 10px;
   display: flex;
   justify-content: center;
-  align-items: center
-
+  align-items: center;
 }
 .post-section-option:hover {
   background-color: rgb(230, 230, 230);
@@ -766,7 +759,6 @@ body {
   width: 83%;
   height: 1px;
   background-color: black;
-
 }
 .top-recent {
   background-color: white;
@@ -825,4 +817,42 @@ body {
 }
 #dlt-btn:hover {
   background-color: #ebebeb;
+}
+
+.post-user-info {
+  width: 250px;
+  font-size: smaller;
+  font-weight: bold;
+}
+
+.post-user-info span {
+  font-weight: lighter;
+}
+
+#post-dropdown {
+  background-color: transparent;
+  border: none;
+}
+
+#dots3:hover {
+  border-radius: 20px;
+  background-color: rgb(180, 180, 180);
+}
+
+#post-dropdown:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.dropdown-toggle {
+  padding: 0 !important;
+}
+
+.dropdown-menu {
+  box-shadow: 0px 0px 5px 1px grey;
+}
+
+.liked-comment {
+  background-color: #1bc715;
+  border-radius: 20px;
 }

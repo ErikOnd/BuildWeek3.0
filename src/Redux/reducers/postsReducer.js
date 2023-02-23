@@ -1,7 +1,16 @@
-import { GET_POSTS, POST_POSTS, DELETE_POSTS } from "../actions";
+import {
+  GET_POSTS,
+  POST_POSTS,
+  DELETE_POSTS,
+  REFRESH,
+  ADD_LIKED,
+  REMOVE_LIKED,
+} from "../actions";
 
 const initialState = {
   posts: [],
+  liked: [],
+  refresh: 0,
 };
 
 const postsReducer = (state = initialState, action) => {
@@ -23,6 +32,24 @@ const postsReducer = (state = initialState, action) => {
       return {
         ...state,
         posts: state.posts.filter((e) => e !== action.payload),
+      };
+
+    case ADD_LIKED:
+      return {
+        ...state,
+        liked: [...state.content, action.payload],
+      };
+
+    case REMOVE_LIKED:
+      return {
+        ...state,
+        liked: state.liked.filter((e) => e === action.payload),
+      };
+
+    case REFRESH:
+      return {
+        ...state,
+        refresh: action.payload,
       };
 
     default:

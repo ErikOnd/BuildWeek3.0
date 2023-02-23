@@ -11,7 +11,7 @@ const initialState = {
 };
 
 const experienceReducer = (state = initialState, action) => {
-  console.log(action.type);
+  // console.log(action.type);
   switch (action.type) {
     case GET_ALL_EXPERIENCE:
       console.log("experienceReducer");

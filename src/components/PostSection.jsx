@@ -1,13 +1,13 @@
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Reddit, ArrowDown, Clock } from "react-bootstrap-icons";
-import { putPost } from "../Redux/actions";
+import { putPost, REFRESH } from "../Redux/actions";
 import { useState } from "react";
 import { BiPhotoAlbum } from "react-icons/bi";
-import {RxVideo} from "react-icons/rx";
-import {MdOutlineEventAvailable} from "react-icons/md";
-import {GrArticle} from "react-icons/gr";
-
+import { RxVideo } from "react-icons/rx";
+import { MdOutlineEventAvailable } from "react-icons/md";
+import { GrArticle } from "react-icons/gr";
+// import { useNavigate } from "react-router-dom";
 
 const PostSection = () => {
   const user = useSelector((state) => state.user.user);
@@ -23,7 +23,6 @@ const PostSection = () => {
 
   const handleClose3 = () => setShow3(false);
   const handleShow3 = () => setShow3(true);
-  const [count, setCount] = useState(0);
   const [sort, setSort] = useState(false);
 
   const [inputValue, setInputValue] = useState({
@@ -32,6 +31,7 @@ const PostSection = () => {
     __v: 0,
   });
 
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const sorting = () => {
     if (sort === false) {
@@ -39,15 +39,21 @@ const PostSection = () => {
     } else {
       setSort(false);
     }
-  }
-console.log(count)
-const closeAndDispatch = () => {
+  };
+
+  const closeAndDispatch = (e) => {
     dispatch(putPost(inputValue));
     handleClose();
+    dispatch({
+      type: REFRESH,
+      payload: e,
+    });
+    // navigate("/");
   };
-    return (
-        <>
-        <Container className="post-section ">
+
+  return (
+    <>
+      <Container className="post-section ">
         <Row className="d-flex upper-post-section">
           <img
             className="home-profile-pic mx-2 my-2"
@@ -133,20 +139,15 @@ const closeAndDispatch = () => {
                   </button>
                   <div className="end-of-modal ">
                     <Clock size={20} className="mr-2" />
-                    {!count === 0 ? (
-                      <Button variant="primary" onClick={handleClose}>
-                        Post
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="primary"
-                        onClick={() => {
-                          closeAndDispatch();
-                        }}
-                      >
-                        Post
-                      </Button>
-                    )}
+
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        closeAndDispatch(user);
+                      }}
+                    >
+                      Post
+                    </Button>
                   </div>
                 </Col>
               </Row>
