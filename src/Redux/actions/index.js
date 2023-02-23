@@ -1,3 +1,4 @@
+import { Form } from "react-bootstrap";
 
 export const GET_USER = "GET_USER";
 export const GET_ALL_USERS = "GET_ALL_USERS";
@@ -15,6 +16,7 @@ export const ADD_LIKED = "LIKED";
 export const REMOVE_LIKED = "REMOVE_LIKED";
 export const POST_PROFILE_PIC="POST_PROFILE_PIC"
 export const POST_EXPERIENCE_PIC="POST_EXPERIENCE_PIC"
+export const POST_POST_PICTURE="POST_POST_PICTURE"
 export const addLiked = (e) => {
   console.log("added", e);
   return {
@@ -500,3 +502,33 @@ export const postExperiencePicture=(id,eid,form)=>{
   }
  }
 }
+
+export const postPostPicture=(id,form)=>{
+ return async(dispatch)=>{
+  let Url =
+  "https://striveschool-api.herokuapp.com/api/posts/"+id;
+   
+   
+  
+  try {
+    const res = await fetch(Url, {
+      method: "POST",
+      body: form,
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
+      },
+    })
+    if (res.ok) {
+      console.log("succes");
+      dispatch({
+        type: POST_POST_PICTURE,
+        payload: form,
+      });
+    }
+   }catch(err){
+    console.log(err)
+   }
+  
+  }}
+

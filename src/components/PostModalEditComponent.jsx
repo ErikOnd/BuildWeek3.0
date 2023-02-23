@@ -1,7 +1,7 @@
 import { Modal, Button, Form, Dropdown } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { editPost, REFRESH } from "../Redux/actions";
+import { editPost, postPostPicture, REFRESH } from "../Redux/actions";
 import { useSelector } from "react-redux";
 import { BsImage } from "react-icons/bs";
 
@@ -24,33 +24,14 @@ const PostModalEditComponent = ({ data }) => {
     setImg(e.target.files[0])
  
   };
-  const uploadPicture = async () => {
-    let Url =
-      "https://striveschool-api.herokuapp.com/api/posts/"+data._id;
-    const formData = new FormData();
-    formData.append("post", image);
-    try {
-      const res = await fetch(Url, {
-        method: "POST",
-        body: formData,
-
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
-        },
-      });
-      console.log(image);
-      if (res.ok) {
-        console.log("succes");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
 
   const closeAndDispatch = (e) => {
+
     dispatch(editPost(inputValue, data._id));
-    uploadPicture()
+    // uploadPicture()
+    const formData = new FormData();
+     formData.append("post", image);
+    dispatch(postPostPicture(data._id,formData))
     handleClose();
     dispatch({
       type: REFRESH,
