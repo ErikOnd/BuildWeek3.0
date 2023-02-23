@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addLiked, deletePost } from "../Redux/actions";
 import PostModalEditComponent from "./PostModalEditComponent";
 
+
 const SinglePostComponent = ({ data }) => {
   // console.log(data);
 
@@ -281,6 +282,7 @@ const SinglePostComponent = ({ data }) => {
         Delete
       </Button> */}
     </div>
+    
   );
 };
 
