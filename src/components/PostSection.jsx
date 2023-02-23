@@ -7,6 +7,11 @@ import { BiPhotoAlbum } from "react-icons/bi";
 import { RxVideo } from "react-icons/rx";
 import { MdOutlineEventAvailable } from "react-icons/md";
 import { GrArticle } from "react-icons/gr";
+import { CiFaceSmile } from "react-icons/ci";
+import { HiDocumentText } from "react-icons/hi";
+import { BsThreeDots } from "react-icons/bs";
+import { AiOutlineMessage } from "react-icons/ai";
+import { BsChevronDown } from "react-icons/bs";
 
 const PostSection = () => {
   const user = useSelector((state) => state.user.user);
