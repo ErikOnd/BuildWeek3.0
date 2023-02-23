@@ -9,10 +9,10 @@ import {fetchUsersDataAsync  } from "../Redux/actions";
 
 const RightBar = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchUsersDataAsync ());
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchUsersDataAsync ());
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const users = useSelector((state) => state.user.user);
   let [name, setName] = useState(users.name);
