@@ -84,7 +84,7 @@ console.log(user)
 
   const handleImage=(e)=>{
     console.log(e.target.files[0].name)
-    setImg(e.target.files[0].name)
+    setImg(e.target.files[0])
   }
   let item = { name, surname, title };
   const updateUser = async (e) => {
