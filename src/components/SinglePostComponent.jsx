@@ -5,7 +5,7 @@ import { addLiked, deletePost, removeLiked } from "../Redux/actions";
 import PostModalEditComponent from "./PostModalEditComponent";
 
 const SinglePostComponent = ({ data }) => {
-  // console.log(data);
+  console.log(data);
 
   const user = useSelector((state) => state.user.user);
   const like = useSelector((state) => state.posts.liked);
@@ -16,7 +16,7 @@ const SinglePostComponent = ({ data }) => {
       <div className="">
         <div className="d-flex p-3 justify-content-between">
           <div className="d-flex">
-            <svg
+            {/* <svg
               xmlns="http://www.w3.org/2000/svg"
               width="30"
               height="30"
@@ -29,9 +29,11 @@ const SinglePostComponent = ({ data }) => {
                 fillRule="evenodd"
                 d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
               />
-            </svg>
+            </svg> */}
+            <img class="post-user-image" src={data.user.image} alt="" />
             <div className="ml-2 post-user-info text-truncate">
               <p className="mb-0">{data.username}</p>
+              <p className="mb-0 text-secondary">{data.user.bio}</p>
               <span>{data.updatedAt}</span>
             </div>
           </div>
