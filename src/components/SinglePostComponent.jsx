@@ -183,7 +183,9 @@ const SinglePostComponent = ({ data }) => {
         <p className="ml-3">{data.text}</p>
         <div>
           <div className="d-flex mx-4 justify-content-between">
-            {like.filter((e) => e === data._id).length > 0 ? (
+            {data === undefined ? (
+              ""
+            ) : like.filter((e) => e === data._id).length > 0 ? (
               <div
                 className="d-flex pointer p-1 unliked-comment"
                 onClick={(e) => {
