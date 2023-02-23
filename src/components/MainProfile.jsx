@@ -86,38 +86,20 @@ const MainProfile = () => {
     setImg(e.target.files[0]);
   };
   let item = { name, surname, title };
-  const updateUser = async (e) => {
-    try {
-      let res = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/`,
-        {
-          method: "PUT",
-          body: JSON.stringify(e),
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
-          },
-        }
-      );
-      if (res.ok) {
-        let newUser = await res.json();
 
-        dispatch(fetchDataAsync());
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    
   console.log(item);
-  const both = () => {
-    const formData = new FormData();
+  const both = async() => {
+    try{
+    const formData = await new FormData();
    formData.append("profile", image);
-   dispatch(userUpdate(item))
+  await dispatch(userUpdate(item))
    
-    dispatch(postProfilePicture(id,formData))
- 
+   await dispatch(postProfilePicture(id,formData))
+    window.location.reload()
+    }catch(err){
+      console.log(err)
+    }
   };
 
   return (

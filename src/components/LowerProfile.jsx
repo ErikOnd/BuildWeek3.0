@@ -9,7 +9,7 @@ import {
   Form,
 } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllExperienceAsync, postExperienceAsync } from "../Redux/actions";
+import { getAllExperienceAsync, postExperienceAsync, postExperiencePicture } from "../Redux/actions";
 import React, { useState } from "react";
 import { BsFillCalendarFill } from "react-icons/bs";
 import { BsFillBriefcaseFill } from "react-icons/bs";
@@ -142,8 +142,11 @@ const LowerProfile = () => {
     handleClose3();
     handleClose2();
     handleClose();
+    uploadPicture()   
     dispatch(putExperienceAsync(experienceInfo, currentExperience));
-    uploadPicture()
+   
+ 
+    // dispatch(postExperiencePicture(user._id,currentExperience,formData))
   };
 
   const editAndClose = () => {
