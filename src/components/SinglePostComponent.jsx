@@ -1,6 +1,6 @@
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addLiked, deletePost } from "../Redux/actions";
+import { addLiked, deletePost, removeLiked } from "../Redux/actions";
 import PostModalEditComponent from "./PostModalEditComponent";
 
 const SinglePostComponent = ({ data }) => {
@@ -183,8 +183,13 @@ const SinglePostComponent = ({ data }) => {
         <p className="ml-3">{data.text}</p>
         <div>
           <div className="d-flex mx-4 justify-content-between">
-            {/*       {like.filter((e) => e === data) !== data ? (
-              <div className="d-flex pointer p-1 unliked-comment">
+            {like.filter((e) => e === data._id).length > 0 ? (
+              <div
+                className="d-flex pointer p-1 unliked-comment"
+                onClick={(e) => {
+                  dispatch(removeLiked(data._id));
+                }}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -202,7 +207,7 @@ const SinglePostComponent = ({ data }) => {
                 className="d-flex pointer p-1 liked-comment"
                 onClick={(e) => {
                   // e.preventDefault();
-                  dispatch(addLiked(data));
+                  dispatch(addLiked(data._id));
                 }}
               >
                 <svg
@@ -217,7 +222,7 @@ const SinglePostComponent = ({ data }) => {
                 </svg>
                 <span className="ml-1">Like</span>
               </div>
-            )} */}
+            )}
 
             <div className="d-flex pointer p-1">
               <svg
