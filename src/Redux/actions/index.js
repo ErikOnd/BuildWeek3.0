@@ -13,6 +13,7 @@ export const ADD_LIKED = "LIKED";
 export const REMOVE_LIKED = "REMOVE_LIKED";
 
 export const addLiked = (e) => {
+  console.log("added", e);
   return {
     type: ADD_LIKED,
     payload: e,
@@ -259,7 +260,6 @@ export const fetchPostsAsync = () => {
       );
       if (res.ok) {
         const data = await res.json();
-
         dispatch({
           type: GET_POSTS,
           payload: data
@@ -295,12 +295,12 @@ export const putPost = (e) => {
       );
       if (res.ok) {
         dispatch({
-          type: POST_POSTS,
-          payload: e,
-        });
-        dispatch({
           type: REFRESH,
           payload: +1,
+        });
+        dispatch({
+          type: POST_POSTS,
+          payload: e,
         });
       } else {
         console.log("error posting");

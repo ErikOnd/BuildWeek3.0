@@ -37,13 +37,13 @@ const postsReducer = (state = initialState, action) => {
     case ADD_LIKED:
       return {
         ...state,
-        liked: [...state.content, action.payload],
+        liked: [...state.liked, action.payload],
       };
 
     case REMOVE_LIKED:
       return {
         ...state,
-        liked: state.liked.filter((e) => e === action.payload),
+        liked: state.liked.filter((e) => e !== action.payload),
       };
 
     case REFRESH:

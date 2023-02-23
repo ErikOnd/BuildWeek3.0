@@ -853,6 +853,11 @@ body {
 }
 
 .liked-comment {
-  background-color: #1bc715;
+  background-color: #a6faa3;
+  border-radius: 20px;
+}
+
+.unliked-comment {
+  background-color: #ffc0c0;
   border-radius: 20px;
 }
