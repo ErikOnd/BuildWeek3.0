@@ -1,4 +1,4 @@
-import { useEffect, useState,useInterval } from "react";
+import { useEffect, useState, useInterval } from "react";
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { fetchDataAsync } from "../Redux/actions";
 import { CameraFill, Key, Pencil } from "react-bootstrap-icons";
@@ -12,12 +12,12 @@ const MainProfile = () => {
   let [name, setName] = useState(user.name);
   let [surname, setSurname] = useState(user.surname);
   let [title, setTitle] = useState(user.title);
-  let [image,setImg]=useState(user.image)
+  let [image, setImg] = useState(user.image);
   let [id, setId] = useState(user._id);
   let [core, setCore] = useState(true);
   let [recommended, setRecommended] = useState(false);
   let [additional, setAdditional] = useState(false);
-console.log(user)
+
   const setting3 = () => {
     if (recommended === true || additional === true) {
       return setCore(false);
@@ -52,8 +52,6 @@ console.log(user)
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
 
-
-
   const dispatch = useDispatch();
 
   const handleClose = () => setShow(false);
@@ -83,46 +81,66 @@ console.log(user)
     }
   }
 
-  const handleImage=(e)=>{
-    console.log(e.target.files[0].name)
-    setImg(e.target.files[0])
-  }
-  const formData=new FormData()
-  formData.append("profile",image)
- 
+  const handleImage = (e) => {
+    console.log(e.target.files[0].name);
+    setImg(e.target.files[0]);
+  };
   let item = { name, surname, title };
-  console.log(item)
- const uploadPicture=async()=>{
-  let Url="https://striveschool-api.herokuapp.com/api/profile/"+id+"/picture"
+  const updateUser = async (e) => {
+    try {
+      let res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/`,
+        {
+          method: "PUT",
+          body: JSON.stringify(e),
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
+          },
+        }
+      );
+      if (res.ok) {
+        let newUser = await res.json();
 
-   try{
-   const res=await fetch(Url,{
-    method:"POST",
-    body:formData,
+        dispatch(fetchDataAsync());
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  console.log(item);
+  const uploadPicture = async () => {
+    let Url =
+      "https://striveschool-api.herokuapp.com/api/profile/" + id + "/picture";
+    const formData = new FormData();
+    formData.append("profile", image);
+    try {
+      const res = await fetch(Url, {
+        method: "POST",
+        body: formData,
 
-    headers:{
-              Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
-            }
-   })
-   console.log(image)
-   if(res.ok){
-    console.log("succes")
-   }
-   }catch(err){
-    console.log(err)
-   }
- }
-  const both=()=>{
-    dispatch(userUpdate(item))
-    uploadPicture()
-    
- 
-  }
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
+        },
+      });
+      console.log(image);
+      if (res.ok) {
+        console.log("succes");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const both = () => {
+    updateUser(item);
+    uploadPicture();
+  };
 
   useEffect(() => {
     dispatch(fetchDataAsync());
-
   }, []);
 
   return (
@@ -156,12 +174,12 @@ console.log(user)
                 </Form.Text>
                 <Form.Label>Pronouns</Form.Label>
                 <Form.Control as={"select"} required>
-              <option>Please Select</option>
-              <option>She/Her</option>
-              <option>He/Him</option>
-              <option>They/Them</option>
-              <option>Custom</option>
-            </Form.Control>
+                  <option>Please Select</option>
+                  <option>She/Her</option>
+                  <option>He/Him</option>
+                  <option>They/Them</option>
+                  <option>Custom</option>
+                </Form.Control>
                 <Form.Text className="text-muted">Pronouns</Form.Text>
                 {/* <Form.Label htmlFor="Select">Disabled select menu</Form.Label>
           <Form.Select id="Select">
@@ -182,7 +200,7 @@ console.log(user)
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
-                 <Form.Label>Picture Url</Form.Label>
+                <Form.Label>Picture Url</Form.Label>
                 <Form.Control
                   type="file"
                   accept="image/*"
@@ -192,11 +210,7 @@ console.log(user)
             </Form>
           </Modal.Body>
           <Modal.Footer>
-           <Button
-              variant="primary"
-              type="submit"
-              onClick={() => both()}
-            >
+            <Button variant="primary" type="submit" onClick={() => both()}>
               Save
             </Button>
           </Modal.Footer>
@@ -329,7 +343,7 @@ console.log(user)
             <CameraFill className="camera mt-3" size={40} color="blue" />
           </Row>
           <Row className="lower">
-            <Col sm={8} >
+            <Col sm={8}>
               <h2>
                 {user.name} {user.surname}
               </h2>

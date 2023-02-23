@@ -1,7 +1,8 @@
 import { Container,Row,Col } from "react-bootstrap";
 import { useState } from "react";
-
-import {BsInfoSquareFill,BsChevronDown,BsChevronUp} from "react-icons/bs"
+import { ArrowDown,ArrowUp, Reddit } from "react-bootstrap-icons";
+import {FcNews } from "react-icons/fc"
+import {BsChevronDown,BsChevronUp } from "react-icons/bs"
 // import {logo} from "../Css/pics/Ll-Logo"
 const HomeRightBar = () => {
     let [more,setMore]=useState(false)
@@ -15,7 +16,7 @@ const HomeRightBar = () => {
             <p className="ml-4"><b> LinkedIn News</b></p>
        
         </div>
-        <BsInfoSquareFill className="reddit-icon mr-4 mt-1"/>
+        <FcNews  className="reddit-icon mr-4 mt-2"/>
         </Row>
         <div className="side-news">
         <p><b>• Why We sleep more in the winter</b></p>

@@ -59,8 +59,6 @@ body {
   font-size: smaller;
 }
 
-
-
 #hidden-navbar {
   display: none;
   padding-right: 180px;
@@ -479,8 +477,6 @@ body {
   width: 240px;
   border: 1px solid black;
   border-radius: 10px;
-
-
 }
 
 .more {
@@ -581,7 +577,7 @@ body {
   border: 1px solid #d9d9d8;
   border-radius: 10px;
   cursor: pointer;
-  width: 350px;
+  width: 280px;
   margin-top: 52px;
 }
 
@@ -667,7 +663,6 @@ body {
   padding: 0 !important;
   width: 300px !important ;
   border-radius: 10px;
-  
 }
 .home-rigthbar-container button {
   background-color: transparent;
@@ -696,14 +691,41 @@ body {
 .home-rightbar-footer {
   width: 300px !important ;
   position: sticky;
-  top:70px;
+  top: 70px;
 }
 .home-rightbar-footer small {
   font-size: 13px;
   margin: 0.6em;
   cursor: pointer;
+}
 
+.mr-2,
+.mx-2 {
+  cursor: pointer;
+}
+.ml-1,
+.bi-hand-thumbs-up,
+.bi-arrow-repeat {
+  color: #4c4c4c;
+}
 
+.pointer:hover {
+  background-color: #ebebeb;
+  border-radius: 10px;
+}
+.mr-2,
+.mx-2 {
+  cursor: pointer;
+}
+.ml-1,
+.bi-hand-thumbs-up,
+.bi-arrow-repeat {
+  color: #4c4c4c;
+}
+
+.pointer:hover {
+  background-color: #ebebeb;
+  border-radius: 10px;
 }
 
 .rightbar-link {
@@ -720,9 +742,8 @@ body {
   width: 580px !important;
   height: 116px;
 }
-.reddit-icon{
-  margin-left:auto;
-
+.reddit-icon {
+  margin-left: auto;
 }
 .home-profile-pic {
   height: 48px;
@@ -743,8 +764,7 @@ body {
   border-radius: 10px;
   display: flex;
   justify-content: center;
-  align-items: center
-
+  align-items: center;
 }
 .post-section-option:hover {
   background-color: rgb(230, 230, 230);
@@ -772,7 +792,6 @@ body {
   width: 83%;
   height: 1px;
   background-color: black;
-
 }
 .top-recent {
   background-color: white;
@@ -795,7 +814,7 @@ body {
   height: 200px;
   display: flex;
   justify-content: center;
-  align-items: center
+  align-items: center;
 }
 @media only screen and (max-width: 902px) {
   .feed-right-bar-container {
@@ -812,6 +831,7 @@ body {
 .post-main {
   background-color: white;
 }
+
 #sm-1,
 #sm-2 {
   cursor: pointer;
@@ -836,4 +856,146 @@ body {
 }
 #dlt-btn:hover {
   background-color: #ebebeb;
+}
+.post-user-info {
+  width: 250px;
+  font-size: smaller;
+  font-weight: bold;
+}
+
+.post-user-info span {
+  font-weight: lighter;
+}
+
+#post-dropdown {
+  background-color: transparent;
+  border: none;
+}
+
+#dots3:hover {
+  border-radius: 20px;
+  background-color: rgb(180, 180, 180);
+}
+
+#post-dropdown:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.dropdown-toggle {
+  padding: 0 !important;
+}
+
+.dropdown-menu {
+  box-shadow: 0px 0px 5px 1px grey;
+}
+
+.liked-comment {
+  background-color: #a6faa3;
+  border-radius: 20px;
+}
+
+.unliked-comment {
+  background-color: #ffc0c0;
+  border-radius: 20px;
+}
+
+.post-user-info {
+  width: 250px;
+  font-size: smaller;
+  font-weight: bold;
+}
+
+.post-user-info span {
+  font-weight: lighter;
+}
+
+#post-dropdown {
+  background-color: transparent;
+  border: none;
+}
+
+#dots3:hover {
+  border-radius: 20px;
+  background-color: rgb(180, 180, 180);
+}
+
+#post-dropdown:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.dropdown-toggle {
+  padding: 0 !important;
+}
+
+.dropdown-menu {
+  box-shadow: 0px 0px 5px 1px grey;
+}
+
+.liked-comment {
+  background-color: #a6faa3;
+  border-radius: 20px;
+}
+
+.unliked-comment {
+  background-color: #ffc0c0;
+  border-radius: 20px;
+}
+
+.mercado-match {
+  color: #8b7d7d;
+}
+#post-dropdown {
+  background-color: inherit;
+  border: none;
+}
+.album {
+  color: #378fe9;
+}
+.video {
+  color: #5f9b41;
+}
+.event {
+  color: #c37d16;
+}
+.article {
+  color: #e16745;
+}
+.job {
+  font-size: small;
+}
+.created {
+  font-size: x-small;
+  color: #8b7d7d;
+}
+.otheruser {
+  font-size: large;
+}
+
+.bi-person-circle {
+  color: #3c858c;
+}
+.home:hover,
+.network:hover,
+.jobs:hover,
+.message:hover,
+.notifications:hover {
+  color: #574c4c;
+}
+
+.home-nav a:hover {
+  text-decoration: none !important;
+}
+
+.home-nav:active {
+  text-decoration: none !important;
+}
+
+.home-nav:focus {
+  text-decoration: none !important;
+}
+
+.post-images {
+  width: 100%;
 }

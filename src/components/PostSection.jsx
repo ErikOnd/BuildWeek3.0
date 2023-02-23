@@ -1,17 +1,17 @@
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Clock } from "react-bootstrap-icons";
+import { Reddit, ArrowDown, Clock } from "react-bootstrap-icons";
 import { putPost } from "../Redux/actions";
 import { useState } from "react";
-import { BiPhotoAlbum } from "react-icons/bi";
-import {RxVideo} from "react-icons/rx";
-import {MdOutlineEventAvailable} from "react-icons/md";
-import {GrArticle} from "react-icons/gr";
-import {CiFaceSmile} from "react-icons/ci"
-import {HiDocumentText} from "react-icons/hi"
-import {BsThreeDots} from "react-icons/bs"
-import {AiOutlineMessage} from "react-icons/ai"
-import {BsChevronDown} from "react-icons/bs"
+import { BiPhotoAlbum, BiDotsHorizontalRounded } from "react-icons/bi";
+import { RxVideo } from "react-icons/rx";
+import { MdOutlineEventAvailable, MdOutlineArticle } from "react-icons/md";
+import { GrEmoji } from "react-icons/gr";
+import { BsImage } from "react-icons/bs";
+import { HiDocumentText } from "react-icons/hi";
+import { FaRegCommentDots } from "react-icons/fa";
+import { BsChevronDown } from "react-icons/bs";
+
 const PostSection = () => {
   const user = useSelector((state) => state.user.user);
   const [show, setShow] = useState(false);
@@ -26,7 +26,6 @@ const PostSection = () => {
 
   const handleClose3 = () => setShow3(false);
   const handleShow3 = () => setShow3(true);
-  const [count, setCount] = useState(0);
   const [sort, setSort] = useState(false);
 
   const [inputValue, setInputValue] = useState({
@@ -35,6 +34,7 @@ const PostSection = () => {
     __v: 0,
   });
 
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const sorting = () => {
     if (sort === false) {
@@ -42,15 +42,16 @@ const PostSection = () => {
     } else {
       setSort(false);
     }
-  }
-console.log(count)
-const closeAndDispatch = () => {
+  };
+
+  const closeAndDispatch = () => {
     dispatch(putPost(inputValue));
     handleClose();
   };
-    return (
-        <>
-        <Container className="post-section ">
+
+  return (
+    <>
+      <Container className="post-section ">
         <Row className="d-flex upper-post-section">
           <img
             className="home-profile-pic mx-2 my-2"
@@ -69,22 +70,22 @@ const closeAndDispatch = () => {
             className="post-section-option mx-2"
             onClick={() => handleShow2()}
           >
-            <BiPhotoAlbum size={20} className="mr-2" />
+            <BiPhotoAlbum size={20} className="mr-2 album" />
             Photo
           </Col>
           <Col
             className="post-section-option mx-2"
             onClick={() => handleShow3()}
           >
-            <RxVideo size={20} className="mr-2" />
+            <RxVideo size={20} className="mr-2 video" />
             Video
           </Col>
           <Col className="post-section-option mx-2">
-            <MdOutlineEventAvailable size={20} className="mr-2" />
+            <MdOutlineEventAvailable size={20} className="mr-2 event" />
             Event
           </Col>
           <Col className="post-section-option mx-2">
-            <GrArticle size={20} className="mr-2" />
+            <MdOutlineArticle size={20} className="mr-2 article" />
             Write Article
           </Col>
         </Row>
@@ -116,40 +117,38 @@ const closeAndDispatch = () => {
               }
               // onChange={(i) => setCount(i.target.value.length)}
             ></textarea>
-            <CiFaceSmile size={20} className="mr-2" />
+            <GrEmoji size={20} className="mr-2" />
             Add Hashtag
           </Modal.Body>
           <Modal.Footer>
             <Container>
               <Row>
                 <Col sm={4} className="post-modal-icons-container">
-                  <BiPhotoAlbum size={20} className="mr-2 my-2" />
-                  <RxVideo size={20} className="mr-2 my-2" />
-                  <HiDocumentText size={20} className="mr-2 my-2" />
-                  <BsThreeDots size={20} className="mr-2 my-2" />
+                  <BsImage size={20} className="mr-2 my-2 icon" />
+                  <RxVideo size={20} className="mr-2 my-2 icon" />
+                  <HiDocumentText size={20} className="mr-2 my-2 icon" />
+                  <BiDotsHorizontalRounded
+                    size={20}
+                    className="mr-2 my-2 icon"
+                  />
                 </Col>
                 <Col className="d-flex">
                   <button className="anyone">
                     {" "}
-                    <AiOutlineMessage />
+                    <FaRegCommentDots />
                     Anyone
                   </button>
                   <div className="end-of-modal ">
                     <Clock size={20} className="mr-2" />
-                    {!count === 0 ? (
-                      <Button variant="primary" onClick={handleClose}>
-                        Post
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="primary"
-                        onClick={() => {
-                          closeAndDispatch();
-                        }}
-                      >
-                        Post
-                      </Button>
-                    )}
+
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        closeAndDispatch();
+                      }}
+                    >
+                      Post
+                    </Button>
                   </div>
                 </Col>
               </Row>

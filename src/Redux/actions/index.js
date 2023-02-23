@@ -1,5 +1,6 @@
 
 export const GET_USER = "GET_USER";
+export const GET_ALL_USERS = "GET_ALL_USERS";
 export const UPDATE_USER = "UPDATE_USER";
 export const GET_ALL_EXPERIENCE = "GET_ALL_EXPERIENCE";
 export const GET_SINGLE_EXPERIENCE = "GET_SINGLE_EXPERIENCE";
@@ -12,9 +13,9 @@ export const DELETE_POSTS = "DELETE_POSTS";
 export const REFRESH = "REFRESH";
 export const ADD_LIKED = "LIKED";
 export const REMOVE_LIKED = "REMOVE_LIKED";
-export const POST_IMAGE="POST_IMAGE"
 
 export const addLiked = (e) => {
+  console.log("added", e);
   return {
     type: ADD_LIKED,
     payload: e,
@@ -27,6 +28,7 @@ export const removeLiked = (e) => {
     payload: e,
   };
 };
+export const UPDATE_EXPERIENCE = "UPDATE_EXPERIENCE";
 
 export const fetchDataAsync = () => {
   return async (dispatch, getState) => {
@@ -48,7 +50,7 @@ export const fetchDataAsync = () => {
           payload: data,
         });
       } else {
-        alert("Error fetching results");
+        console.log("Error fetching results");
       }
     } catch (error) {
       console.log(error);
@@ -98,7 +100,7 @@ export const getAllExperienceAsync = () => {
           payload: data,
         });
       } else {
-        alert("Error fetching results");
+        console.log("Error fetching results");
       }
     } catch (error) {
       console.log(error);
@@ -126,7 +128,7 @@ export const getSingleExperienceAsync = (experienceId) => {
           payload: data,
         });
       } else {
-        alert("Error fetching results");
+        console.log("Error fetching results");
       }
     } catch (error) {
       console.log(error);
@@ -168,7 +170,7 @@ export const postExperienceAsync = (experience) => {
           payload: experience,
         });
       } else {
-        alert("Error fetching results");
+        console.log("Error fetching results");
       }
     } catch (error) {
       console.log(error);
@@ -210,8 +212,12 @@ export const putExperienceAsync = (change, experienceId) => {
           type: PUT_EXPERIENCE,
           payload: change,
         }); */
+        dispatch({
+          type: UPDATE_EXPERIENCE,
+          payload: +1,
+        });
       } else {
-        alert("Error fetching results");
+        console.log("Error fetching results");
       }
     } catch (error) {
       console.log(error);
@@ -237,8 +243,13 @@ export const deleteExperienceAsync = (experienceId) => {
           type: DELETE_EXPERIENCE,
           payload: experienceId,
         });
+
+        dispatch({
+          type: UPDATE_EXPERIENCE,
+          payload: +1,
+        });
       } else {
-        alert("Error fetching results");
+        console.log("Error fetching results");
       }
     } catch (error) {
       console.log(error);
@@ -261,7 +272,6 @@ export const fetchPostsAsync = () => {
       );
       if (res.ok) {
         const data = await res.json();
-
         dispatch({
           type: GET_POSTS,
           payload: data
@@ -296,6 +306,10 @@ export const putPost = (e) => {
         }
       );
       if (res.ok) {
+        dispatch({
+          type: REFRESH,
+          payload: +1,
+        });
         dispatch({
           type: POST_POSTS,
           payload: e,
