@@ -3,6 +3,7 @@ import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { fetchDataAsync } from "../Redux/actions";
 import { CameraFill, Key, Pencil } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
+import { userUpdate } from "../Redux/actions";
 import { MDBCheckbox } from 'mdb-react-ui-kit'
 const MainProfile = () => {
   const user = useSelector((state) => state.user.user);
@@ -86,41 +87,14 @@ console.log(user)
     console.log(e.target.files[0].name)
     setImg(e.target.files[0])
   }
+  const formData=new FormData()
+  formData.append("profile",image)
+ 
   let item = { name, surname, title };
-  const updateUser = async (e) => {
-
-    try {
-      let res = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/`,
-        {
-          method: "PUT",
-          body: JSON.stringify(e),
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
-          },
-        }
-      );
-      if (res.ok) {
-    
-   
-        let newUser = await res.json();
-
-        
-        dispatch(fetchDataAsync());
-
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
   console.log(item)
  const uploadPicture=async()=>{
   let Url="https://striveschool-api.herokuapp.com/api/profile/"+id+"/picture"
-  const formData=new FormData()
-formData.append("profile",image)
+
    try{
    const res=await fetch(Url,{
     method:"POST",
@@ -140,8 +114,9 @@ formData.append("profile",image)
    }
  }
   const both=()=>{
-    updateUser(item)
+    dispatch(userUpdate(item))
     uploadPicture()
+    
  
   }
 

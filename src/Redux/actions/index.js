@@ -1,3 +1,4 @@
+
 export const GET_USER = "GET_USER";
 export const UPDATE_USER = "UPDATE_USER";
 export const GET_ALL_EXPERIENCE = "GET_ALL_EXPERIENCE";
@@ -8,6 +9,24 @@ export const DELETE_EXPERIENCE = "DELETE_EXPERIENCE";
 export const GET_POSTS = "GET_POSTS";
 export const POST_POSTS = "POST_POSTS";
 export const DELETE_POSTS = "DELETE_POSTS";
+export const REFRESH = "REFRESH";
+export const ADD_LIKED = "LIKED";
+export const REMOVE_LIKED = "REMOVE_LIKED";
+export const POST_IMAGE="POST_IMAGE"
+
+export const addLiked = (e) => {
+  return {
+    type: ADD_LIKED,
+    payload: e,
+  };
+};
+
+export const removeLiked = (e) => {
+  return {
+    type: REMOVE_LIKED,
+    payload: e,
+  };
+};
 
 export const fetchDataAsync = () => {
   return async (dispatch, getState) => {
@@ -245,7 +264,12 @@ export const fetchPostsAsync = () => {
 
         dispatch({
           type: GET_POSTS,
-          payload: data,
+          payload: data
+            .reverse()
+            .slice(0, 20)
+            .map((e) => {
+              return e;
+            }),
         });
       } else {
         console.log("error baby");
@@ -276,6 +300,10 @@ export const putPost = (e) => {
           type: POST_POSTS,
           payload: e,
         });
+        dispatch({
+          type: REFRESH,
+          payload: +1,
+        });
       } else {
         console.log("error posting");
       }
@@ -300,7 +328,10 @@ export const deletePost = (e) => {
       );
 
       if (res.ok) {
-        fetchPostsAsync();
+        dispatch({
+          type: REFRESH,
+          payload: +1,
+        });
       } else {
         console.log("error deleting");
       }
@@ -310,20 +341,26 @@ export const deletePost = (e) => {
   };
 };
 
-export const editPost = (e) => {
+export const editPost = (e, id) => {
   return async (dispatch, getState) => {
     try {
-      const res = await fetch("", {
-        method: "PUT",
-        body: JSON.stringify(e),
-        headers: {
-          "Content-type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
-        },
-      });
+      const res = await fetch(
+        "https://striveschool-api.herokuapp.com/api/posts/" + id,
+        {
+          method: "PUT",
+          body: JSON.stringify(e),
+          headers: {
+            "Content-type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
+          },
+        }
+      );
       if (res.ok) {
-        fetchPostsAsync();
+        dispatch({
+          type: REFRESH,
+          payload: +1,
+        });
       } else {
         console.log("error put");
       }
@@ -332,3 +369,53 @@ export const editPost = (e) => {
     }
   };
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const userUpdate=(body)=>{
+ return async(dispatch)=>{
+  try{
+    let res = await fetch(
+      `https://striveschool-api.herokuapp.com/api/profile/`,
+      {
+        method: "PUT",
+        body: JSON.stringify(body),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
+        },
+      }
+     
+    );
+    if(res.ok){
+      dispatch({
+        type: UPDATE_USER,
+        payload: body,
+      });
+    
+    }
+  }catch(err){
+    console.log(err)
+  }
+ }
+}
