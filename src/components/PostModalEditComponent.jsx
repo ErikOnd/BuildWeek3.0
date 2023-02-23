@@ -24,6 +24,7 @@ const PostModalEditComponent = ({ data }) => {
       type: REFRESH,
       payload: e,
     });
+
     // navigate("/");
   };
 
