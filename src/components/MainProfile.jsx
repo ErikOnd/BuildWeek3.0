@@ -1,6 +1,6 @@
 import { useEffect, useState, useInterval } from "react";
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
-import { fetchDataAsync } from "../Redux/actions";
+import { fetchDataAsync, postProfilePicture } from "../Redux/actions";
 import { CameraFill, Key, Pencil } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { userUpdate } from "../Redux/actions";
@@ -111,37 +111,14 @@ const MainProfile = () => {
     }
   };
   console.log(item);
-  const uploadPicture = async () => {
-    let Url =
-      "https://striveschool-api.herokuapp.com/api/profile/" + id + "/picture";
-    const formData = new FormData();
-    formData.append("profile", image);
-    try {
-      const res = await fetch(Url, {
-        method: "POST",
-        body: formData,
-
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
-        },
-      });
-      console.log(image);
-      if (res.ok) {
-        console.log("succes");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
   const both = () => {
-    updateUser(item);
-    uploadPicture();
+    const formData = new FormData();
+   formData.append("profile", image);
+   dispatch(userUpdate(item))
+   
+    dispatch(postProfilePicture(id,formData))
+ 
   };
-
-  useEffect(() => {
-    dispatch(fetchDataAsync());
-  }, []);
 
   return (
     <Container id="main-profile-content">
@@ -203,6 +180,7 @@ const MainProfile = () => {
                 <Form.Label>Picture Url</Form.Label>
                 <Form.Control
                   type="file"
+               
                   accept="image/*"
                   onChange={handleImage}
                 />
