@@ -5,6 +5,7 @@ import {
   FormControl,
   Dropdown,
   DropdownButton,
+  Container
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ModalComponent from "./ModalComponent";
@@ -12,12 +13,14 @@ import ModalComponent from "./ModalComponent";
 const NavbarComponent = () => {
   return (
     <div className="fixed-top pl-0">
+      <Container>
       <Navbar
         bg="light"
         expand="lg"
         id="Navbar"
         className="d-flex justify-content-center"
       >
+        
         <div className="d-flex">
           <Navbar.Brand href="#home">
             <img
@@ -263,6 +266,7 @@ const NavbarComponent = () => {
           </Form>
         </Navbar.Collapse>
       </Navbar>
+      </Container>
     </div>
   );
 };

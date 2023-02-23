@@ -59,10 +59,7 @@ body {
   font-size: smaller;
 }
 
-#Navbar {
-  padding-right: 180px;
-  padding-left: 180px;
-}
+
 
 #hidden-navbar {
   display: none;
