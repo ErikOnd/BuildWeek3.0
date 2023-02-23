@@ -11,7 +11,7 @@ const MainProfile = () => {
   let [name, setName] = useState(user.name);
   let [surname, setSurname] = useState(user.surname);
   let [title, setTitle] = useState(user.title);
-  let [img,setImg]=useState(user.image)
+  let [image,setImg]=useState(user.image)
   let [id, setId] = useState(user._id);
   let [core, setCore] = useState(true);
   let [recommended, setRecommended] = useState(false);
@@ -86,15 +86,15 @@ console.log(user)
     console.log(e.target.files[0].name)
     setImg(e.target.files[0].name)
   }
-  let item = { name, surname, title,img };
-  const updateUser = async (body) => {
+  let item = { name, surname, title };
+  const updateUser = async (e) => {
 
     try {
       let res = await fetch(
         `https://striveschool-api.herokuapp.com/api/profile/`,
         {
           method: "PUT",
-          body: JSON.stringify(body),
+          body: JSON.stringify(e),
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -104,21 +104,53 @@ console.log(user)
         }
       );
       if (res.ok) {
-        const formData=new FormData()
-    formData.append('image',img)
-        
+    
+   
         let newUser = await res.json();
-        console.log(newUser);
+
+        
         dispatch(fetchDataAsync());
+
       }
     } catch (err) {
       console.log(err);
     }
   };
   console.log(item)
+
+
+ const uploadPicture=async()=>{
+  let Url="https://striveschool-api.herokuapp.com/api/profile/"+id+"/picture"
+  const formData=new FormData()
+formData.append("profile",image)
+   try{
+   const res=await fetch(Url,{
+    method:"POST",
+    body:formData,
+    headers:{
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
+            }
+   })
+   console.log(image)
+   if(res.ok){
+    console.log("succes")
+   }
+   }catch(err){
+    console.log(err)
+   }
+ }
+  const both=()=>{
+    updateUser(item)
+    uploadPicture()
+ 
+  }
+
   useEffect(() => {
     dispatch(fetchDataAsync());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, []);
 
   return (
@@ -150,6 +182,14 @@ console.log(user)
                 <Form.Text className="text-muted">
                   This can only be added using our mobile app
                 </Form.Text>
+                <Form.Label>Pronouns</Form.Label>
+                <Form.Control as={"select"} required>
+              <option>Please Select</option>
+              <option>She/Her</option>
+              <option>He/Him</option>
+              <option>They/Them</option>
+              <option>Custom</option>
+            </Form.Control>
                 <Form.Text className="text-muted">Pronouns</Form.Text>
                 {/* <Form.Label htmlFor="Select">Disabled select menu</Form.Label>
           <Form.Select id="Select">
@@ -173,17 +213,17 @@ console.log(user)
                  <Form.Label>Picture Url</Form.Label>
                 <Form.Control
                   type="file"
-                 
+                  accept="image/*"
                   onChange={handleImage}
                 />
               </Form.Group>
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button
+           <Button
               variant="primary"
               type="submit"
-              onClick={() => updateUser(item)}
+              onClick={() => both()}
             >
               Save
             </Button>
@@ -317,7 +357,7 @@ console.log(user)
             <CameraFill className="camera mt-3" size={40} color="blue" />
           </Row>
           <Row className="lower">
-            <Col sm={8}>
+            <Col sm={8} >
               <h2>
                 {user.name} {user.surname}
               </h2>

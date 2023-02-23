@@ -479,6 +479,8 @@ body {
   width: 240px;
   border: 1px solid black;
   border-radius: 10px;
+
+
 }
 
 .more {
@@ -763,6 +765,7 @@ body {
 }
 .post-section-sort {
   width: 580px !important;
+  position: relative;
 }
 .line {
   display: inline-block;
@@ -774,9 +777,12 @@ body {
 .top-recent {
   background-color: white;
   border-radius: 20px;
-  margin-left: auto;
+
   width: 100px;
   overflow: hidden;
+  position: absolute;
+  left: 460px;
+  z-index: 2;
 }
 .top-recent p {
   margin-left: 1em;
@@ -787,7 +793,9 @@ body {
 }
 .picture-video {
   height: 200px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center
 }
 @media only screen and (max-width: 902px) {
   .feed-right-bar-container {

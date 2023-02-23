@@ -689,6 +689,7 @@ console.log(experienceInfo.startDate)
                 />
                 <br />
                 <Form.Label>Start Date*</Form.Label>
+                <div className="d-flex flex-row justify-content-between">
                 <Form.Control
                   as={"select"}
                   required
@@ -711,6 +712,7 @@ console.log(experienceInfo.startDate)
                   <option value="Nov">November</option>
                   <option value="Dec">December</option>
                 </Form.Control>
+                
                 <Form.Control
                   as={"select"}
                   required
@@ -728,8 +730,10 @@ console.log(experienceInfo.startDate)
                     );
                   })}
                 </Form.Control>
+                </div>
                 <br />
                 <Form.Label>End Date*</Form.Label>
+                <div className="d-flex flex-row justify-content-between">
                 <Form.Control
                   as={"select"}
                   disabled
@@ -752,6 +756,7 @@ console.log(experienceInfo.startDate)
                   <option value="Nov">November</option>
                   <option value="Dec">December</option>
                 </Form.Control>
+            
                 <Form.Control as={"select"} disabled>
                   <option>Year</option>
                   {years.map((y) => {
@@ -762,6 +767,7 @@ console.log(experienceInfo.startDate)
                     );
                   })}
                 </Form.Control>
+                </div>
                 <br />
                 <MDBCheckbox
                   name="flexCheck"
@@ -791,6 +797,7 @@ console.log(experienceInfo.startDate)
                 />
                 <br />
                 <Form.Label>Start Date*</Form.Label>
+                <div className="d-flex flex-row justify-content-between">
                 <Form.Control
                   as={"select"}
                   value={startMonth}
@@ -811,6 +818,7 @@ console.log(experienceInfo.startDate)
                   <option value="Nov">November</option>
                   <option value="Dec">December</option>
                 </Form.Control>
+                
                 <Form.Control
                   as={"select"}
                   value={startYear}
@@ -826,9 +834,10 @@ console.log(experienceInfo.startDate)
                     );
                   })}
                 </Form.Control>
-
+                </div>
                 <br />
                 <Form.Label>End Date*</Form.Label>
+                <div className="d-flex flex-row justify-content-between">
                 <Form.Control
                   as={"select"}
                   value={endMonth}
@@ -867,6 +876,7 @@ console.log(experienceInfo.startDate)
                     );
                   })}
                 </Form.Control>
+                </div>
                 <br />
               </>
             )}
