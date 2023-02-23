@@ -4,7 +4,7 @@ import { deletePost } from "../Redux/actions";
 import PostModalEditComponent from "./PostModalEditComponent";
 
 const SinglePostComponent = ({ data }) => {
-  console.log(data);
+  // console.log(data);
 
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();

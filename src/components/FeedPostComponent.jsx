@@ -8,6 +8,10 @@ const FeedPostComponent = () => {
   const posts = useSelector((state) => state.posts.posts);
   const refresh = useSelector((state) => state.posts.refresh);
 
+  // useEffect(() => {
+  //   dispatch(fetchPostsAsync());
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
   useEffect(() => {
     dispatch(fetchPostsAsync());
     // eslint-disable-next-line react-hooks/exhaustive-deps
