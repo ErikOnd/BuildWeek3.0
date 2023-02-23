@@ -9,7 +9,6 @@ const FeedPostComponent = () => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.posts);
   const [ordered, setOrdered] = useState(null);
-  //   console.log(ordered);
 
   useEffect(() => {
     dispatch(fetchPostsAsync());

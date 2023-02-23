@@ -13,7 +13,6 @@ const postsReducer = (state = initialState, action) => {
       };
 
     case POST_POSTS:
-      console.log(POST_POSTS);
       return {
         ...state,
         posts: [...state.posts, action.payload],

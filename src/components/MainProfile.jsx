@@ -1,9 +1,9 @@
-import { useEffect, useState,useInterval } from "react";
+import { useEffect, useState, useInterval } from "react";
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { fetchDataAsync } from "../Redux/actions";
 import { CameraFill, Key, Pencil } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { MDBCheckbox } from 'mdb-react-ui-kit'
+import { MDBCheckbox } from "mdb-react-ui-kit";
 const MainProfile = () => {
   const user = useSelector((state) => state.user.user);
   let [open, setOpen] = useState(false);
@@ -11,12 +11,12 @@ const MainProfile = () => {
   let [name, setName] = useState(user.name);
   let [surname, setSurname] = useState(user.surname);
   let [title, setTitle] = useState(user.title);
-  let [img,setImg]=useState(user.image)
+  let [img, setImg] = useState(user.image);
   let [id, setId] = useState(user._id);
   let [core, setCore] = useState(true);
   let [recommended, setRecommended] = useState(false);
   let [additional, setAdditional] = useState(false);
-console.log(user)
+
   const setting3 = () => {
     if (recommended === true || additional === true) {
       return setCore(false);
@@ -51,8 +51,6 @@ console.log(user)
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
 
-
-
   const dispatch = useDispatch();
 
   const handleClose = () => setShow(false);
@@ -82,13 +80,12 @@ console.log(user)
     }
   }
 
-  const handleImage=(e)=>{
-    console.log(e.target.files[0].name)
-    setImg(e.target.files[0].name)
-  }
-  let item = { name, surname, title,img };
+  const handleImage = (e) => {
+    console.log(e.target.files[0].name);
+    setImg(e.target.files[0].name);
+  };
+  let item = { name, surname, title, img };
   const updateUser = async (body) => {
-
     try {
       let res = await fetch(
         `https://striveschool-api.herokuapp.com/api/profile/`,
@@ -104,18 +101,18 @@ console.log(user)
         }
       );
       if (res.ok) {
-        const formData=new FormData()
-    formData.append('image',img)
-        
+        const formData = new FormData();
+        formData.append("image", img);
+
         let newUser = await res.json();
-        console.log(newUser);
+        /*    console.log(newUser); */
         dispatch(fetchDataAsync());
       }
     } catch (err) {
       console.log(err);
     }
   };
-  console.log(item)
+
   useEffect(() => {
     dispatch(fetchDataAsync());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -170,12 +167,8 @@ console.log(user)
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
-                 <Form.Label>Picture Url</Form.Label>
-                <Form.Control
-                  type="file"
-                 
-                  onChange={handleImage}
-                />
+                <Form.Label>Picture Url</Form.Label>
+                <Form.Control type="file" onChange={handleImage} />
               </Form.Group>
             </Form>
           </Modal.Body>

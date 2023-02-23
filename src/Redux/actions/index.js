@@ -8,6 +8,7 @@ export const DELETE_EXPERIENCE = "DELETE_EXPERIENCE";
 export const GET_POSTS = "GET_POSTS";
 export const POST_POSTS = "POST_POSTS";
 export const DELETE_POSTS = "DELETE_POSTS";
+export const UPDATE_EXPERIENCE = "UPDATE_EXPERIENCE";
 
 export const fetchDataAsync = () => {
   return async (dispatch, getState) => {
@@ -29,7 +30,7 @@ export const fetchDataAsync = () => {
           payload: data,
         });
       } else {
-        alert("Error fetching results");
+        console.log("Error fetching results");
       }
     } catch (error) {
       console.log(error);
@@ -79,7 +80,7 @@ export const getAllExperienceAsync = () => {
           payload: data,
         });
       } else {
-        alert("Error fetching results");
+        console.log("Error fetching results");
       }
     } catch (error) {
       console.log(error);
@@ -107,7 +108,7 @@ export const getSingleExperienceAsync = (experienceId) => {
           payload: data,
         });
       } else {
-        alert("Error fetching results");
+        console.log("Error fetching results");
       }
     } catch (error) {
       console.log(error);
@@ -149,7 +150,7 @@ export const postExperienceAsync = (experience) => {
           payload: experience,
         });
       } else {
-        alert("Error fetching results");
+        console.log("Error fetching results");
       }
     } catch (error) {
       console.log(error);
@@ -191,8 +192,12 @@ export const putExperienceAsync = (change, experienceId) => {
           type: PUT_EXPERIENCE,
           payload: change,
         }); */
+        dispatch({
+          type: UPDATE_EXPERIENCE,
+          payload: +1,
+        });
       } else {
-        alert("Error fetching results");
+        console.log("Error fetching results");
       }
     } catch (error) {
       console.log(error);
@@ -218,8 +223,13 @@ export const deleteExperienceAsync = (experienceId) => {
           type: DELETE_EXPERIENCE,
           payload: experienceId,
         });
+
+        dispatch({
+          type: UPDATE_EXPERIENCE,
+          payload: +1,
+        });
       } else {
-        alert("Error fetching results");
+        console.log("Error fetching results");
       }
     } catch (error) {
       console.log(error);
