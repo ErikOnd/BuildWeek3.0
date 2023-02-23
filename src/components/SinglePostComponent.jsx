@@ -182,6 +182,11 @@ const SinglePostComponent = ({ data }) => {
           </DropdownButton>
         </div>
         <p className="ml-3">{data.text}</p>
+        <img
+          className="post-images mb-2"
+          src={data.image}
+          alt="postimage"
+        ></img>
         <div>
           <div className="d-flex mx-4 justify-content-between">
             {data === undefined ? (

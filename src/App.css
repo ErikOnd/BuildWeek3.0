@@ -995,3 +995,7 @@ body {
 .home-nav:focus {
   text-decoration: none !important;
 }
+
+.post-images {
+  width: 100%;
+}
