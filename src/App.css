@@ -677,9 +677,13 @@ body {
   margin-bottom: 0.5em;
   cursor: pointer;
   height: 44px;
+  font-size: 15px;
 }
 .side-news p {
   margin: 0;
+}
+.image-upload>input {
+  display: none;
 }
 .side-news small {
   color: grey;
@@ -789,9 +793,10 @@ body {
 }
 .line {
   display: inline-block;
-  width: 83%;
+  width: 82%;
   height: 1px;
-  background-color: black;
+  background-color: grey;
+  margin-right: 0.5em;
 }
 .top-recent {
   background-color: white;
