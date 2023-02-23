@@ -117,8 +117,6 @@ console.log(user)
     }
   };
   console.log(item)
-
-
  const uploadPicture=async()=>{
   let Url="https://striveschool-api.herokuapp.com/api/profile/"+id+"/picture"
   const formData=new FormData()
@@ -127,9 +125,8 @@ formData.append("profile",image)
    const res=await fetch(Url,{
     method:"POST",
     body:formData,
+
     headers:{
-              Accept: "application/json",
-              "Content-Type": "application/json",
               Authorization:
                 "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
             }

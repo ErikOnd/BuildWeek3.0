@@ -1,6 +1,7 @@
 import { Container,Row,Col } from "react-bootstrap";
 import { useState } from "react";
-import { ArrowDown,ArrowUp, Reddit } from "react-bootstrap-icons";
+
+import {BsInfoSquareFill,BsChevronDown,BsChevronUp} from "react-icons/bs"
 // import {logo} from "../Css/pics/Ll-Logo"
 const HomeRightBar = () => {
     let [more,setMore]=useState(false)
@@ -14,7 +15,7 @@ const HomeRightBar = () => {
             <p className="ml-4"><b> LinkedIn News</b></p>
        
         </div>
-        <Reddit className="reddit-icon mr-4 mt-2"/>
+        <BsInfoSquareFill className="reddit-icon mr-4 mt-1"/>
         </Row>
         <div className="side-news">
         <p><b>• Why We sleep more in the winter</b></p>
@@ -58,8 +59,8 @@ const HomeRightBar = () => {
 
         <small>1d ago • 1,698 readers</small>
         </div>
-        <button onClick={()=>setMore(false)} className="ml-4 "> Show Less <ArrowUp/></button>
-        </> :    <button onClick={()=>setMore(true)} className="ml-4 ">Show More <ArrowDown className=" arrowDown"/></button>   }
+        <button onClick={()=>setMore(false)} className="ml-4 "> Show Less <BsChevronUp/></button>
+        </> :    <button onClick={()=>setMore(true)} className="ml-4 ">Show More <BsChevronDown className=" arrowDown"/></button>   }
     </Container>
  
         <Container className="home-rightbar-footer">
@@ -70,14 +71,14 @@ const HomeRightBar = () => {
           <small ><a className="rightbar-link" href="https://www.linkedin.com//help/linkedin?trk=footer_d_flagship3_feed">Help Center</a></small>
           </Row>
           <Row className="d-flex justify-content-center">
-          <small ><a className="rightbar-link" href="">Privacy & Terms <ArrowDown/> </a></small>
+          <small ><a className="rightbar-link" href="">Privacy & Terms <BsChevronDown/> </a></small>
           <small ><a className="rightbar-link" href="https://www.linkedin.com/help/linkedin/answer/a1342443">Ad Choices</a></small>
           </Row>
           
          
           <Row className="d-flex justify-content-center">
           <small ><a className="rightbar-link" href="https://business.linkedin.com/marketing-solutions/ads?trk=n_nav_ads_rr_b&src=li-nav&veh=ad%2Fstart">Advertising</a></small>
-          <small ><a className="rightbar-link" href="">Business Services <ArrowDown/></a> </small>
+          <small ><a className="rightbar-link" href="">Business Services <BsChevronDown/></a> </small>
          
           </Row>
           <Row className="d-flex justify-content-center">

@@ -1,14 +1,17 @@
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Reddit, ArrowDown, Clock } from "react-bootstrap-icons";
+import { Clock } from "react-bootstrap-icons";
 import { putPost } from "../Redux/actions";
 import { useState } from "react";
 import { BiPhotoAlbum } from "react-icons/bi";
 import {RxVideo} from "react-icons/rx";
 import {MdOutlineEventAvailable} from "react-icons/md";
 import {GrArticle} from "react-icons/gr";
-
-
+import {CiFaceSmile} from "react-icons/ci"
+import {HiDocumentText} from "react-icons/hi"
+import {BsThreeDots} from "react-icons/bs"
+import {AiOutlineMessage} from "react-icons/ai"
+import {BsChevronDown} from "react-icons/bs"
 const PostSection = () => {
   const user = useSelector((state) => state.user.user);
   const [show, setShow] = useState(false);
@@ -113,22 +116,22 @@ const closeAndDispatch = () => {
               }
               // onChange={(i) => setCount(i.target.value.length)}
             ></textarea>
-            <Reddit size={20} className="mr-2" />
+            <CiFaceSmile size={20} className="mr-2" />
             Add Hashtag
           </Modal.Body>
           <Modal.Footer>
             <Container>
               <Row>
                 <Col sm={4} className="post-modal-icons-container">
-                  <Reddit size={20} className="mr-2 my-2" />
-                  <Reddit size={20} className="mr-2 my-2" />
-                  <Reddit size={20} className="mr-2 my-2" />
-                  <Reddit size={20} className="mr-2 my-2" />
+                  <BiPhotoAlbum size={20} className="mr-2 my-2" />
+                  <RxVideo size={20} className="mr-2 my-2" />
+                  <HiDocumentText size={20} className="mr-2 my-2" />
+                  <BsThreeDots size={20} className="mr-2 my-2" />
                 </Col>
                 <Col className="d-flex">
                   <button className="anyone">
                     {" "}
-                    <Reddit />
+                    <AiOutlineMessage />
                     Anyone
                   </button>
                   <div className="end-of-modal ">
@@ -199,7 +202,7 @@ const closeAndDispatch = () => {
         <div className="line"></div>
 
         <small onClick={() => sorting()}>
-          Sort By: <b> Top</b> <ArrowDown />
+          Sort By: <b> Top</b> <BsChevronDown />
         </small>
         {sort ? (
           <div className="top-recent">
