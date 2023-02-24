@@ -75,10 +75,10 @@ const closeAndDispatch = () => {
             Photo
           </Col>
           <Col
-            className="post-section-option mx-2"
+            className="post-section-option mx-2 icon "
             onClick={() => handleShow3()}
           >
-            <RxVideo size={20} className="mr-2 video" />
+            <RxVideo size={20} className="mr-2 video " />
             Video
           </Col>
           <Col className="post-section-option mx-2">
@@ -86,7 +86,7 @@ const closeAndDispatch = () => {
             Event
           </Col>
           <Col className="post-section-option mx-2">
-            <MdOutlineArticle size={20} className="mr-2 article" />
+            <MdOutlineArticle size={20} className="mr-2 article"/>
             Write Article
           </Col>
         </Row>
@@ -125,9 +125,9 @@ const closeAndDispatch = () => {
             <Container>
               <Row>
                 <Col sm={4} className="post-modal-icons-container">
-                  <BsImage size={20} className="mr-2 my-2 icon" />
-                  <RxVideo size={20} className="mr-2 my-2 icon" />
-                  <HiDocumentText size={20} className="mr-2 my-2 icon" />
+                  <BsImage size={20} className="mr-2 my-2 icon" />&nbsp;
+                  <RxVideo size={20} className="mr-2 my-2 icon" />&nbsp;
+                  <HiDocumentText size={20} className="mr-2 my-2 icon" />&nbsp;
                   <BiDotsHorizontalRounded size={20} className="mr-2 my-2 icon" />
                 </Col>
                 <Col className="d-flex">
@@ -135,10 +135,10 @@ const closeAndDispatch = () => {
                     {" "}
                     <FaRegCommentDots />
                   
-                    Anyone
+                    &nbsp; Anyone
                   </button>
                   <div className="end-of-modal ">
-                    <Clock size={20} className="mr-2" />
+                    <Clock size={20} className="mr-2" />&nbsp;
                     {!count === 0 ? (
                       <Button variant="primary" onClick={handleClose}>
                         Post
@@ -204,7 +204,7 @@ const closeAndDispatch = () => {
       <Container className="post-section-sort">
         <div className="line"></div>
 
-        <small onClick={() => sorting()}>
+        <small onClick={() => sorting()} className="sort">
           Sort By: <b> Top</b> <ArrowDown />
         </small>
         {sort ? (

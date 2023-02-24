@@ -58,17 +58,18 @@ body {
 #basic-navbar-nav {
   font-size: smaller;
 }
-
-
-
 #hidden-navbar {
   
-  padding-right: 180px;
-  padding-left: 180px;
   border-top: 1px solid rgb(194, 194, 194);
   background: #eee;
   box-shadow: 0 8px 8px -4px rgb(120, 120, 120);
+  position: fixed;
+  top: -200px;
+  transition: top 0.4s;
+  display: block;
+  width: 100%;
 }
+
 
 #hidden-navbar-user p {
   color: black;
@@ -572,7 +573,7 @@ body {
 
 .sidebar-card {
   background-color: white;
-  color: black;
+  color: rgb(75, 71, 71);
   border: 1px solid #d9d9d8;
   border-radius: 10px;
   cursor: pointer;
@@ -582,7 +583,7 @@ body {
 
 .sidebar-card h2 {
   font-size: 19px;
-  color: rgba(0, 0, 0, 0.9);
+  color:rgb(75, 71, 71) ;
   font-weight: 600;
   margin-bottom: 15px;
 }
@@ -662,7 +663,6 @@ body {
   padding: 0 !important;
   width: 300px !important ;
   border-radius: 10px;
-  
 }
 .home-rigthbar-container button {
   background-color: transparent;
@@ -677,6 +677,7 @@ body {
   margin-bottom: 0.5em;
   cursor: pointer;
   height: 44px;
+  color:#444444;
 }
 .side-news p {
   margin: 0;
@@ -697,8 +698,6 @@ body {
   font-size: 13px;
   margin: 0.6em;
   cursor: pointer;
-
-
 }
 .mr-2, .mx-2{
   cursor: pointer;
@@ -736,7 +735,7 @@ body {
 }
 .post-input {
   border-radius: 20px;
-  border: 1px solid black;
+  border: 1px solid rgb(75, 71, 71);
   height: 26px;
   width: 80%;
   padding: 22px;
@@ -776,7 +775,7 @@ body {
   display: inline-block;
   width: 83%;
   height: 1px;
-  background-color: black;
+  background-color: rgb(75, 71, 71);
 
 }
 .top-recent {
@@ -877,6 +876,14 @@ body {
 
 #dropdown-basic{
   width: 55px;
+}
+
+.ml-4{
+  color:#444444 ;
+}
+
+.sort{
+  color:#73736d ;
 }
 
 

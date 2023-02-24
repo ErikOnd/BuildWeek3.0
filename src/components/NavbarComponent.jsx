@@ -5,7 +5,7 @@ import {
   FormControl,
   Dropdown,
   DropdownButton,
-  Container
+  Container,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ModalComponent from "./ModalComponent";
@@ -13,6 +13,9 @@ import { useEffect } from "react";
 import {useSelector, useDispatch } from "react-redux";
 import {fetchDataAsync  } from "../Redux/actions";
 import React, { useState } from "react";
+import HiddenNavbar from "./HiddenNavbar"
+
+
 
 
 const NavbarComponent = () => {
@@ -21,12 +24,12 @@ const NavbarComponent = () => {
     dispatch(fetchDataAsync ());
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
  const user = useSelector((state) => state.user.user);
   let [name, setName] = useState(user.name);
   let [surname, setSurname] = useState(user.surname);
   let [title, setTitle] = useState(user.title);
   return (
+    <>
     <div className="fixed-top pl-0">
       
       <Navbar
@@ -241,7 +244,9 @@ const NavbarComponent = () => {
         </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Navbar bg="light" expand="lg" id="hidden-navbar" className="">
+      
+      
+      {/*<Navbar bg="light" expand="lg" id="hidden-navbar" className=""  >
         <Container>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="">
@@ -285,9 +290,9 @@ const NavbarComponent = () => {
           </Form>
         </Navbar.Collapse>
         </Container>
-      </Navbar>
-      
+            </Navbar>*/}
     </div>
+    </>
   );
 };
 
