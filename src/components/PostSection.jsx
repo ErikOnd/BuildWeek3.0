@@ -101,10 +101,10 @@ const PostSection = () => {
             Photo
           </Col>
           <Col
-            className="post-section-option mx-2"
+            className="post-section-option mx-2 icon "
             onClick={() => handleShow3()}
           >
-            <RxVideo size={20} className="mr-2 video" />
+            <RxVideo size={20} className="mr-2 video " />
             Video
           </Col>
           <Col className="post-section-option mx-2">
@@ -112,7 +112,7 @@ const PostSection = () => {
             Event
           </Col>
           <Col className="post-section-option mx-2">
-            <MdOutlineArticle size={20} className="mr-2 article" />
+            <MdOutlineArticle size={20} className="mr-2 article"/>
             Write Article
           </Col>
         </Row>
@@ -153,7 +153,7 @@ const PostSection = () => {
                 <Col sm={4} className="post-modal-icons-container d-flex" >
                   <div className="image-upload">
                  <label htmlFor="file-input">
-                    <BsImage size={20} className="mr-2 my-2 icon" />
+                    <BsImage size={20} className="mr-2 my-2 icon" />&nbsp;
                  </label>
 
                 <input id="file-input"   
@@ -163,8 +163,8 @@ const PostSection = () => {
                    onChange={handleImage}
                   />
                    </div>
-                  <RxVideo size={20} className="mr-2 my-2 icon" />
-                  <HiDocumentText size={20} className="mr-2 my-2 icon" />
+                  <RxVideo size={20} className="mr-2 my-2 icon" />&nbsp;
+                  <HiDocumentText size={20} className="mr-2 my-2 icon" />&nbsp;
                   <BiDotsHorizontalRounded
                     size={20}
                     className="mr-2 my-2 icon"
@@ -174,19 +174,21 @@ const PostSection = () => {
                   <button className="anyone">
                     {" "}
                     <FaRegCommentDots />
-                    Anyone
+                  
+                    &nbsp; Anyone
                   </button>
                   <div className="end-of-modal ">
-                    <Clock size={20} className="mr-2" />
-
-                    <Button
-                      variant="primary"
-                      onClick={() => {
-                        closeAndDispatch();
-                      }}
-                    >
-                      Post
-                    </Button>
+                    <Clock size={20} className="mr-2" />&nbsp;
+                    
+                      <Button
+                        variant="primary"
+                        onClick={() => {
+                          closeAndDispatch();
+                        }}
+                      >
+                        Post
+                      </Button>
+                  
                   </div>
                 </Col>
               </Row>
@@ -238,8 +240,8 @@ const PostSection = () => {
       <Container className="post-section-sort">
         <div className="line mb-1"></div>
 
-        <small onClick={() => sorting()}>
-          Sort By: <b> Top</b> <BsChevronDown />
+        <small onClick={() => sorting()} className="sort">
+          Sort By: <b> Top</b> <ArrowDown />
         </small>
         {sort ? (
           <div className="top-recent">

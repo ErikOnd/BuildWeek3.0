@@ -13,6 +13,9 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchDataAsync } from "../Redux/actions";
 import React, { useState } from "react";
+import HiddenNavbar from "./HiddenNavbar"
+
+
 
 const NavbarComponent = () => {
   const dispatch = useDispatch();
@@ -26,6 +29,7 @@ const NavbarComponent = () => {
   let [surname, setSurname] = useState(user.surname);
   let [title, setTitle] = useState(user.title);
   return (
+    <>
     <div className="fixed-top pl-0">
       <Navbar
         bg="light"
@@ -178,7 +182,7 @@ const NavbarComponent = () => {
                 menuAlign="right"
               >
                 <Link to={"/profile"}>
-                  <Dropdown.Item href="#action/3.1" className="px-2">
+                  <div href="#action/3.1" className="px-2 dropdown-item">
                     <div>
                       <div className="d-flex align-items-center">
                         <svg
@@ -207,7 +211,7 @@ const NavbarComponent = () => {
                       <div id="view-profile-button">View Profile</div>
                     </div>
                     <Dropdown.Divider />
-                  </Dropdown.Item>
+                  </div>
                 </Link>
                 <p className="ml-2 mb-0 dropdown-section">Account</p>
                 <Dropdown.Item href="#action/3.2">
@@ -242,7 +246,10 @@ const NavbarComponent = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Navbar bg="light" expand="lg" id="hidden-navbar" className="">
+      
+      
+      {/*<Navbar bg="light" expand="lg" id="hidden-navbar" className=""  >
+        <Container>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="">
           <Nav className="mr-auto">
@@ -266,8 +273,8 @@ const NavbarComponent = () => {
                   />
                 </svg>
                 <div className="ml-2">
-                  <p className="mb-0">Name + Surname</p>
-                  <span className="">Current job</span>
+                  <p className="mb-0">{user.name} {user.surname}</p>
+                  <span className=""> {user.title}</span>
                 </div>
               </div>
             </Nav.Link>
@@ -284,8 +291,10 @@ const NavbarComponent = () => {
             </div>
           </Form>
         </Navbar.Collapse>
-      </Navbar>
+        </Container>
+            </Navbar>*/}
     </div>
+    </>
   );
 };
 

@@ -60,13 +60,17 @@ body {
 }
 
 #hidden-navbar {
-  display: none;
-  padding-right: 180px;
-  padding-left: 180px;
+  
   border-top: 1px solid rgb(194, 194, 194);
   background: #eee;
   box-shadow: 0 8px 8px -4px rgb(120, 120, 120);
+  position: fixed;
+  top: -200px;
+  transition: top 0.4s;
+  display: block;
+  width: 100%;
 }
+
 
 #hidden-navbar-user p {
   color: black;
@@ -579,7 +583,7 @@ body {
 
 .sidebar-card {
   background-color: white;
-  color: black;
+  color: rgb(75, 71, 71);
   border: 1px solid #d9d9d8;
   border-radius: 10px;
   cursor: pointer;
@@ -589,7 +593,7 @@ body {
 
 .sidebar-card h2 {
   font-size: 19px;
-  color: rgba(0, 0, 0, 0.9);
+  color:rgb(75, 71, 71) ;
   font-weight: 600;
   margin-bottom: 15px;
 }
@@ -684,6 +688,7 @@ body {
   cursor: pointer;
   height: 44px;
   font-size: 15px;
+  color:#444444;
 }
 .side-news p {
   margin: 0;
@@ -761,7 +766,7 @@ body {
 }
 .post-input {
   border-radius: 20px;
-  border: 1px solid black;
+  border: 1px solid rgb(75, 71, 71);
   height: 26px;
   width: 80%;
   padding: 22px;
@@ -801,8 +806,8 @@ body {
   display: inline-block;
   width: 82%;
   height: 1px;
-  background-color: rgb(208, 207, 203);
-  margin-right: 0.5em;
+  background-color: rgb(75, 71, 71);
+
 }
 .top-recent {
   background-color: white;
@@ -1026,3 +1031,18 @@ body {
   top: 10%;
   left: 48%;
 }
+
+
+#dropdown-basic{
+  width: 55px;
+}
+
+.ml-4{
+  color:#444444 ;
+}
+
+.sort{
+  color:#73736d ;
+}
+
+
