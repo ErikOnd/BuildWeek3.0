@@ -53,8 +53,11 @@ const SinglePostComponent = ({ data }) => {
               ) : (
                 <p className="mb-0 text-secondary">{data.user.bio}</p>
               )}
-
-              <span>{formatDate(data.updatedAt)}</span>
+              {data.updatedAt === undefined ? (
+                ""
+              ) : (
+                <span>{formatDate(data.updatedAt)}</span>
+              )}
             </div>
           </div>
           <DropdownButton
