@@ -151,6 +151,10 @@ const LowerProfile = () => {
     handleClose2();
     handleClose();
     dispatch(postExperienceAsync(experienceInfo));
+    const formData = new FormData();
+    formData.append("experience", image);
+
+    dispatch(postExperiencePicture(user._id, currentExperience, formData));
   };
 
   const updateAndClose = () => {
@@ -1028,7 +1032,18 @@ const LowerProfile = () => {
             {media ? (
               <div>
                 <p>Add a link</p>
-                <p>Upload media</p>
+                <div className="image-upload">
+                    <label htmlFor="file-input">
+                      <p>Upload media</p>
+                    </label>
+
+                    <input
+                      id="file-input"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImage}
+                    />
+                  </div>
               </div>
             ) : (
               ""

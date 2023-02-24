@@ -17,6 +17,8 @@ export const REMOVE_LIKED = "REMOVE_LIKED";
 export const POST_PROFILE_PIC="POST_PROFILE_PIC"
 export const POST_EXPERIENCE_PIC="POST_EXPERIENCE_PIC"
 export const POST_POST_PICTURE="POST_POST_PICTURE"
+export const USER_LOADING="USER_LOADING"
+export const USER_ERROR="USER_ERROR"
 export const addLiked = (e) => {
   console.log("added", e);
   return {
@@ -47,16 +49,45 @@ export const fetchDataAsync = () => {
         }
       );
       if (response.ok) {
+
         let data = await response.json();
+        dispatch({
+          type:USER_ERROR,
+          payload:false
+        })
+        dispatch({
+          type:USER_LOADING,
+          payload:true
+        })
         dispatch({
           type: GET_USER,
           payload: data,
         });
+        dispatch({
+          type:USER_LOADING,
+          payload:false
+        })
       } else {
         console.log("Error fetching results");
+        dispatch({
+          type:USER_LOADING,
+          payload:false
+        })
+        dispatch({
+          type:USER_ERROR,
+          payload:true
+        })
       }
     } catch (error) {
       console.log(error);
+      dispatch({
+        type:USER_LOADING,
+        payload:false
+      })
+      dispatch({
+        type:USER_ERROR,
+        payload:true
+      })
     }
   };
 };
@@ -426,9 +457,17 @@ export const userUpdate=(body)=>{
     );
     if(res.ok){
       dispatch({
+        type:USER_LOADING,
+        payload:true
+      })
+      dispatch({
         type: UPDATE_USER,
         payload: body,
       });
+      dispatch({
+        type:USER_LOADING,
+        payload:false
+      })
     console.log("succes")
     }
   }catch(err){

@@ -1,12 +1,16 @@
 import { useEffect, useState, useInterval } from "react";
-import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
+import { Container, Row, Col, Button, Modal, Form,Spinner,Alert } from "react-bootstrap";
 import { fetchDataAsync, postProfilePicture } from "../Redux/actions";
 import { CameraFill, Key, Pencil } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { userUpdate } from "../Redux/actions";
 import { MDBCheckbox } from 'mdb-react-ui-kit'
+
 const MainProfile = () => {
   const user = useSelector((state) => state.user.user);
+  let isLoading=useSelector((state) => state.user.isLoading)
+  let isError=useSelector((state) => state.user.isError)
+
   let [open, setOpen] = useState(false);
   let [more, setMore] = useState(false);
   let [name, setName] = useState(user.name);
@@ -89,22 +93,24 @@ const MainProfile = () => {
 
     
   console.log(item);
-  const both = async() => {
-    try{
-    const formData = await new FormData();
+  const both = () => {
+ isLoading=true
+    const formData =  new FormData();
    formData.append("profile", image);
-  await dispatch(userUpdate(item))
+   dispatch(userUpdate(item))
    
-   await dispatch(postProfilePicture(id,formData))
-    window.location.reload()
-    }catch(err){
-      console.log(err)
-    }
+    dispatch(postProfilePicture(id,formData))
+
+    handleClose()
+   
   };
 
   return (
+    
     <Container id="main-profile-content">
-      {show ? (
+        {isError ?<Alert key={"error"} variant={"danger"}>
+        Thre was an error!!</Alert>
+      :<>{show ? (
         <Modal show={show} onHide={handleClose} dialogClassName="profile-modal">
           <Modal.Header closeButton>
             <Modal.Title>Edit Intro</Modal.Title>
@@ -173,6 +179,7 @@ const MainProfile = () => {
             <Button variant="primary" type="submit" onClick={() => both()}>
               Save
             </Button>
+
           </Modal.Footer>
         </Modal>
       ) : (
@@ -295,15 +302,18 @@ const MainProfile = () => {
       )}
       {user && (
         <Container
+        
           className="main"
           style={{ width: "780px", marginLeft: "-1em" }}
         >
+          
           <Row className="upper">
             <img className="profile-pic2" src={user.image} alt="" />
             <CameraFill className="camera mt-3" size={40} color="blue" />
           </Row>
           <Row className="lower">
             <Col sm={8}>
+              {isLoading ? <Spinner animation="border" variant="success" />:""}
               <h2>
                 {user.name} {user.surname}
               </h2>
@@ -400,8 +410,9 @@ const MainProfile = () => {
             </Col>
           </Row>
         </Container>
+               
       )}
-    </Container>
+      </>} </Container>
   );
 };
 
