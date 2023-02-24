@@ -2,15 +2,17 @@ import {
   GET_POSTS,
   POST_POSTS,
   DELETE_POSTS,
-  REFRESH,
   ADD_LIKED,
   REMOVE_LIKED,
+  GET_LOADING_POST,
+  GET_ERROR_POST,
 } from "../actions";
 
 const initialState = {
   posts: [],
   liked: [],
-  refresh: 0,
+  isLoading: true,
+  isError: false,
 };
 
 const postsReducer = (state = initialState, action) => {
@@ -45,10 +47,16 @@ const postsReducer = (state = initialState, action) => {
         liked: state.liked.filter((e) => e !== action.payload),
       };
 
-    case REFRESH:
+    case GET_LOADING_POST:
       return {
         ...state,
-        refresh: action.payload,
+        isLoading: action.payload,
+      };
+
+    case GET_ERROR_POST:
+      return {
+        ...state,
+        isError: action.payload,
       };
 
     default:

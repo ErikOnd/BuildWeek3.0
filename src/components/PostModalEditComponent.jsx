@@ -1,12 +1,11 @@
 import { Modal, Button, Form, Dropdown } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { editPost, REFRESH } from "../Redux/actions";
+import { editPost } from "../Redux/actions";
 import { useSelector } from "react-redux";
+import { fetchPostsAsync } from "../Redux/actions";
 
 const PostModalEditComponent = ({ data }) => {
-  const user = useSelector((state) => state.user.user);
-
   const [show, setShow] = useState(false);
   const [inputValue, setInputValue] = useState({
     text: data.text,
@@ -18,14 +17,10 @@ const PostModalEditComponent = ({ data }) => {
   const dispatch = useDispatch();
 
   const closeAndDispatch = (e) => {
-    dispatch(editPost(inputValue, data._id));
-    handleClose();
-    dispatch({
-      type: REFRESH,
-      payload: e,
+    dispatch(editPost(inputValue, data._id)).then(() => {
+      dispatch(fetchPostsAsync());
     });
-
-    // navigate("/");
+    handleClose();
   };
 
   return (

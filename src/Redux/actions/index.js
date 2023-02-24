@@ -9,12 +9,12 @@ export const DELETE_EXPERIENCE = "DELETE_EXPERIENCE";
 export const GET_POSTS = "GET_POSTS";
 export const POST_POSTS = "POST_POSTS";
 export const DELETE_POSTS = "DELETE_POSTS";
-export const REFRESH = "REFRESH";
 export const ADD_LIKED = "LIKED";
 export const REMOVE_LIKED = "REMOVE_LIKED";
+export const GET_ERROR_POST = "GET_ERROR_POST";
+export const GET_LOADING_POST = "GET_LOADING_POST";
 
 export const addLiked = (e) => {
-  console.log("added", e);
   return {
     type: ADD_LIKED,
     payload: e,
@@ -280,11 +280,29 @@ export const fetchPostsAsync = () => {
               return e;
             }),
         });
+        dispatch({
+          type: GET_LOADING_POST,
+          payload: false,
+        });
       } else {
-        console.log("error baby");
+        dispatch({
+          type: GET_LOADING_POST,
+          payload: false,
+        });
+        dispatch({
+          type: GET_ERROR_POST,
+          payload: true,
+        });
       }
     } catch (error) {
-      console.log(error);
+      dispatch({
+        type: GET_LOADING_POST,
+        payload: false,
+      });
+      dispatch({
+        type: GET_ERROR_POST,
+        payload: true,
+      });
     }
   };
 };
@@ -306,18 +324,32 @@ export const putPost = (e) => {
       );
       if (res.ok) {
         dispatch({
-          type: REFRESH,
-          payload: +1,
-        });
-        dispatch({
           type: POST_POSTS,
           payload: e,
         });
+        dispatch({
+          type: GET_LOADING_POST,
+          payload: false,
+        });
       } else {
-        console.log("error posting");
+        dispatch({
+          type: GET_LOADING_POST,
+          payload: false,
+        });
+        dispatch({
+          type: GET_ERROR_POST,
+          payload: true,
+        });
       }
     } catch (error) {
-      console.log(error);
+      dispatch({
+        type: GET_LOADING_POST,
+        payload: false,
+      });
+      dispatch({
+        type: GET_ERROR_POST,
+        payload: true,
+      });
     }
   };
 };
@@ -338,14 +370,28 @@ export const deletePost = (e) => {
 
       if (res.ok) {
         dispatch({
-          type: REFRESH,
-          payload: +1,
+          type: GET_LOADING_POST,
+          payload: false,
         });
       } else {
-        console.log("error deleting");
+        dispatch({
+          type: GET_LOADING_POST,
+          payload: false,
+        });
+        dispatch({
+          type: GET_ERROR_POST,
+          payload: true,
+        });
       }
     } catch (error) {
-      console.log(error);
+      dispatch({
+        type: GET_LOADING_POST,
+        payload: false,
+      });
+      dispatch({
+        type: GET_ERROR_POST,
+        payload: true,
+      });
     }
   };
 };
@@ -367,14 +413,28 @@ export const editPost = (e, id) => {
       );
       if (res.ok) {
         dispatch({
-          type: REFRESH,
-          payload: +1,
+          type: GET_LOADING_POST,
+          payload: false,
         });
       } else {
-        console.log("error put");
+        dispatch({
+          type: GET_LOADING_POST,
+          payload: false,
+        });
+        dispatch({
+          type: GET_ERROR_POST,
+          payload: true,
+        });
       }
     } catch (error) {
-      console.log(error);
+      dispatch({
+        type: GET_LOADING_POST,
+        payload: false,
+      });
+      dispatch({
+        type: GET_ERROR_POST,
+        payload: true,
+      });
     }
   };
 };
