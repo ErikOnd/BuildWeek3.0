@@ -1,46 +1,37 @@
-import {
-    Navbar,
-    Nav,
-    Form,
-    Container
-  } from "react-bootstrap";
- 
-  import { useEffect } from "react";
-  import {useSelector, useDispatch } from "react-redux";
-  import {fetchDataAsync  } from "../Redux/actions";
-  import React, { useState } from "react";
-  
+import { Navbar, Nav, Form, Container } from "react-bootstrap";
 
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchDataAsync } from "../Redux/actions";
+import React, { useState } from "react";
 
-  function scrollFunction() {
-    if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
-      document.getElementById("hidden-navbar").style.top = "75px";
-    } else {
-      document.getElementById("hidden-navbar").style.top= "-200px";
-    }
-  }
+// function scrollFunction() {
+//   if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
+//     document.getElementById("hidden-navbar").style.top = "75px";
+//   } else {
+//     document.getElementById("hidden-navbar").style.top = "-200px";
+//   }
+// }
 
-window.onscroll = function() {scrollFunction()};
+// window.onscroll = function () {
+//   scrollFunction();
+// };
 
-  const HiddenNavbar = () => {
-    const dispatch = useDispatch();
+const HiddenNavbar = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchDataAsync ());
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    dispatch(fetchDataAsync());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  
-  
-
- const user = useSelector((state) => state.user.user);
+  const user = useSelector((state) => state.user.user);
   let [name, setName] = useState(user.name);
   let [surname, setSurname] = useState(user.surname);
   let [title, setTitle] = useState(user.title);
 
   return (
-    <Navbar bg="light" expand="lg" id="hidden-navbar" 
-     >
-        <Container>
+    <Navbar bg="light" expand="lg" id="hidden-navbar">
+      <Container>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="">
           <Nav className="mr-auto">
@@ -64,7 +55,9 @@ window.onscroll = function() {scrollFunction()};
                   />
                 </svg>
                 <div className="ml-2">
-                  <p className="mb-0">{user.name} {user.surname}</p>
+                  <p className="mb-0">
+                    {user.name} {user.surname}
+                  </p>
                   <span className=""> {user.title}</span>
                 </div>
               </div>
@@ -82,9 +75,9 @@ window.onscroll = function() {scrollFunction()};
             </div>
           </Form>
         </Navbar.Collapse>
-        </Container>
-      </Navbar>
-  )
-  }
+      </Container>
+    </Navbar>
+  );
+};
 
-  export default HiddenNavbar;
+export default HiddenNavbar;

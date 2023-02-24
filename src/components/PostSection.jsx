@@ -50,31 +50,20 @@ const PostSection = () => {
     setImg(e.target.files[0]);
   };
 
-
-
   const closeAndDispatch = () => {
-
     dispatch(putPost(inputValue)).then(() => {
-      dispatch(fetchPostsAsync()).then(()=>{
+      dispatch(fetchPostsAsync()).then(() => {
         const formData = new FormData();
         formData.append("post", image);
-        const reduxState=store.getState()
+        const reduxState = store.getState();
 
-        let lastPost=reduxState.posts.posts[0]
+        let lastPost = reduxState.posts.posts[0];
 
-      
-
-        dispatch(postPostPicture(lastPost,formData))})
-       
-   
-     
-    
-     
+        dispatch(postPostPicture(lastPost, formData));
+      });
     });
     handleClose();
   };
-  
-
 
   return (
     <>
@@ -111,8 +100,8 @@ const PostSection = () => {
             <MdOutlineEventAvailable size={20} className="mr-2 event" />
             Event
           </Col>
-          <Col className="post-section-option mx-2">
-            <MdOutlineArticle size={20} className="mr-2 article"/>
+          <Col className="post-section-option mx-2 text-nowrap">
+            <MdOutlineArticle size={20} className="mr-2 article " />
             Write Article
           </Col>
         </Row>
@@ -150,21 +139,24 @@ const PostSection = () => {
           <Modal.Footer>
             <Container>
               <Row>
-                <Col sm={4} className="post-modal-icons-container d-flex" >
+                <Col sm={4} className="post-modal-icons-container d-flex">
                   <div className="image-upload">
-                 <label htmlFor="file-input">
-                    <BsImage size={20} className="mr-2 my-2 icon" />&nbsp;
-                 </label>
+                    <label htmlFor="file-input">
+                      <BsImage size={20} className="mr-2 my-2 icon" />
+                      &nbsp;
+                    </label>
 
-                <input id="file-input"   
-
-                   type="file"
-                   accept="image/*"
-                   onChange={handleImage}
-                  />
-                   </div>
-                  <RxVideo size={20} className="mr-2 my-2 icon" />&nbsp;
-                  <HiDocumentText size={20} className="mr-2 my-2 icon" />&nbsp;
+                    <input
+                      id="file-input"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImage}
+                    />
+                  </div>
+                  <RxVideo size={20} className="mr-2 my-2 icon" />
+                  &nbsp;
+                  <HiDocumentText size={20} className="mr-2 my-2 icon" />
+                  &nbsp;
                   <BiDotsHorizontalRounded
                     size={20}
                     className="mr-2 my-2 icon"
@@ -174,21 +166,19 @@ const PostSection = () => {
                   <button className="anyone">
                     {" "}
                     <FaRegCommentDots />
-                  
                     &nbsp; Anyone
                   </button>
                   <div className="end-of-modal ">
-                    <Clock size={20} className="mr-2" />&nbsp;
-                    
-                      <Button
-                        variant="primary"
-                        onClick={() => {
-                          closeAndDispatch();
-                        }}
-                      >
-                        Post
-                      </Button>
-                  
+                    <Clock size={20} className="mr-2" />
+                    &nbsp;
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        closeAndDispatch();
+                      }}
+                    >
+                      Post
+                    </Button>
                   </div>
                 </Col>
               </Row>
@@ -237,10 +227,10 @@ const PostSection = () => {
         </Modal>
       </Container>
       <br />
-      <Container className="post-section-sort">
+      <Container className="post-section-sort p-0 pl-2">
         <div className="line mb-1"></div>
 
-        <small onClick={() => sorting()} className="sort">
+        <small onClick={() => sorting()} className="sort ml-2">
           Sort By: <b> Top</b> <ArrowDown />
         </small>
         {sort ? (

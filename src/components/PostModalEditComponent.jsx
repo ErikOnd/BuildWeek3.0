@@ -24,11 +24,14 @@ const PostModalEditComponent = ({ data }) => {
   };
 
   const closeAndDispatch = (e) => {
-    dispatch(editPost(inputValue, data._id));
     // uploadPicture()
     const formData = new FormData();
     formData.append("post", image);
     dispatch(postPostPicture(data._id, formData));
+
+    dispatch(editPost(inputValue, data._id)).then(() => {
+      dispatch(fetchPostsAsync());
+    });
     handleClose();
   };
 
@@ -52,10 +55,9 @@ const PostModalEditComponent = ({ data }) => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Create a post</Modal.Title>
+          <Modal.Title>Edit</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div>User comes here</div>
           <Form
             onSubmit={(e) => {
               e.preventDefault();
@@ -63,18 +65,7 @@ const PostModalEditComponent = ({ data }) => {
             }}
           >
             <Form.Group>
-              <div className="image-upload">
-                <label htmlFor="file-input">
-                  <BsImage size={20} className="mr-2 my-2 icon" />
-                </label>
-
-                <input
-                  id="file-input"
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImage}
-                />
-              </div>
+              <p>Edit your comment:</p>
               <Form.Control
                 type="text"
                 placeholder="What do you want to talk about?"
@@ -89,7 +80,23 @@ const PostModalEditComponent = ({ data }) => {
             </Form.Group>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className="justify-content-between">
+          <div className="image-upload">
+            <label
+              htmlFor="file-input"
+              className="d-flex align-items-center mb-0"
+            >
+              <p className="mb-0 mr-2">Update picture</p>
+              <BsImage size={20} className="mr-2 my-2 icon" />
+            </label>
+
+            <input
+              id="file-input"
+              type="file"
+              accept="image/*"
+              onChange={handleImage}
+            />
+          </div>
           <Button variant="primary" onClick={() => closeAndDispatch("test")}>
             Post
           </Button>

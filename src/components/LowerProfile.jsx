@@ -25,7 +25,8 @@ import { BsFillCalendarFill } from "react-icons/bs";
 import { BsFillBriefcaseFill } from "react-icons/bs";
 import { putExperienceAsync } from "../Redux/actions";
 import { deleteExperienceAsync } from "../Redux/actions";
-import { UPDATE_EXPERIENCE } from "../Redux/actions";import Dropdown from 'react-bootstrap/Dropdown';
+import { UPDATE_EXPERIENCE } from "../Redux/actions";
+import Dropdown from "react-bootstrap/Dropdown";
 import { MDBCheckbox } from "mdb-react-ui-kit";
 const LowerProfile = () => {
   const experienceData = useSelector((state) => state.experience.list);
@@ -192,7 +193,7 @@ const LowerProfile = () => {
     const formData = new FormData();
     formData.append("experience", image);
 
-     dispatch(postExperiencePicture(user._id, currentExperience, formData));
+    dispatch(postExperiencePicture(user._id, currentExperience, formData));
   };
 
   const [show, setShow] = useState(false);
@@ -298,14 +299,14 @@ const LowerProfile = () => {
   //     console.log(err);
   //   }
   // }
-  const [showopt,setShowOpt]=useState(false)
-  const setOpt=()=> {
+  const [showopt, setShowOpt] = useState(false);
+  const setOpt = () => {
     if (showopt === true) {
       setShowOpt(false);
     } else {
       setShowOpt(true);
     }
-  }
+  };
   return (
     <Container>
       <Row>
@@ -435,40 +436,45 @@ const LowerProfile = () => {
           <Row>
             <Col className="box-h1">Experience</Col>
             <Col className="box-h1 mb-3 d-flex justify-content-end">
-            <Dropdown>
-  <Dropdown.Toggle
-    variant="text-dark"
-    id="dropdown-basic"
-    size="lg"
-    bsPrefix
-    className="btn-icon-only"
-  >
-    <i className="bi bi-plus-lg mr-4 plus-btn" ></i>
-  </Dropdown.Toggle>
-  <Dropdown.Menu>
-    <Dropdown.Item href="#/action-1"onClick={() => {
-                  handleShow3();
-                }} ><BsFillBriefcaseFill/> Add position</Dropdown.Item>
-    <Dropdown.Item href="#/action-2" onClick={handleShow}><BsFillCalendarFill/>  Add career break</Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown>
-              <div
-                className="d-flex mb-1 add-position-experience-effect-on-hover"
-              >
-              <i
-                className="bi bi-plus-lg mr-4"
-                onClick={() => {
-                  setExperienceInfo({
-                    role: "",
-                    company: "",
-                    startDate: "",
-                    endDate: "",
-                    description: "",
-                    area: "",
-                  });
-                  setSmShow(true);
-                }}
-              ></i> </div>
+              <Dropdown>
+                <Dropdown.Toggle
+                  variant="text-dark"
+                  id="dropdown-basic"
+                  size="lg"
+                  bsPrefix
+                  className="btn-icon-only"
+                >
+                  <i className="bi bi-plus-lg mr-0 plus-btn"></i>
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item
+                    href="#/action-1"
+                    onClick={() => {
+                      handleShow3();
+                    }}
+                  >
+                    <BsFillBriefcaseFill /> Add position
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-2" onClick={handleShow}>
+                    <BsFillCalendarFill /> Add career break
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              <div className="d-flex mb-1 add-position-experience-effect-on-hover">
+                <i
+                  onClick={() => {
+                    setExperienceInfo({
+                      role: "",
+                      company: "",
+                      startDate: "",
+                      endDate: "",
+                      description: "",
+                      area: "",
+                    });
+                    setSmShow(true);
+                  }}
+                ></i>{" "}
+              </div>
               <div className="d-flex mb-1 add-position-experience-effect-on-hover">
                 <div className="mr-2"></div>
               </div>
@@ -641,11 +647,11 @@ const LowerProfile = () => {
                   </Button>
                 </Modal.Footer>
               </Modal>
-            </Col> 
+            </Col>
           </Row>
-          {experienceData.map((e) => {
+          {experienceData.map((e, i) => {
             return (
-              <div className="experience-holder" key={e._id}>
+              <div className="experience-holder" key={i}>
                 <Row className="flex-column">
                   <Col className="box-h2">
                     <img
@@ -654,13 +660,13 @@ const LowerProfile = () => {
                           ? e.image
                           : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPiyVMnDfuHqeZ9W5Zm-BZBC41CQOCADBHxw&usqp=CAU"
                       }
-                      // alt="company logo"
+                      alt="company logo"
                       className="experience-logo "
                     />
                     <span className="ex-role">{e.role}</span>
-                    {console.log(e.image)}
+
                     <i
-                      className="bi bi-pen float-right"
+                      className="bi bi-pen float-right mt-1"
                       onClick={() => {
                         changeExperienceInfo(e._id);
                         setCurrentExperience(e._id);
@@ -865,10 +871,10 @@ const LowerProfile = () => {
                     }}
                   >
                     <option>Year</option>
-                    {years.map((y) => {
+                    {years.map((y, i) => {
                       return (
                         <>
-                          <option key={y}>{y}</option>
+                          <option key={i}>{y}</option>
                         </>
                       );
                     })}
@@ -902,10 +908,10 @@ const LowerProfile = () => {
 
                   <Form.Control as={"select"} disabled>
                     <option>Year</option>
-                    {years.map((y) => {
+                    {years.map((y, i) => {
                       return (
                         <>
-                          <option key={y}>{y}</option>
+                          <option key={i}>{y}</option>
                         </>
                       );
                     })}
@@ -969,10 +975,10 @@ const LowerProfile = () => {
                     required
                   >
                     <option>Year</option>
-                    {years.map((y) => {
+                    {years.map((y, i) => {
                       return (
                         <>
-                          <option key={y}>{y}</option>
+                          <option key={i}>{y}</option>
                         </>
                       );
                     })}
@@ -1011,10 +1017,10 @@ const LowerProfile = () => {
                     }}
                     required
                   >
-                    {years.map((y) => {
+                    {years.map((y, i) => {
                       return (
                         <>
-                          <option key={y}>{y}</option>
+                          <option key={i}>{y}</option>
                         </>
                       );
                     })}
@@ -1044,7 +1050,7 @@ const LowerProfile = () => {
             <br />
             <br />
             <Form.Label>Profile Headline</Form.Label>
-            <Form.Control type="text" value={title} />
+            <Form.Control type="text" />
             Appears below your name at the top of the profile
             <br />
             <br />
@@ -1071,17 +1077,17 @@ const LowerProfile = () => {
               <div>
                 <p>Add a link</p>
                 <div className="image-upload">
-                    <label htmlFor="file-input">
-                      <p>Upload media</p>
-                    </label>
+                  <label htmlFor="file-input">
+                    <p>Upload media</p>
+                  </label>
 
-                    <input
-                      id="file-input"
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImage}
-                    />
-                  </div>
+                  <input
+                    id="file-input"
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImage}
+                  />
+                </div>
               </div>
             ) : (
               ""
@@ -1304,7 +1310,7 @@ const LowerProfile = () => {
               />
               <br />
               <Form.Label>Profile Headline</Form.Label>
-              <Form.Control type="text" value={title} />
+              <Form.Control type="text" />
               Appears below your name at the top of the profile
               <br />
               <br />
@@ -1327,26 +1333,22 @@ const LowerProfile = () => {
               presentations. Learn more about{" "}
               <a href=""> media file types supported</a>
               <br /> <br />
-              <button className="button">
-              Add Media
-            </button>
-          
+              <button className="button">Add Media</button>
               <div>
                 <p>Add a link</p>
                 <div className="image-upload">
-                    <label htmlFor="file-input">
-                      <p>Upload media</p>
-                    </label>
+                  <label htmlFor="file-input">
+                    <p>Upload media</p>
+                  </label>
 
-                    <input
-                      id="file-input"
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImage}
-                    />
-                  </div>
+                  <input
+                    id="file-input"
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImage}
+                  />
+                </div>
               </div>
-
             </Form.Group>
           </Form>
         </Modal.Body>

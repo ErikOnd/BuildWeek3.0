@@ -8,7 +8,6 @@ import { Row, Col, Container } from "react-bootstrap";
 const ProfilePage = () => {
   return (
     <>
-    
       <Container fluid>
         <Row>
           <Col className="d-flex justify-content-center">
@@ -24,7 +23,6 @@ const ProfilePage = () => {
         <FooterComponent />
       </Container>
       {/* <HiddenNavbar/> */}
-   
     </>
   );
 };

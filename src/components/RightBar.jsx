@@ -25,7 +25,7 @@ const RightBar = () => {
             <div className="sidebar-card">
               <div className="card-spacing">
                 <div className="d-flex align-items-center">
-                  <h2>Edit public profile & URL</h2>
+                  <h2 className="mb-0">Edit public profile & URL</h2>
                   <svg
                     className="ml-auto"
                     xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@ const RightBar = () => {
                 </div>
                 <hr />
                 <div className="d-flex align-items-center">
-                  <h2>Add profile in another language</h2>
+                  <h2 className="mb-0">Add profile in another language</h2>
                   <svg
                     className="ml-auto"
                     xmlns="http://www.w3.org/2000/svg"
