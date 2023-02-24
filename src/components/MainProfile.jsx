@@ -95,12 +95,12 @@ const MainProfile = () => {
   }
 
   const handleImage = (e) => {
-    console.log(e.target.files[0].name);
+    // console.log(e.target.files[0].name);
     setImg(e.target.files[0]);
   };
   let item = { name, surname, title };
 
-  console.log(item);
+  // console.log(item);
   const both = async () => {
     try {
       const formData = new FormData();

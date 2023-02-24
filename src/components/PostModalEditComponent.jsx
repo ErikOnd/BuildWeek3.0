@@ -19,7 +19,7 @@ const PostModalEditComponent = ({ data }) => {
 
   let [image, setImg] = useState("");
   const handleImage = (e) => {
-    console.log(e.target.files[0].name);
+    // console.log(e.target.files[0].name);
     setImg(e.target.files[0]);
   };
 

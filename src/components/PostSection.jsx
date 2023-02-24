@@ -46,7 +46,7 @@ const PostSection = () => {
   };
   let [image, setImg] = useState("");
   const handleImage = (e) => {
-    console.log(e.target.files[0]);
+    // console.log(e.target.files[0]);
     setImg(e.target.files[0]);
   };
 

@@ -5,17 +5,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchDataAsync } from "../Redux/actions";
 import React, { useState } from "react";
 
-// function scrollFunction() {
-//   if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
-//     document.getElementById("hidden-navbar").style.top = "75px";
-//   } else {
-//     document.getElementById("hidden-navbar").style.top = "-200px";
-//   }
-// }
+function scrollFunction() {
+  if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
+    document.getElementById("hidden-navbar").style.top = "75px";
+  } else {
+    document.getElementById("hidden-navbar").style.top = "-200px";
+  }
+}
 
-// window.onscroll = function () {
-//   scrollFunction();
-// };
+window.onscroll = function () {
+  scrollFunction();
+};
 
 const HiddenNavbar = () => {
   const dispatch = useDispatch();

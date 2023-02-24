@@ -169,7 +169,7 @@ const LowerProfile = () => {
       dispatch(getAllExperienceAsync());
     });
 
-    console.log(123);
+    // console.log(123);
   };
   const saveAndClose = () => {
     handleClose3();
@@ -272,7 +272,7 @@ const LowerProfile = () => {
   }, [currentExperience]); */
   let [image, setImg] = useState("");
   const handleImage = (e) => {
-    console.log(e.target.files[0].name);
+    // console.log(e.target.files[0].name);
     setImg(e.target.files[0]);
   };
 
