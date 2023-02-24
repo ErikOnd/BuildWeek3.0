@@ -17,7 +17,7 @@ const FeedPostComponent = () => {
   }, []);
 
   return (
-    <div className="mt-3 mr-4">
+    <div className="mt-3 mr-2">
       {error && (
         <Alert variant="danger" className="mr-2">
           We got an error loading the posts...
