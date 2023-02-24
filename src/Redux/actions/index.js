@@ -551,7 +551,7 @@ export const postProfilePicture = (id, form) => {
 
 
 export const postExperiencePicture = (id, eid, form) => {
-  return async (dispatch) => {
+  return async (dispatch,getState) => {
     let Url =
       "https://striveschool-api.herokuapp.com/api/profile/" +
       id +
@@ -582,7 +582,7 @@ export const postExperiencePicture = (id, eid, form) => {
 };
 
 export const postPostPicture = (id, form) => {
-  return async (dispatch) => {
+  return async (dispatch,getState) => {
     let Url = "https://striveschool-api.herokuapp.com/api/posts/" + id;
 
     try {

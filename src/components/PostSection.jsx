@@ -1,7 +1,7 @@
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Reddit, ArrowDown, Clock } from "react-bootstrap-icons";
-import { putPost } from "../Redux/actions";
+import { postPostPicture, putPost } from "../Redux/actions";
 import { useEffect, useState } from "react";
 import { BiPhotoAlbum, BiDotsHorizontalRounded } from "react-icons/bi";
 import { RxVideo } from "react-icons/rx";
@@ -12,6 +12,7 @@ import { HiDocumentText } from "react-icons/hi";
 import { FaRegCommentDots } from "react-icons/fa";
 import { BsChevronDown } from "react-icons/bs";
 import { fetchPostsAsync } from "../Redux/actions";
+import { store } from "../Redux/store";
 
 const PostSection = () => {
   const user = useSelector((state) => state.user.user);
@@ -43,10 +44,32 @@ const PostSection = () => {
       setSort(false);
     }
   };
+  let [image, setImg] = useState("");
+  const handleImage = (e) => {
+    console.log(e.target.files[0]);
+    setImg(e.target.files[0]);
+  };
+
+
 
   const closeAndDispatch = () => {
+
     dispatch(putPost(inputValue)).then(() => {
-      dispatch(fetchPostsAsync());
+      dispatch(fetchPostsAsync()).then(()=>{
+        const formData = new FormData();
+        formData.append("post", image);
+        const reduxState=store.getState()
+
+        let lastPost=reduxState.posts.posts[0].then
+
+      
+
+        dispatch(postPostPicture(lastPost,formData))})
+       
+   
+     
+    
+     
     });
     handleClose();
   };
@@ -134,8 +157,10 @@ const PostSection = () => {
                  </label>
 
                 <input id="file-input"   
+
                    type="file"
                    accept="image/*"
+                   onChange={handleImage}
                   />
                    </div>
                   <RxVideo size={20} className="mr-2 my-2 icon" />
