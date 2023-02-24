@@ -168,7 +168,7 @@ const LowerProfile = () => {
     const formData = new FormData();
     formData.append("experience", image);
 
-    dispatch(postExperiencePicture(user._id, currentExperience, formData));
+     dispatch(postExperiencePicture(user._id, currentExperience, formData));
   };
 
   const [show, setShow] = useState(false);
@@ -274,6 +274,14 @@ const LowerProfile = () => {
   //     console.log(err);
   //   }
   // }
+  const [showopt,setShowOpt]=useState(false)
+  const setOpt=()=> {
+    if (showopt === true) {
+      setShowOpt(false);
+    } else {
+      setShowOpt(true);
+    }
+  }
   return (
     <Container>
       <Row>
@@ -1289,14 +1297,13 @@ const LowerProfile = () => {
               presentations. Learn more about{" "}
               <a href=""> media file types supported</a>
               <br /> <br />
-              <button className="button" onClick={() => setmed()}>
-                Add Media
-              </button>
-              {media ? (
-                <div>
-                  <p>Add a link</p>
-
-                  <div className="image-upload">
+              <button className="button">
+              Add Media
+            </button>
+          
+              <div>
+                <p>Add a link</p>
+                <div className="image-upload">
                     <label htmlFor="file-input">
                       <p>Upload media</p>
                     </label>
@@ -1308,10 +1315,8 @@ const LowerProfile = () => {
                       onChange={handleImage}
                     />
                   </div>
-                </div>
-              ) : (
-                ""
-              )}
+              </div>
+
             </Form.Group>
           </Form>
         </Modal.Body>
