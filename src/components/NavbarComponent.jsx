@@ -178,7 +178,7 @@ const NavbarComponent = () => {
                 menuAlign="right"
               >
                 <Link to={"/profile"}>
-                  <Dropdown.Item href="#action/3.1" className="px-2">
+                  <div href="#action/3.1" className="px-2 dropdown-item">
                     <div>
                       <div className="d-flex align-items-center">
                         <svg
@@ -207,7 +207,7 @@ const NavbarComponent = () => {
                       <div id="view-profile-button">View Profile</div>
                     </div>
                     <Dropdown.Divider />
-                  </Dropdown.Item>
+                  </div>
                 </Link>
                 <p className="ml-2 mb-0 dropdown-section">Account</p>
                 <Dropdown.Item href="#action/3.2">
