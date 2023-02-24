@@ -25,7 +25,7 @@ import { BsFillCalendarFill } from "react-icons/bs";
 import { BsFillBriefcaseFill } from "react-icons/bs";
 import { putExperienceAsync } from "../Redux/actions";
 import { deleteExperienceAsync } from "../Redux/actions";
-import { UPDATE_EXPERIENCE } from "../Redux/actions";
+import { UPDATE_EXPERIENCE } from "../Redux/actions";import Dropdown from 'react-bootstrap/Dropdown';
 import { MDBCheckbox } from "mdb-react-ui-kit";
 const LowerProfile = () => {
   const experienceData = useSelector((state) => state.experience.list);
@@ -423,6 +423,26 @@ const LowerProfile = () => {
           <Row>
             <Col className="box-h1">Experience</Col>
             <Col className="box-h1 mb-3 d-flex justify-content-end">
+            <Dropdown>
+  <Dropdown.Toggle
+    variant="text-dark"
+    id="dropdown-basic"
+    size="lg"
+    bsPrefix
+    className="btn-icon-only"
+  >
+    <i className="bi bi-plus-lg mr-4 plus-btn" ></i>
+  </Dropdown.Toggle>
+  <Dropdown.Menu>
+    <Dropdown.Item href="#/action-1"onClick={() => {
+                  handleShow3();
+                }} ><BsFillBriefcaseFill/> Add position</Dropdown.Item>
+    <Dropdown.Item href="#/action-2" onClick={handleShow}><BsFillCalendarFill/>  Add career break</Dropdown.Item>
+  </Dropdown.Menu>
+</Dropdown>
+              <div
+                className="d-flex mb-1 add-position-experience-effect-on-hover"
+              >
               <i
                 className="bi bi-plus-lg mr-4"
                 onClick={() => {
@@ -436,29 +456,10 @@ const LowerProfile = () => {
                   });
                   setSmShow(true);
                 }}
-              ></i>
+              ></i> </div>
               <div className="d-flex mb-1 add-position-experience-effect-on-hover">
                 <div className="mr-2"></div>
               </div>
-              <Modal
-                size="sm"
-                show={smShow}
-                onHide={() => setSmShow(false)}
-                aria-labelledby="example-modal-sizes-title-sm"
-              >
-                <Modal.Body
-                  id="sm-1"
-                  onClick={() => {
-                    handleShow3();
-                  }}
-                >
-                  <BsFillBriefcaseFill /> Add position
-                </Modal.Body>
-
-                <Modal.Body id="sm-2" onClick={handleShow}>
-                  <BsFillCalendarFill /> Add career break
-                </Modal.Body>
-              </Modal>
               <Modal
                 show={show}
                 onHide={handleClose}
@@ -628,7 +629,7 @@ const LowerProfile = () => {
                   </Button>
                 </Modal.Footer>
               </Modal>
-            </Col>
+            </Col> 
           </Row>
           {experienceData.map((e) => {
             return (
