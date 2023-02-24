@@ -142,11 +142,12 @@ const LowerProfile = () => {
     handleClose3();
     handleClose2();
     handleClose();
-    uploadPicture()   
+    // uploadPicture()   
     dispatch(putExperienceAsync(experienceInfo, currentExperience));
-   
+    const formData = new FormData();
+    formData.append("experience", image);
  
-    // dispatch(postExperiencePicture(user._id,currentExperience,formData))
+    dispatch(postExperiencePicture(user._id,currentExperience,formData))
   };
 
   const editAndClose = () => {
@@ -235,29 +236,29 @@ const LowerProfile = () => {
  
   };
  
-  const uploadPicture = async () => {
-    let Url =
-   `https://striveschool-api.herokuapp.com/api/profile/${user._id}/experiences/${currentExperience}/picture`
-    const formData = new FormData();
-    formData.append("experience", image);
-    try {
-      const res = await fetch(Url, {
-        method: "POST",
-        body: formData,
+  // const uploadPicture = async () => {
+  //   let Url =
+  //  `https://striveschool-api.herokuapp.com/api/profile/${user._id}/experiences/${currentExperience}/picture`
+  //   const formData = new FormData();
+  //   formData.append("experience", image);
+  //   try {
+  //     const res = await fetch(Url, {
+  //       method: "POST",
+  //       body: formData,
 
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
-        },
-      });
-      console.log(image);
-      if (res.ok) {
-        console.log("succes");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  //       headers: {
+  //         Authorization:
+  //           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
+  //       },
+  //     });
+  //     console.log(image);
+  //     if (res.ok) {
+  //       console.log("succes");
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
   return (
     <Container>
       <Row>
