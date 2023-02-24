@@ -60,7 +60,7 @@ const PostSection = () => {
         formData.append("post", image);
         const reduxState=store.getState()
 
-        let lastPost=reduxState.posts.posts[0].then
+        let lastPost=reduxState.posts.posts[0]
 
       
 
