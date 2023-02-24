@@ -1,9 +1,10 @@
 import { useEffect, useState, useInterval } from "react";
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
-import { fetchDataAsync } from "../Redux/actions";
+import { fetchDataAsync, postProfilePicture } from "../Redux/actions";
 import { CameraFill, Key, Pencil } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { MDBCheckbox } from "mdb-react-ui-kit";
+import { userUpdate } from "../Redux/actions";
+import { MDBCheckbox } from 'mdb-react-ui-kit'
 const MainProfile = () => {
   const user = useSelector((state) => state.user.user);
   let [open, setOpen] = useState(false);
@@ -85,62 +86,21 @@ const MainProfile = () => {
     setImg(e.target.files[0]);
   };
   let item = { name, surname, title };
-  const updateUser = async (e) => {
-    try {
-      let res = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/`,
-        {
-          method: "PUT",
-          body: JSON.stringify(e),
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
-          },
-        }
-      );
-      if (res.ok) {
-        let newUser = await res.json();
 
-        dispatch(fetchDataAsync());
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    
   console.log(item);
-  const uploadPicture = async () => {
-    let Url =
-      "https://striveschool-api.herokuapp.com/api/profile/" + id + "/picture";
-    const formData = new FormData();
-    formData.append("profile", image);
-    try {
-      const res = await fetch(Url, {
-        method: "POST",
-        body: formData,
-
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
-        },
-      });
-      console.log(image);
-      if (res.ok) {
-        console.log("succes");
-      }
-    } catch (err) {
-      console.log(err);
+  const both = async() => {
+    try{
+    const formData = await new FormData();
+   formData.append("profile", image);
+  await dispatch(userUpdate(item))
+   
+   await dispatch(postProfilePicture(id,formData))
+    window.location.reload()
+    }catch(err){
+      console.log(err)
     }
   };
-  const both = () => {
-    updateUser(item);
-    uploadPicture();
-  };
-
-  useEffect(() => {
-    dispatch(fetchDataAsync());
-  }, []);
 
   return (
     <Container id="main-profile-content">
@@ -202,6 +162,7 @@ const MainProfile = () => {
                 <Form.Label>Picture Url</Form.Label>
                 <Form.Control
                   type="file"
+               
                   accept="image/*"
                   onChange={handleImage}
                 />

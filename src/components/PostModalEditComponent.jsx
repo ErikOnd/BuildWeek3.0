@@ -1,8 +1,9 @@
 import { Modal, Button, Form, Dropdown } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { editPost, REFRESH } from "../Redux/actions";
+import { editPost, postPostPicture, REFRESH } from "../Redux/actions";
 import { useSelector } from "react-redux";
+import { BsImage } from "react-icons/bs";
 
 const PostModalEditComponent = ({ data }) => {
   const user = useSelector((state) => state.user.user);
@@ -17,8 +18,20 @@ const PostModalEditComponent = ({ data }) => {
 
   const dispatch = useDispatch();
 
+  let [image,setImg]=useState("")
+  const handleImage = (e) => {
+    console.log(e.target.files[0].name);
+    setImg(e.target.files[0])
+ 
+  };
+
   const closeAndDispatch = (e) => {
+
     dispatch(editPost(inputValue, data._id));
+    // uploadPicture()
+    const formData = new FormData();
+     formData.append("post", image);
+    dispatch(postPostPicture(data._id,formData))
     handleClose();
     dispatch({
       type: REFRESH,
@@ -59,6 +72,16 @@ const PostModalEditComponent = ({ data }) => {
             }}
           >
             <Form.Group>
+            <div className="image-upload">
+                 <label htmlFor="file-input">
+                    <BsImage size={20} className="mr-2 my-2 icon" />
+                 </label>
+
+                <input id="file-input"   
+                   type="file"
+                   accept="image/*"
+                   onChange={handleImage}/>
+                   </div>
               <Form.Control
                 type="text"
                 placeholder="What do you want to talk about?"

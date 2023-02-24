@@ -5,6 +5,7 @@ import {
   REFRESH,
   ADD_LIKED,
   REMOVE_LIKED,
+  POST_POST_PICTURE,
 } from "../actions";
 
 const initialState = {
@@ -50,7 +51,11 @@ const postsReducer = (state = initialState, action) => {
         ...state,
         refresh: action.payload,
       };
-
+    case POST_POST_PICTURE:
+      return{
+        ...state,
+        posts: [...state.posts, action.payload]
+      }
     default:
       return state;
   }

@@ -4,6 +4,7 @@ import {
   POST_EXPERIENCE,
   DELETE_EXPERIENCE,
   UPDATE_EXPERIENCE,
+  POST_EXPERIENCE_PIC,
 } from "../actions";
 
 const initialState = {
@@ -45,6 +46,11 @@ const experienceReducer = (state = initialState, action) => {
         ...state,
         list: state.list.filter((fav) => fav !== action.payload),
       };
+      case POST_EXPERIENCE_PIC:
+        return{
+          ...state,
+          list: [...state.list, action.payload],
+        }
     default:
       return state;
   }

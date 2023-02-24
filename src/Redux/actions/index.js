@@ -1,3 +1,5 @@
+import { Form } from "react-bootstrap";
+
 export const GET_USER = "GET_USER";
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const UPDATE_USER = "UPDATE_USER";
@@ -12,7 +14,9 @@ export const DELETE_POSTS = "DELETE_POSTS";
 export const REFRESH = "REFRESH";
 export const ADD_LIKED = "LIKED";
 export const REMOVE_LIKED = "REMOVE_LIKED";
-
+export const POST_PROFILE_PIC="POST_PROFILE_PIC"
+export const POST_EXPERIENCE_PIC="POST_EXPERIENCE_PIC"
+export const POST_POST_PICTURE="POST_POST_PICTURE"
 export const addLiked = (e) => {
   console.log("added", e);
   return {
@@ -313,6 +317,10 @@ export const putPost = (e) => {
           type: POST_POSTS,
           payload: e,
         });
+        dispatch({
+          type: REFRESH,
+          payload: +1,
+        });
       } else {
         console.log("error posting");
       }
@@ -379,29 +387,148 @@ export const editPost = (e, id) => {
   };
 };
 
-export const fetchUsersDataAsync = () => {
-  return async (dispatch, getState) => {
-    try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/",
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmRkODgzODFmYzAwMTNmZmZhY2UiLCJpYXQiOjE2NzcxNjE1NjAsImV4cCI6MTY3ODM3MTE2MH0.fAmFttFOD-EuZLdMX1wMyGaxtc-aJrXXB5Wp4fJ9Xfg",
-          },
-        }
-      );
-      if (response.ok) {
-        let users = await response.json();
-        dispatch({
-          type: GET_ALL_USERS,
-          payload: users,
-        });
-      } else {
-        console.log("Error");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const userUpdate=(body)=>{
+ return async(dispatch)=>{
+  try{
+    let res = await fetch(
+      `https://striveschool-api.herokuapp.com/api/profile/`,
+      {
+        method: "PUT",
+        body: JSON.stringify(body),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
+        },
       }
-    } catch (error) {
-      console.log(error);
+     
+    );
+    if(res.ok){
+      dispatch({
+        type: UPDATE_USER,
+        payload: body,
+      });
+    console.log("succes")
     }
-  };
-};
+  }catch(err){
+    console.log(err)
+  }
+ }
+}
+
+
+
+
+
+export const postProfilePicture=(id,form)=>{
+  return async(dispatch)=>{
+    let Url =
+    "https://striveschool-api.herokuapp.com/api/profile/" + id + "/picture"
+    
+   try{
+    let res= await fetch(Url, {
+      method: "POST",
+      body: form,
+
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
+      },
+    })
+    console.log(Url);
+    if (res.ok) {
+      
+      dispatch({
+        type: POST_PROFILE_PIC,
+        payload: form,
+      });
+   
+
+    }else{
+      console.log("nope")
+    }
+   }catch(err){
+    console.log(err)
+   }
+  }
+
+}
+
+
+export const postExperiencePicture=(id,eid,form)=>{
+ return async(dispatch)=>{
+  let Url =
+  "https://striveschool-api.herokuapp.com/api/profile/"+id+"/experiences/"+eid+"/picture"
+  try{
+    const res = await fetch(Url, {
+      method: "POST",
+      body: form,
+
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
+      },
+    });
+    if (res.ok) {
+      console.log("succes");
+      dispatch({
+        type: POST_EXPERIENCE_PIC,
+        payload: form,
+      });
+    }
+  }catch(err){
+    console.log(err)
+  }
+ }
+}
+
+export const postPostPicture=(id,form)=>{
+ return async(dispatch)=>{
+  let Url =
+  "https://striveschool-api.herokuapp.com/api/posts/"+id;
+   
+   
+  
+  try {
+    const res = await fetch(Url, {
+      method: "POST",
+      body: form,
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
+      },
+    })
+    if (res.ok) {
+      console.log("succes");
+      dispatch({
+        type: POST_POST_PICTURE,
+        payload: form,
+      });
+    }
+   }catch(err){
+    console.log(err)
+   }
+  
+  }}
+

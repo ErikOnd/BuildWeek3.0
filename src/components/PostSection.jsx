@@ -2,7 +2,7 @@ import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Reddit, ArrowDown, Clock } from "react-bootstrap-icons";
 import { putPost } from "../Redux/actions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BiPhotoAlbum, BiDotsHorizontalRounded } from "react-icons/bi";
 import { RxVideo } from "react-icons/rx";
 import { MdOutlineEventAvailable, MdOutlineArticle } from "react-icons/md";
@@ -33,7 +33,6 @@ const PostSection = () => {
     username: user.username,
     __v: 0,
   });
-
   // const navigate = useNavigate();
   const dispatch = useDispatch();
   const sorting = () => {
@@ -48,6 +47,8 @@ const PostSection = () => {
     dispatch(putPost(inputValue));
     handleClose();
   };
+  
+
 
   return (
     <>
@@ -123,8 +124,17 @@ const PostSection = () => {
           <Modal.Footer>
             <Container>
               <Row>
-                <Col sm={4} className="post-modal-icons-container">
-                  <BsImage size={20} className="mr-2 my-2 icon" />
+                <Col sm={4} className="post-modal-icons-container d-flex" >
+                  <div className="image-upload">
+                 <label htmlFor="file-input">
+                    <BsImage size={20} className="mr-2 my-2 icon" />
+                 </label>
+
+                <input id="file-input"   
+                   type="file"
+                   accept="image/*"
+                  />
+                   </div>
                   <RxVideo size={20} className="mr-2 my-2 icon" />
                   <HiDocumentText size={20} className="mr-2 my-2 icon" />
                   <BiDotsHorizontalRounded
@@ -198,7 +208,7 @@ const PostSection = () => {
       </Container>
       <br />
       <Container className="post-section-sort">
-        <div className="line"></div>
+        <div className="line mb-1"></div>
 
         <small onClick={() => sorting()}>
           Sort By: <b> Top</b> <BsChevronDown />

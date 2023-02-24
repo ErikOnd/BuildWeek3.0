@@ -677,9 +677,13 @@ body {
   margin-bottom: 0.5em;
   cursor: pointer;
   height: 44px;
+  font-size: 15px;
 }
 .side-news p {
   margin: 0;
+}
+.image-upload>input {
+  display: none;
 }
 .side-news small {
   color: grey;
@@ -789,9 +793,10 @@ body {
 }
 .line {
   display: inline-block;
-  width: 83%;
+  width: 82%;
   height: 1px;
-  background-color: black;
+  background-color: rgb(208, 207, 203);
+  margin-right: 0.5em;
 }
 .top-recent {
   background-color: white;
@@ -863,7 +868,12 @@ body {
   font-weight: bold;
 }
 
+.post-user-info p {
+  font-size: 13px;
+}
+
 .post-user-info span {
+  font-size: 12px;
   font-weight: lighter;
 }
 
@@ -998,4 +1008,9 @@ body {
 
 .post-images {
   width: 100%;
+}
+
+.post-user-image {
+  width: 60px;
+  border-radius: 20px;
 }
