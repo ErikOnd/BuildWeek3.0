@@ -3,7 +3,7 @@ import LowerProfile from "./LowerProfile";
 import MainProfile from "./MainProfile";
 import RightBar from "./RightBar";
 import { Row, Col, Container } from "react-bootstrap";
-import HiddenNavbar from "./HiddenNavbar"
+// import HiddenNavbar from "./HiddenNavbar"
 
 const ProfilePage = () => {
   return (
@@ -23,7 +23,7 @@ const ProfilePage = () => {
         </Row>
         <FooterComponent />
       </Container>
-      <HiddenNavbar/>
+      {/* <HiddenNavbar/> */}
    
     </>
   );
