@@ -7,6 +7,7 @@ import {
   removeLiked,
 } from "../Redux/actions";
 import PostModalEditComponent from "./PostModalEditComponent";
+import formatDistance from "date-fns/formatDistance";
 
 const SinglePostComponent = ({ data }) => {
   // console.log(data);
@@ -15,6 +16,11 @@ const SinglePostComponent = ({ data }) => {
   const like = useSelector((state) => state.posts.liked);
 
   const dispatch = useDispatch();
+
+  const formatDate = (exData) => {
+    const date = new Date(exData);
+    return formatDistance(date, new Date(), { addSuffix: true });
+  };
 
   const handleDelete = () => {
     dispatch(deletePost(data._id)).then(() => {
@@ -48,7 +54,7 @@ const SinglePostComponent = ({ data }) => {
                 <p className="mb-0 text-secondary">{data.user.bio}</p>
               )}
 
-              <span>{data.updatedAt}</span>
+              <span>{formatDate(data.updatedAt)}</span>
             </div>
           </div>
           <DropdownButton
