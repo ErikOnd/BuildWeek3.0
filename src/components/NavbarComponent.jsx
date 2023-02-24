@@ -242,6 +242,7 @@ const NavbarComponent = () => {
         </Container>
       </Navbar>
       <Navbar bg="light" expand="lg" id="hidden-navbar" className="">
+        <Container>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="">
           <Nav className="mr-auto">
@@ -265,8 +266,8 @@ const NavbarComponent = () => {
                   />
                 </svg>
                 <div className="ml-2">
-                  <p className="mb-0">Name + Surname</p>
-                  <span className="">Current job</span>
+                  <p className="mb-0">{user.name} {user.surname}</p>
+                  <span className=""> {user.title}</span>
                 </div>
               </div>
             </Nav.Link>
@@ -283,6 +284,7 @@ const NavbarComponent = () => {
             </div>
           </Form>
         </Navbar.Collapse>
+        </Container>
       </Navbar>
       
     </div>

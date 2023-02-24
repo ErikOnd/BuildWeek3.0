@@ -62,7 +62,7 @@ body {
 
 
 #hidden-navbar {
-  display: none;
+  
   padding-right: 180px;
   padding-left: 180px;
   border-top: 1px solid rgb(194, 194, 194);
@@ -874,3 +874,9 @@ body {
 .home:hover, .network:hover, .jobs:hover, .message:hover, .notifications:hover {
   color: #574c4c;
 }
+
+#dropdown-basic{
+  width: 55px;
+}
+
+
