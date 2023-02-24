@@ -1,5 +1,3 @@
-import { Form } from "react-bootstrap";
-
 export const GET_USER = "GET_USER";
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const UPDATE_USER = "UPDATE_USER";
@@ -11,14 +9,15 @@ export const DELETE_EXPERIENCE = "DELETE_EXPERIENCE";
 export const GET_POSTS = "GET_POSTS";
 export const POST_POSTS = "POST_POSTS";
 export const DELETE_POSTS = "DELETE_POSTS";
-export const REFRESH = "REFRESH";
 export const ADD_LIKED = "LIKED";
 export const REMOVE_LIKED = "REMOVE_LIKED";
-export const POST_PROFILE_PIC="POST_PROFILE_PIC"
-export const POST_EXPERIENCE_PIC="POST_EXPERIENCE_PIC"
-export const POST_POST_PICTURE="POST_POST_PICTURE"
+export const POST_PROFILE_PIC = "POST_PROFILE_PIC";
+export const POST_EXPERIENCE_PIC = "POST_EXPERIENCE_PIC";
+export const POST_POST_PICTURE = "POST_POST_PICTURE";
+export const GET_ERROR_POST = "GET_ERROR_POST";
+export const GET_LOADING_POST = "GET_LOADING_POST";
+
 export const addLiked = (e) => {
-  console.log("added", e);
   return {
     type: ADD_LIKED,
     payload: e,
@@ -284,11 +283,29 @@ export const fetchPostsAsync = () => {
               return e;
             }),
         });
+        dispatch({
+          type: GET_LOADING_POST,
+          payload: false,
+        });
       } else {
-        console.log("error baby");
+        dispatch({
+          type: GET_LOADING_POST,
+          payload: false,
+        });
+        dispatch({
+          type: GET_ERROR_POST,
+          payload: true,
+        });
       }
     } catch (error) {
-      console.log(error);
+      dispatch({
+        type: GET_LOADING_POST,
+        payload: false,
+      });
+      dispatch({
+        type: GET_ERROR_POST,
+        payload: true,
+      });
     }
   };
 };
@@ -310,22 +327,32 @@ export const putPost = (e) => {
       );
       if (res.ok) {
         dispatch({
-          type: REFRESH,
-          payload: +1,
-        });
-        dispatch({
           type: POST_POSTS,
           payload: e,
         });
         dispatch({
-          type: REFRESH,
-          payload: +1,
+          type: GET_LOADING_POST,
+          payload: false,
         });
       } else {
-        console.log("error posting");
+        dispatch({
+          type: GET_LOADING_POST,
+          payload: false,
+        });
+        dispatch({
+          type: GET_ERROR_POST,
+          payload: true,
+        });
       }
     } catch (error) {
-      console.log(error);
+      dispatch({
+        type: GET_LOADING_POST,
+        payload: false,
+      });
+      dispatch({
+        type: GET_ERROR_POST,
+        payload: true,
+      });
     }
   };
 };
@@ -346,14 +373,28 @@ export const deletePost = (e) => {
 
       if (res.ok) {
         dispatch({
-          type: REFRESH,
-          payload: +1,
+          type: GET_LOADING_POST,
+          payload: false,
         });
       } else {
-        console.log("error deleting");
+        dispatch({
+          type: GET_LOADING_POST,
+          payload: false,
+        });
+        dispatch({
+          type: GET_ERROR_POST,
+          payload: true,
+        });
       }
     } catch (error) {
-      console.log(error);
+      dispatch({
+        type: GET_LOADING_POST,
+        payload: false,
+      });
+      dispatch({
+        type: GET_ERROR_POST,
+        payload: true,
+      });
     }
   };
 };
@@ -375,160 +416,144 @@ export const editPost = (e, id) => {
       );
       if (res.ok) {
         dispatch({
-          type: REFRESH,
-          payload: +1,
+          type: GET_LOADING_POST,
+          payload: false,
         });
       } else {
-        console.log("error put");
+        dispatch({
+          type: GET_LOADING_POST,
+          payload: false,
+        });
+        dispatch({
+          type: GET_ERROR_POST,
+          payload: true,
+        });
       }
     } catch (error) {
-      console.log(error);
+      dispatch({
+        type: GET_LOADING_POST,
+        payload: false,
+      });
+      dispatch({
+        type: GET_ERROR_POST,
+        payload: true,
+      });
     }
   };
 };
 
+export const userUpdate = (body) => {
+  return async (dispatch) => {
+    try {
+      let res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/`,
+        {
+          method: "PUT",
+          body: JSON.stringify(body),
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
+          },
+        }
+      );
+      if (res.ok) {
+        dispatch({
+          type: UPDATE_USER,
+          payload: body,
+        });
+        console.log("succes");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
 
+export const postProfilePicture = (id, form) => {
+  return async (dispatch) => {
+    let Url =
+      "https://striveschool-api.herokuapp.com/api/profile/" + id + "/picture";
 
+    try {
+      let res = await fetch(Url, {
+        method: "POST",
+        body: form,
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export const userUpdate=(body)=>{
- return async(dispatch)=>{
-  try{
-    let res = await fetch(
-      `https://striveschool-api.herokuapp.com/api/profile/`,
-      {
-        method: "PUT",
-        body: JSON.stringify(body),
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
         },
+      });
+      console.log(Url);
+      if (res.ok) {
+        dispatch({
+          type: POST_PROFILE_PIC,
+          payload: form,
+        });
+      } else {
+        console.log("nope");
       }
-     
-    );
-    if(res.ok){
-      dispatch({
-        type: UPDATE_USER,
-        payload: body,
-      });
-    console.log("succes")
+    } catch (err) {
+      console.log(err);
     }
-  }catch(err){
-    console.log(err)
-  }
- }
-}
+  };
+};
 
-
-
-
-
-export const postProfilePicture=(id,form)=>{
-  return async(dispatch)=>{
+export const postExperiencePicture = (id, eid, form) => {
+  return async (dispatch) => {
     let Url =
-    "https://striveschool-api.herokuapp.com/api/profile/" + id + "/picture"
-    
-   try{
-    let res= await fetch(Url, {
-      method: "POST",
-      body: form,
+      "https://striveschool-api.herokuapp.com/api/profile/" +
+      id +
+      "/experiences/" +
+      eid +
+      "/picture";
+    try {
+      const res = await fetch(Url, {
+        method: "POST",
+        body: form,
 
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
-      },
-    })
-    console.log(Url);
-    if (res.ok) {
-      
-      dispatch({
-        type: POST_PROFILE_PIC,
-        payload: form,
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
+        },
       });
-   
-
-    }else{
-      console.log("nope")
+      if (res.ok) {
+        console.log("succes");
+        dispatch({
+          type: POST_EXPERIENCE_PIC,
+          payload: form,
+        });
+      }
+    } catch (err) {
+      console.log(err);
     }
-   }catch(err){
-    console.log(err)
-   }
-  }
+  };
+};
 
-}
+export const postPostPicture = (id, form) => {
+  return async (dispatch) => {
+    let Url = "https://striveschool-api.herokuapp.com/api/posts/" + id;
 
-
-export const postExperiencePicture=(id,eid,form)=>{
- return async(dispatch)=>{
-  let Url =
-  "https://striveschool-api.herokuapp.com/api/profile/"+id+"/experiences/"+eid+"/picture"
-  try{
-    const res = await fetch(Url, {
-      method: "POST",
-      body: form,
-
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
-      },
-    });
-    if (res.ok) {
-      console.log("succes");
-      dispatch({
-        type: POST_EXPERIENCE_PIC,
-        payload: form,
+    try {
+      const res = await fetch(Url, {
+        method: "POST",
+        body: form,
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
+        },
       });
+      if (res.ok) {
+        console.log("succes");
+        dispatch({
+          type: POST_POST_PICTURE,
+          payload: form,
+        });
+      }
+    } catch (err) {
+      console.log(err);
     }
-  }catch(err){
-    console.log(err)
-  }
- }
-}
-
-export const postPostPicture=(id,form)=>{
- return async(dispatch)=>{
-  let Url =
-  "https://striveschool-api.herokuapp.com/api/posts/"+id;
-   
-   
-  
-  try {
-    const res = await fetch(Url, {
-      method: "POST",
-      body: form,
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzMmNiYTgzODFmYzAwMTNmZmZhY2IiLCJpYXQiOjE2NzY4ODY5NjMsImV4cCI6MTY3ODA5NjU2M30.PbYdBr9ODIeGVoHjU6hpZC9fxUvyoG7rFcUiY-sDRs4",
-      },
-    })
-    if (res.ok) {
-      console.log("succes");
-      dispatch({
-        type: POST_POST_PICTURE,
-        payload: form,
-      });
-    }
-   }catch(err){
-    console.log(err)
-   }
-  
-  }}
-
+  };
+};

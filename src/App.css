@@ -951,12 +951,11 @@ body {
 
 .liked-comment {
   background-color: #a6faa3;
-  border-radius: 20px;
 }
 
-.unliked-comment {
-  background-color: #ffc0c0;
-  border-radius: 20px;
+.unLiked-comment:hover,
+.liked-comment:hover {
+  background-color: rgb(195, 249, 195);
 }
 
 .mercado-match {
@@ -1018,5 +1017,12 @@ body {
 
 .post-user-image {
   width: 60px;
-  border-radius: 20px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.post-spinner {
+  position: absolute;
+  top: 4%;
+  left: 48%;
 }
