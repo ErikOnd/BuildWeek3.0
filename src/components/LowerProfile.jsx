@@ -1,5 +1,11 @@
 import { useEffect } from "react";
 import {
+  compareAsc,
+  format,
+  formatDuration,
+  differenceInMonths,
+} from "date-fns";
+import {
   Container,
   Row,
   Col,
@@ -35,6 +41,24 @@ const LowerProfile = () => {
     description: "",
     area: "",
   });
+
+  const formatDate = (exData) => {
+    const date = new Date(exData);
+    return format(date, "MMM yyyy");
+  };
+
+  const calculateDiff = (date1, date2) => {
+    const diffInMonths = differenceInMonths(new Date(date1), new Date(date2));
+    const duration = formatDuration({
+      years: Math.floor(diffInMonths / 12),
+      months: diffInMonths % 12,
+    })
+      .replace("year", "yr")
+      .replace("years", "yrs")
+      .replace("months", "mos");
+
+    return duration;
+  };
 
   useEffect(() => {
     dispatch(getAllExperienceAsync());
@@ -624,12 +648,16 @@ const LowerProfile = () => {
                 <Row className="flex-column">
                   <Col className="box-h2">
                     <img
-                      src={e.image}
+                      src={
+                        e.image !== undefined
+                          ? e.image
+                          : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPiyVMnDfuHqeZ9W5Zm-BZBC41CQOCADBHxw&usqp=CAU"
+                      }
                       // alt="company logo"
                       className="experience-logo "
                     />
-                    <span>{e.role}</span>
-
+                    <span className="ex-role">{e.role}</span>
+                    {console.log(e.image)}
                     <i
                       className="bi bi-pen float-right"
                       onClick={() => {
@@ -640,7 +668,8 @@ const LowerProfile = () => {
                     ></i>
                     <span className="experience-p-strong">{e.company}</span>
                     <span className="experience-p">
-                      Jul 2021 - Oct 2022 · 1 yr 4 mos
+                      {formatDate(e.startDate) + " - " + formatDate(e.endDate)}{" "}
+                      · {calculateDiff(e.startDate, e.endDate)}
                     </span>
                   </Col>
                 </Row>

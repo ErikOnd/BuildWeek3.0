@@ -346,6 +346,12 @@ body {
 
 .experience-logo {
   max-height: 35px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.ex-role {
+  margin-left: 6px;
 }
 
 .experience-p {
@@ -682,7 +688,7 @@ body {
 .side-news p {
   margin: 0;
 }
-.image-upload>input {
+.image-upload > input {
   display: none;
 }
 .side-news small {
@@ -945,12 +951,11 @@ body {
 
 .liked-comment {
   background-color: #a6faa3;
-  border-radius: 20px;
 }
 
-.unliked-comment {
-  background-color: #ffc0c0;
-  border-radius: 20px;
+.unLiked-comment:hover,
+.liked-comment:hover {
+  background-color: rgb(195, 249, 195);
 }
 
 .mercado-match {
@@ -1012,5 +1017,12 @@ body {
 
 .post-user-image {
   width: 60px;
-  border-radius: 20px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.post-spinner {
+  position: absolute;
+  top: 10%;
+  left: 48%;
 }
