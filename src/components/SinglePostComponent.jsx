@@ -1,14 +1,19 @@
-import { useEffect } from "react";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addLiked, deletePost, removeLiked } from "../Redux/actions";
 import PostModalEditComponent from "./PostModalEditComponent";
-
+import { fetchPostsAsync } from "../Redux/actions";
 const SinglePostComponent = ({ data }) => {
-  console.log(data);
+  // console.log(data);
 
   const user = useSelector((state) => state.user.user);
   const like = useSelector((state) => state.posts.liked);
+
+  const handleDelete = () => {
+    dispatch(deletePost(data._id)).then(() => {
+      dispatch(fetchPostsAsync());
+    });
+  };
 
   const dispatch = useDispatch();
   return (
@@ -123,9 +128,8 @@ const SinglePostComponent = ({ data }) => {
                 <Dropdown.Item
                   eventKey="6"
                   className="py-2"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    dispatch(deletePost(data._id));
+                  onClick={() => {
+                    handleDelete();
                   }}
                 >
                   <div className="d-flex align-items-center">
