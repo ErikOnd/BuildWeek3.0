@@ -868,7 +868,12 @@ body {
   font-weight: bold;
 }
 
+.post-user-info p {
+  font-size: 13px;
+}
+
 .post-user-info span {
+  font-size: 12px;
   font-weight: lighter;
 }
 
@@ -1003,4 +1008,9 @@ body {
 
 .post-images {
   width: 100%;
+}
+
+.post-user-image {
+  width: 60px;
+  border-radius: 20px;
 }
