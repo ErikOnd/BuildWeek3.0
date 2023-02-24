@@ -41,6 +41,13 @@ const LowerProfile = () => {
   const handleClose3 = () => setShow3(false);
   const handleShow3 = () => setShow3(true);
 
+  const changeExperienceInfo = (id) => {
+    let currentExperience = experienceData.filter(
+      (experience) => experience._id === id
+    );
+    setExperienceInfo(currentExperience[0]);
+  };
+
   // --------------------
   const date = new Date();
   const user = useSelector((state) => state.user.user);
@@ -128,8 +135,12 @@ const LowerProfile = () => {
   // ---------------------
 
   const deleteAndClose = () => {
-    dispatch(deleteExperienceAsync(currentExperience));
     handleClose2();
+    dispatch(deleteExperienceAsync(currentExperience)).then(() => {
+      dispatch(getAllExperienceAsync());
+    });
+
+    console.log(123);
   };
   const saveAndClose = () => {
     handleClose3();
@@ -142,12 +153,9 @@ const LowerProfile = () => {
     handleClose3();
     handleClose2();
     handleClose();
-    dispatch(putExperienceAsync(experienceInfo, currentExperience));
-  };
-
-  const editAndClose = () => {
-    putExperienceAsync();
-    handleClose2();
+    dispatch(putExperienceAsync(experienceInfo, currentExperience)).then(() => {
+      dispatch(getAllExperienceAsync());
+    });
   };
 
   const [show, setShow] = useState(false);
@@ -356,7 +364,17 @@ const LowerProfile = () => {
             <Col className="box-h1 mb-3 d-flex justify-content-end">
               <i
                 className="bi bi-plus-lg mr-4"
-                onClick={() => setSmShow(true)}
+                onClick={() => {
+                  setExperienceInfo({
+                    role: "",
+                    company: "",
+                    startDate: "",
+                    endDate: "",
+                    description: "",
+                    area: "",
+                  });
+                  setSmShow(true);
+                }}
               ></i>
               <div className="d-flex mb-1 add-position-experience-effect-on-hover">
                 <div className="mr-2"></div>
@@ -566,6 +584,7 @@ const LowerProfile = () => {
                     <i
                       className="bi bi-pen float-right"
                       onClick={() => {
+                        changeExperienceInfo(e._id);
                         setCurrentExperience(e._id);
                         handleShow2();
                       }}
@@ -735,83 +754,83 @@ const LowerProfile = () => {
                 <br />
                 <Form.Label>Start Date*</Form.Label>
                 <div className="d-flex flex-row justify-content-between">
-                <Form.Control
-                  as={"select"}
-                  required
-                  value={startMonth}
-                  onChange={(i) => {
-                    setStartMonth(() => i.target.value);
-                  }}
-                >
-                  <option>Month</option>
-                  <option value="Jan">January</option>
-                  <option value="Feb">Febraury</option>
-                  <option value="Mar">March</option>
-                  <option value="Apr">April</option>
-                  <option value="May">May</option>
-                  <option value="Jun">June</option>
-                  <option value="Jul">July</option>
-                  <option value="Aug">August</option>
-                  <option value="Sep">Septembet</option>
-                  <option value="Oct">October</option>
-                  <option value="Nov">November</option>
-                  <option value="Dec">December</option>
-                </Form.Control>
-                
-                <Form.Control
-                  as={"select"}
-                  required
-                  value={startMonth}
-                  onChange={(i) => {
-                    setStartYear(() => i.target.value);
-                  }}
-                >
-                  <option>Year</option>
-                  {years.map((y) => {
-                    return (
-                      <>
-                        <option key={y}>{y}</option>
-                      </>
-                    );
-                  })}
-                </Form.Control>
+                  <Form.Control
+                    as={"select"}
+                    required
+                    value={startMonth}
+                    onChange={(i) => {
+                      setStartMonth(() => i.target.value);
+                    }}
+                  >
+                    <option>Month</option>
+                    <option value="Jan">January</option>
+                    <option value="Feb">Febraury</option>
+                    <option value="Mar">March</option>
+                    <option value="Apr">April</option>
+                    <option value="May">May</option>
+                    <option value="Jun">June</option>
+                    <option value="Jul">July</option>
+                    <option value="Aug">August</option>
+                    <option value="Sep">Septembet</option>
+                    <option value="Oct">October</option>
+                    <option value="Nov">November</option>
+                    <option value="Dec">December</option>
+                  </Form.Control>
+
+                  <Form.Control
+                    as={"select"}
+                    required
+                    value={startMonth}
+                    onChange={(i) => {
+                      setStartYear(() => i.target.value);
+                    }}
+                  >
+                    <option>Year</option>
+                    {years.map((y) => {
+                      return (
+                        <>
+                          <option key={y}>{y}</option>
+                        </>
+                      );
+                    })}
+                  </Form.Control>
                 </div>
                 <br />
                 <Form.Label>End Date*</Form.Label>
                 <div className="d-flex flex-row justify-content-between">
-                <Form.Control
-                  as={"select"}
-                  disabled
-                  value={endMonth}
-                  onChange={(i) =>
-                    setEndMonth(() => (endMonth = i.target.value))
-                  }
-                >
-                  <option>Month</option>
-                  <option value="Jan">January</option>
-                  <option value="Feb">Febraury</option>
-                  <option value="Mar">March</option>
-                  <option value="Apr">April</option>
-                  <option value="May">May</option>
-                  <option value="Jun">June</option>
-                  <option value="Jul">July</option>
-                  <option value="Aug">August</option>
-                  <option value="Sep">Septembet</option>
-                  <option value="Oct">October</option>
-                  <option value="Nov">November</option>
-                  <option value="Dec">December</option>
-                </Form.Control>
-            
-                <Form.Control as={"select"} disabled>
-                  <option>Year</option>
-                  {years.map((y) => {
-                    return (
-                      <>
-                        <option key={y}>{y}</option>
-                      </>
-                    );
-                  })}
-                </Form.Control>
+                  <Form.Control
+                    as={"select"}
+                    disabled
+                    value={endMonth}
+                    onChange={(i) =>
+                      setEndMonth(() => (endMonth = i.target.value))
+                    }
+                  >
+                    <option>Month</option>
+                    <option value="Jan">January</option>
+                    <option value="Feb">Febraury</option>
+                    <option value="Mar">March</option>
+                    <option value="Apr">April</option>
+                    <option value="May">May</option>
+                    <option value="Jun">June</option>
+                    <option value="Jul">July</option>
+                    <option value="Aug">August</option>
+                    <option value="Sep">Septembet</option>
+                    <option value="Oct">October</option>
+                    <option value="Nov">November</option>
+                    <option value="Dec">December</option>
+                  </Form.Control>
+
+                  <Form.Control as={"select"} disabled>
+                    <option>Year</option>
+                    {years.map((y) => {
+                      return (
+                        <>
+                          <option key={y}>{y}</option>
+                        </>
+                      );
+                    })}
+                  </Form.Control>
                 </div>
                 <br />
                 <MDBCheckbox
@@ -843,84 +862,84 @@ const LowerProfile = () => {
                 <br />
                 <Form.Label>Start Date*</Form.Label>
                 <div className="d-flex flex-row justify-content-between">
-                <Form.Control
-                  as={"select"}
-                  value={startMonth}
-                  onChange={(i) => setStartMonth(() => i.target.value)}
-                  required
-                >
-                  <option>Month</option>
-                  <option value="Jan">January</option>
-                  <option value="Feb">Febraury</option>
-                  <option value="Mar">March</option>
-                  <option value="Apr">April</option>
-                  <option value="May">May</option>
-                  <option value="Jun">June</option>
-                  <option value="Jul">July</option>
-                  <option value="Aug">August</option>
-                  <option value="Sep">Septembet</option>
-                  <option value="Oct">October</option>
-                  <option value="Nov">November</option>
-                  <option value="Dec">December</option>
-                </Form.Control>
-                
-                <Form.Control
-                  as={"select"}
-                  value={startYear}
-                  onChange={(i) => setStartYear(() => i.target.value)}
-                  required
-                >
-                  <option>Year</option>
-                  {years.map((y) => {
-                    return (
-                      <>
-                        <option key={y}>{y}</option>
-                      </>
-                    );
-                  })}
-                </Form.Control>
+                  <Form.Control
+                    as={"select"}
+                    value={startMonth}
+                    onChange={(i) => setStartMonth(() => i.target.value)}
+                    required
+                  >
+                    <option>Month</option>
+                    <option value="Jan">January</option>
+                    <option value="Feb">Febraury</option>
+                    <option value="Mar">March</option>
+                    <option value="Apr">April</option>
+                    <option value="May">May</option>
+                    <option value="Jun">June</option>
+                    <option value="Jul">July</option>
+                    <option value="Aug">August</option>
+                    <option value="Sep">Septembet</option>
+                    <option value="Oct">October</option>
+                    <option value="Nov">November</option>
+                    <option value="Dec">December</option>
+                  </Form.Control>
+
+                  <Form.Control
+                    as={"select"}
+                    value={startYear}
+                    onChange={(i) => setStartYear(() => i.target.value)}
+                    required
+                  >
+                    <option>Year</option>
+                    {years.map((y) => {
+                      return (
+                        <>
+                          <option key={y}>{y}</option>
+                        </>
+                      );
+                    })}
+                  </Form.Control>
                 </div>
                 <br />
                 <Form.Label>End Date*</Form.Label>
                 <div className="d-flex flex-row justify-content-between">
-                <Form.Control
-                  as={"select"}
-                  value={endMonth}
-                  onChange={(i) => {
-                    setEndMonth(() => i.target.value);
-                  }}
-                  required
-                >
-                  <option>Month</option>
-                  <option value="Jan">January</option>
-                  <option value="Feb">Febraury</option>
-                  <option value="Mar">March</option>
-                  <option value="Apr">April</option>
-                  <option value="May">May</option>
-                  <option value="Jun">June</option>
-                  <option value="Jul">July</option>
-                  <option value="Aug">August</option>
-                  <option value="Sep">Septembet</option>
-                  <option value="Oct">October</option>
-                  <option value="Nov">November</option>
-                  <option value="Dec">December</option>
-                </Form.Control>
-                <Form.Control
-                  as={"select"}
-                  value={endYear}
-                  onChange={(i) => {
-                    setEndYear(() => i.target.value);
-                  }}
-                  required
-                >
-                  {years.map((y) => {
-                    return (
-                      <>
-                        <option key={y}>{y}</option>
-                      </>
-                    );
-                  })}
-                </Form.Control>
+                  <Form.Control
+                    as={"select"}
+                    value={endMonth}
+                    onChange={(i) => {
+                      setEndMonth(() => i.target.value);
+                    }}
+                    required
+                  >
+                    <option>Month</option>
+                    <option value="Jan">January</option>
+                    <option value="Feb">Febraury</option>
+                    <option value="Mar">March</option>
+                    <option value="Apr">April</option>
+                    <option value="May">May</option>
+                    <option value="Jun">June</option>
+                    <option value="Jul">July</option>
+                    <option value="Aug">August</option>
+                    <option value="Sep">Septembet</option>
+                    <option value="Oct">October</option>
+                    <option value="Nov">November</option>
+                    <option value="Dec">December</option>
+                  </Form.Control>
+                  <Form.Control
+                    as={"select"}
+                    value={endYear}
+                    onChange={(i) => {
+                      setEndYear(() => i.target.value);
+                    }}
+                    required
+                  >
+                    {years.map((y) => {
+                      return (
+                        <>
+                          <option key={y}>{y}</option>
+                        </>
+                      );
+                    })}
+                  </Form.Control>
                 </div>
                 <br />
               </>
@@ -1239,7 +1258,7 @@ const LowerProfile = () => {
           <Button
             variant="primary"
             className="saveButtonExperiencesModal"
-            onClick={updateAndClose}
+            onClick={() => updateAndClose()}
           >
             Save
           </Button>
