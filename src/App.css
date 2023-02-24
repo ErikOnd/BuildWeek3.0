@@ -346,6 +346,12 @@ body {
 
 .experience-logo {
   max-height: 35px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.ex-role {
+  margin-left: 6px;
 }
 
 .experience-p {
@@ -682,7 +688,7 @@ body {
 .side-news p {
   margin: 0;
 }
-.image-upload>input {
+.image-upload > input {
   display: none;
 }
 .side-news small {
