@@ -30,8 +30,8 @@ const FeedPostComponent = () => {
         </Spinner>
       )}
 
-      {posts.map((e) => {
-        return <SinglePostComponent key={e._id} data={e} />;
+      {posts.map((e, i) => {
+        return <SinglePostComponent key={i} data={e} />;
       })}
     </div>
   );
